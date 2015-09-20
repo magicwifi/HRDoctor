@@ -1,40 +1,40 @@
 <div class="container clearfix">
 
   <div class="marketing">
-    <h1>好奇猫的课程</h1>
+    <h1>最新消息</h1>
     <ul class="sort-label clearfix">
-      <li class="active" data-type="star"><a href="#">按课程关注人数排序</a></li>
-      <li data-type="time"><a href="#">按课程创建时间排序</a></li>
+      <li class="active" data-type="star"><a href="#">按关注人数排序</a></li>
+      <li data-type="time"><a href="#">按创建时间排序</a></li>
     </ul>
     <div id="sorted-by-star">
-      <% if !@star_courses.empty? %>
+      <% if !@star_messages.empty? %>
         <div class="courses clearfix">
-          <% @star_courses.each do |course| %>
+          <% @star_messages.each do |message| %>
             <div class="course">
-              <%= render "courses/course", :course => course %>
+              <%= render "messages/message", :message => message %>
             </div>
           <% end %>
         </div>
-        <%= link_to "查看所有课程", course_index_path(:sort => "star"), class: "all-courses-btn button" %>
+        <%= link_to "查看所有消息", message_index_path(:sort => "star"), class: "all-courses-btn button" %>
       <% else %>
         <p>
-        No Courses found
+        No Messages found
         </p>
       <% end %>
     </div>
     <div id="sorted-by-time" style="display: none;">
-      <% if !@recent_courses.empty? %>
+      <% if !@recent_messages.empty? %>
         <div class="courses clearfix">
-          <% @recent_courses.each do |course| %>
+          <% @recent_messages.each do |message| %>
             <div class="course">
-              <%= render "courses/course", :course => course %>
+              <%= render "messages/message", :message => message %>
             </div>
           <% end %>
         </div>
-        <%= link_to "查看所有课程", course_index_path(:sort => "time"), class: "all-courses-btn button" %>
+        <%= link_to "查看所有消息", message_index_path(:sort => "time"), class: "all-courses-btn button" %>
       <% else %>
         <p>
-        No Courses found
+        No Messages found
         </p>
       <% end %>
     </div>

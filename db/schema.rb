@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521052220) do
+ActiveRecord::Schema.define(version: 20150917123655) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -66,7 +66,19 @@ ActiveRecord::Schema.define(version: 20140521052220) do
     t.string   "poster"
     t.integer  "user_id"
     t.boolean  "public"
-    t.float    "price"
+    t.float    "price",       limit: 24
+  end
+
+  create_table "messages", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "poster"
+    t.integer  "user_id"
+    t.boolean  "public"
+    t.float    "price",       limit: 24
   end
 
   create_table "notifications", force: true do |t|
@@ -88,7 +100,7 @@ ActiveRecord::Schema.define(version: 20140521052220) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "notify_id"
-    t.float    "total_fee"
+    t.float    "total_fee",    limit: 24
     t.string   "trade_status"
     t.string   "out_trade_no"
     t.datetime "notify_time"
@@ -129,6 +141,7 @@ ActiveRecord::Schema.define(version: 20140521052220) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.boolean  "use_gravatar"
+    t.string   "phonenum"
   end
 
   create_table "videos", force: true do |t|
@@ -144,7 +157,7 @@ ActiveRecord::Schema.define(version: 20140521052220) do
     t.string   "content_type"
     t.string   "asset"
     t.boolean  "free"
-    t.float    "ratio"
+    t.float    "ratio",        limit: 24
   end
 
   create_table "watchings", force: true do |t|

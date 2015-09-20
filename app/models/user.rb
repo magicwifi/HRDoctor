@@ -4,12 +4,13 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :posts
   has_many :courses
+  has_many :messages
   has_many :orders
   has_many :notifications, :dependent => :destroy
   has_many :watchings, :dependent => :destroy
   has_many :watched_courses, :through => :watchings, :source => :course
 
-  attr_accessible :name, :email, :avatar, :password, :password_confirmation
+  attr_accessible :name, :email, :avatar, :phonenum, :password, :password_confirmation
 
   has_many :follower_relationships, :class_name => "Relationship",
            :foreign_key => "followed_user_id", :dependent => :destroy
@@ -36,6 +37,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, 
                     uniqueness: { case_sensitive: false, message: "已经注册了一个用户，请重新选择" },
                     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :phonenum, presence: true, 
+                    uniqueness: { case_sensitive: false, message: "已经注册了一个用户，请重新选择" },
+                    format: { with: /\d{11}/  }
   has_secure_password
 
   before_create { generate_token(:token) }

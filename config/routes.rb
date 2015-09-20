@@ -53,6 +53,11 @@ Onestep::Application.routes.draw do
   post "/course" => "courses#create"
   get "/create_course" => "courses#new", :as => :create_course
 
+  patch "/message" => "messages#update"
+  get "/message" => "messages#index", :as => "message_index"
+  post "/message" => "messages#create"
+  get "/create_message" => "messages#new", :as => :create_message
+
   get "/members" => "users#index", :as => "user_index"
   post "/members" => "users#create"
   put "/crop" => "users#crop", :as => "crop"
@@ -73,6 +78,10 @@ Onestep::Application.routes.draw do
     get :autocomplete_user_name, :on => :collection
   end
 
+  resources :messages, :except => :edit do
+    get :autocomplete_user_name, :on => :collection
+  end
+
   post "/:member_name/follow" => "users#follow"
   post "/:member_name/unfollow" => "users#unfollow"
 
@@ -80,7 +89,11 @@ Onestep::Application.routes.draw do
   patch "/account" => "users#update"
   get "/:member_name" => "users#show", :as => "member"
   delete "/:member_name/:course_name" => "courses#destroy"
+  get "/:member_name/:message_name/editmessage" => "messages#edit" , :as => "edit_message"
+  get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
+  get "/:member_name/:course_name/:position/edit" => "courses#edit_video"
+  get "/:member_name/:course_name/add_video" => "courses#add_video"
   patch "/update_video/:id" => "videos#update"
   post "/sort_videos" => "videos#sort"
 

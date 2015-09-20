@@ -1,0 +1,17 @@
+<%= link_to "#", class: "course-thumb-container clearfix" do %>
+  <div class="course-thumb center-course-thumb light-shadow">
+    <div class="course-main">
+      <%= image_tag message.poster_url %>
+      <div class="course-title">
+        <%= message.title %>
+      </div>
+      <div class="course-desc">
+        <%= message.description %>
+      </div>
+      <div class="course-author">
+        <%= image_tag message.user.final_avatar_url, class: "course-thumb-avatar" %>
+        <%= message.user.name %>
+      </div>
+    </div>
+  </div>
+<% end %>

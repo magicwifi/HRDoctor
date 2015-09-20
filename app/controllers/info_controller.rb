@@ -2,10 +2,12 @@ class InfoController < ApplicationController
   layout 'styleguide_css', :only => [:styleguide]
 
   def marketing
-    @recent_courses = Course.where(public: true).limit(6).order('id desc')
-    @star_courses = courses_sorted_by_star.take(6)
+    @recent_messages = Message.all.limit(6).order('id desc')
+    @star_messages = Message.all.limit(6).order('id desc')
     @user = User.new
     session[:return_to] = request.url
+    @count = User.all.count
+    @users = User.order('id desc').page(params[:page]).per(60)
   end
 
   def styleguide

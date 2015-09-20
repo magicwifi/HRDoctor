@@ -1,13 +1,13 @@
 <div class="header header-logged-out">
   <div class="container clearfix">
     <a class="header-logo-wordmark" href="/">
-      HAOQI
+      华仁医生
     </a>
 
     <ul class="top-nav">
-      <li><a href="/about"><%= t("about") %></a></li>
-      <li><a href="/blog"><%= t("blog") %></a></li>
-      <li><a href="/timeline"><%= t("site_timeline") %></a></li>
+      <li> <%= link_to "合作机构", message_index_path(:sort => "star") %></li>
+      <li><a href="#">服务项目</a></li>
+	<li><a href="/#"><%= t("about") %></a></li>
     </ul>
 
     <div class="header-actions">
