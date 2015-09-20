@@ -1,7 +1,3 @@
-[haoqicat.com](http://haoqicat.com) Source code here
+HR Hospital implement by ruby
 
-`onestep` is codename.
 
-### Install
-
-- <https://github.com/happypeter/onestep/wiki/Deploy>
