@@ -1,25 +1,14 @@
-  <div class="container about">
-  <div class="left-col" >
-<div class="menu-container">
-  <ul class="menu">
-    <li><a class="<%= request.path == member_url(@user.name)? "active main":"main" %>" href="<%=member_url(@user.name) %>">我要咨询</a></li>
-    <li><a class="<%= request.path == "/about/team"? "active team":"team" %>" href="/about/team">医生查询</a></li>
-    <li><a class="<%= request.path == "/about/jobs"? "active jobs":"jobs" %>" href="/about/jobs">关于我们</a></li>
-    <li><a class="<%= request.path == "/showmyinfo"? "active faq":"faq" %>" href="/showmyinfo">基本情况</a></li>
-  </ul>
-</div>
-  </div><!--end user-info -->
-<div id="user-show" class="container clearfix">
+<div id="user-show">
   <div id="user-course" >
     <ul class="main-nav">
       <li class="active" data-course-type="owned">
-        <a href="#owned-courses">发起的咨询</a>
+        <a href="#owned-courses">创建的课程</a>
       </li>
       <li data-course-type="watched">
-        <a href="#watched-courses">答复的咨询</a>
+        <a href="#watched-courses">关注的课程</a>
       </li>
       <li data-course-type="paid">
-        <a href="#paid-courses">未答复的咨询</a>
+        <a href="#paid-courses">购买的课程</a>
       </li>
     </ul>
     <div class="content owned-courses-section active clearfix">
@@ -94,8 +83,6 @@
       <% end %>
     </div>
   </div><!--end user-course -->
-
-</div><!-- user-show -->
 </div>
 <% content_for :template_js do %>
   <script>

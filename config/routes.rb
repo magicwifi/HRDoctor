@@ -82,6 +82,8 @@ Onestep::Application.routes.draw do
     get :autocomplete_user_name, :on => :collection
   end
 
+  get "/showmyinfo" => "basic_infos#edit"
+
   post "/:member_name/follow" => "users#follow"
   post "/:member_name/unfollow" => "users#unfollow"
 

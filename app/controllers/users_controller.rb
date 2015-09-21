@@ -67,6 +67,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save!
       UserMailer.welcome(@user).deliver
+      BasicInfo.create!(:name=>"",:gender=>"male",:birth=>DateTime.new(1970,1,1),:edited=>false,:user_id=>@user.id)
       cookies.permanent[:token] = @user.token
       redirect_to member_path(@user.name), :notice => t('signed_up')
     else

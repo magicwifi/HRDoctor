@@ -1,0 +1,8 @@
+<div class="menu-container">
+  <ul class="menu">
+    <li><a class="<%= request.path == member_url(@user.name)? "active main":"main" %>" href="<%=member_url(@user.name) %>">我要咨询</a></li>
+    <li><a class="<%= request.path == "/about/team"? "active team":"team" %>" href="/about/team">医生查询</a></li>
+    <li><a class="<%= request.path == "/about/jobs"? "active jobs":"jobs" %>" href="/about/jobs">关于我们</a></li>
+    <li><a class="<%= request.path == "/showmyinfo"? "active faq":"faq" %>" href="/showmyinfo">基本情况</a></li>
+  </ul>
+</div>

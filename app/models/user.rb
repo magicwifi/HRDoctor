@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :activities
   has_many :comments
   has_many :posts
+  has_one  :basic_info
   has_many :courses
   has_many :messages
   has_many :orders
