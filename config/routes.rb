@@ -83,6 +83,7 @@ Onestep::Application.routes.draw do
   end
 
   get "/showmyinfo" => "basic_infos#edit"
+  patch "/update_myinfo" => "basic_infos#update"
 
   post "/:member_name/follow" => "users#follow"
   post "/:member_name/unfollow" => "users#unfollow"
