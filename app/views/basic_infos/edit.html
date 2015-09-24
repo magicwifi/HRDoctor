@@ -14,6 +14,14 @@
         </dl>
         <dl class="form">
           <dt>
+          <%= f.label '年龄' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :age, :class => "short", :placeholder => "请输入两位数字的年龄" %>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
           <%= f.label '性别' %>
           </dt>
           <dd>
@@ -36,7 +44,8 @@
           <%= f.text_field  :weight, :class => "short", :placeholder => "如85"  %>
           </dd>
         </dl>
-        <p> <%= f.submit '保存', :class => "button" %> </p>
+	<p style="height: 10px;" ></p>
+        <p> <%= f.submit '保存', :class => "button primary" %> </p>
       <% end %>
     </div>
   </div>

@@ -1,6 +1,7 @@
 # encoding: utf-8
 class CoursesController < ApplicationController
   before_filter :check_owner, :only => [:edit, :update, :destory, :collaboration, :add_member, :delete_member]
+  before_filter :check_edited, :only => [:edit, :update, :new, :create]
   before_filter :find_course, :except => [:new, :index, :create, :update, :update_poster, :autocomplete_user_name]
 
   autocomplete :user, :name
@@ -162,6 +163,13 @@ class CoursesController < ApplicationController
   end
 
   private
+
+  def check_edited
+    if !current_user.basic_info.edited?
+      redirect_to '/showmyinfo', :notice => '请完善基本信息'
+      return
+    end
+  end
 
   def find_course
     @user = User.find_by_name(params[:member_name])
