@@ -1,0 +1,35 @@
+<div class="course-section clearfix">
+  <%= render "edit_sick_case_info", :sick_case => @sick_case %>
+</div>
+
+<div class='container'>
+  <div class="tutorial-page">
+    <div class="boxed-group">
+      <h3><i class="fa fa-video-camera fa-lg"></i> 视频</h3>
+      <div class="boxed-group-inner videos-section">
+        <div class="tutorial-nav added-videos-wrap">
+          <% if @sick_case.sick_hists.present? %>
+            <%= render "all_added_sick_hists", :sick_case => @sick_case %>
+          <% else %>
+          <div class="playlist-container">
+            <ul class="playlist">
+              <li class="add-video-btn">
+                <%= link_to sick_case_path(@sick_case) + '/add_sick_hist.js',
+                  class: "video active", remote: true do %>
+                <div class="video-icon">
+                  <i class="fa fa-plus fa-lg"></i>
+                </div>
+                <span class="video-info"> 添加新视频</span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <% end %>
+        </div><!-- end tutorial-nav -->
+        <div class="tutorial-content add-video-wrap">
+          <%= render "add_sick_hist", :sick_case => @sick_case %>
+        </div>
+      </div>  <!-- boxed-group-inner -->
+    </div> <!-- boxed-group -->
+  </div><!-- end tutorial-page -->
+</div>

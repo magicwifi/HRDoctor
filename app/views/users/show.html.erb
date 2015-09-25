@@ -23,10 +23,10 @@
       </li>
     </ul>
     <div class="content owned-courses-section active clearfix">
-      <% if @courses.present? %>
+      <% if @sick_cases.present? %>
         <div class="courses-wrap">
-          <% @courses.each do |course| %>
-            <%= render "courses/course_list", :course => course %>
+          <% @sick_cases.each do |sick_case| %>
+            <%= render "sick_cases/sick_case_list", :sick_case => sick_case %>
           <% end %>
         </div>
       <% else %>
@@ -34,7 +34,7 @@
           <i class="fa fa-smile-o fa-2x"></i>
           <%= t('no_courses_found') %>
           <% if current_user == @user %>
-            <%= link_to create_course_path, :class => "new-course-button" do %>
+            <%= link_to create_sick_case_path, :class => "new-course-button" do %>
             <%#= link_to "javascript:;", :class => "new-course-button" do %>
               <%= t('create_course') %>
               <!--创建课程暂不开放-->

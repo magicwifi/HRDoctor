@@ -1,0 +1,30 @@
+<% content_for :template_js do %>
+  <script>
+    $('#sick_case_desc').NobleCount('#desc_count',{
+      on_negative: 'go_red',
+      on_positive: 'go_green',
+      max_chars: 33});
+  </script>
+<% end %>
+<%= form_for(@sick_case, :url => "/sick_case") do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= flash[:notice] %>
+  <% if @sick_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sick_case.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @sick_case.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <dl class="form">
+    <dt> <%= f.label t('course_title') %> </dt>
+    <dd> <%= f.text_field :title %> </dd>
+  </dl>
+  <div>
+    <%= f.submit "创建咨询", :class => "minibutton primary" %>
+  </div>
+<% end %>

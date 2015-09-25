@@ -1,0 +1,39 @@
+<div class="course-list clearfix">
+  <div class="user-course-header">
+    <i class="fa fa-clock-o"></i>
+    <span class="date"><%= sick_case.created_at.strftime("%B %d, %Y") %></span>
+    <div class="action">
+      <% if owner?(sick_case) %>
+        <%= link_to edit_sick_case_path(sick_case) do %>
+        <%= link_to "javascript:;" do %>
+          <i class="fa fa-pencil"></i>
+          <%= t('edit_course') %>
+          <!--编辑功能暂不开放-->
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to sick_case_path(sick_case) do %>
+    <%= image_tag sick_case.poster_url %>
+  <% end %>
+  <div class="meta">
+    <div>
+      <span class="title"><%= link_to sick_case.title, sick_case_path(sick_case) %></span>
+      <% if !sick_case.public %>
+        <span class="lock"><i class="fa fa-lock fa-lg"></i></span>
+      <% end %>
+    </div>
+    <div class="desc">
+      <%= sick_case.description %>
+    </div>
+    <div class="details">
+      <i class="fa fa-video-camera"></i><span class="tip">处理人: <%= sick_case.sick_hists.count %></span>
+    </div>
+    <div class="details">
+    </div>
+    <div class="details">
+      <i class="fa fa-user"></i><span class="tip">发起人: <%= link_to sick_case.user.name, member_path(sick_case.user.name) %></span>
+    </div>
+  </div>
+  <%= link_to "跟踪咨询", sick_case_path(sick_case), :class => "course-button" %>
+</div>

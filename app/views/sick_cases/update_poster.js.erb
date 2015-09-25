@@ -1,0 +1,3 @@
+$('img#poster').replaceWith('<%= image_tag @sick_case.poster_url,:alt => "Poster Image", :id => "poster"%>');
+$.colorbox.close();
+$('.modal-footer form').find("input[type='submit']").prop('disabled',false);

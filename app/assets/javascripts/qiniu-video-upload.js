@@ -9,7 +9,7 @@ $(document).ready(function() {
       singleFileUploads: true,
       removeProgressBarWhenCompleted: false,
       onFilesAdd: function(file) {
-        types = /(\.|\/)(mov|mp4)$/i;
+        types = /(\.|\/)(mov|mp4|jpg|png)$/i;
         if (types.test(file.type) || types.test(file.name)) {
           if (file.size > 100000000) {
             alert("上传失败：" + file.name + " 视频太大，超过100M");

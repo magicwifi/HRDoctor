@@ -29,6 +29,7 @@ Onestep::Application.routes.draw do
   resources :posts
   resources :blog_images
   resources :videos
+  resources :sick_hists
   resources :password_resets
 
   get "notifications" => "notifications#index", :as => "notifications"
@@ -38,7 +39,7 @@ Onestep::Application.routes.draw do
   patch '/restore_gravatar' => "users#restore_gravatar"
   patch 'edit-avatar' => 'users#update_avatar', :as => :update_avatar
   get "edit-avatar" => "users#edit_avatar", :as => "edit_avatar"
-  patch 'update_poster' => 'courses#update_poster', :as => :update_poster
+  patch 'update_poster' => 'sick_cases#update_poster', :as => :update_poster
 
   resources :comments
   post "/comment_preview" => "comments#preview", :as => "comment_preview"
@@ -52,6 +53,11 @@ Onestep::Application.routes.draw do
   get "/course" => "courses#index", :as => "course_index"
   post "/course" => "courses#create"
   get "/create_course" => "courses#new", :as => :create_course
+
+  patch "/sick_case" => "sick_cases#update"
+  get "/sick_case" => "sick_cases#index", :as => "sick_case_index"
+  post "/sick_case" => "sick_cases#create"
+  get "/create_sick_case" => "sick_cases#new", :as => :create_sick_case
 
   patch "/message" => "messages#update"
   get "/message" => "messages#index", :as => "message_index"
@@ -93,6 +99,7 @@ Onestep::Application.routes.draw do
   get "/:member_name" => "users#show", :as => "member"
   delete "/:member_name/:course_name" => "courses#destroy"
   get "/:member_name/:message_name/editmessage" => "messages#edit" , :as => "edit_message"
+  get "/:member_name/:sick_case_name/editcase" => "sick_cases#edit" , :as => "edit_sick_case"
   get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:course_name/:position/edit" => "courses#edit_video"

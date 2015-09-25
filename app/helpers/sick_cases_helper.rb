@@ -1,0 +1,2 @@
+module SickCasesHelper
+end
