@@ -10,7 +10,7 @@ class SickHistsController < ApplicationController
         @sick_hist.sick_case_id = params[:custom_fields][:sick_case_id]
         @sick_hist.user_id = current_user.id
         @sick_hist.save
-        track_activity @sick_hist, @sick_hist.sick_case.id
+        #track_activity @sick_hist, @sick_hist.sick_case.id
       end
     end
   end
@@ -27,7 +27,7 @@ class SickHistsController < ApplicationController
           sick_hist.filename = params[:fname]
           sick_hist.content_type = params[:mimeType]
           sick_hist.save
-          track_activity sick_hist, sick_hist.sick_case.id
+          #track_activity sick_hist, sick_hist.sick_case.id
         end
         f.json { render :json => {} }
       else

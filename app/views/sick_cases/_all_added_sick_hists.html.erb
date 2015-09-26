@@ -2,12 +2,12 @@
   <ul id="play-list" class="playlist" data-update-url="/sort_videos">
     <% sick_case.sick_hists.each do |sick_hist| %>
       <%= content_tag_for :li, sick_hist do %>
-        <a class="video" href="<%= sick_case_path(sick_hist.sick_case) + '/' + sick_hist.position.to_s + '/edit.js' %>" data-remote='true'>
+        <a class="video" href="<%=  sick_hist.position.to_s + '/edithist.js' %>" data-remote='true'>
           <span class="video-info edit-video-info">
             <%= sick_hist.title %>
           </span>
         </a>
-        <a href="<%= sick_case_path(sick_hist.sick_case) + '/' + sick_hist.position.to_s + '/edit.js' %>"
+        <a href="<%= sick_hist.position.to_s + '/edithist.js' %>"
           data-remote='true'>
           <div class="pencil-icon">
              <i class="fa fa-pencil"></i>

@@ -3,7 +3,7 @@ class SickCase < ActiveRecord::Base
                   :price
   validates_presence_of :title
 
-  has_many :sick_hists, :dependent => :destroy
+  has_many :sick_hists, -> { order :position }, :dependent => :destroy
   has_many :activities, :dependent => :destroy
   belongs_to :user
 

@@ -1,6 +1,6 @@
 # encoding: utf-8
 class SickCasesController < ApplicationController
-  before_filter :check_owner, :only => [:edit, :update, :destory]
+  before_filter :check_owner, :only => [:edit, :update, :destroy]
   before_filter :check_edited, :only => [:edit, :update, :new, :create]
   before_filter :find_sick_case, :except => [:new, :index, :create, :update, :update_poster, :autocomplete_user_name]
 

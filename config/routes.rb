@@ -88,6 +88,11 @@ Onestep::Application.routes.draw do
     get :autocomplete_user_name, :on => :collection
   end
 
+
+  resources :sick_cases, :except => :edit do
+    get :autocomplete_user_name, :on => :collection
+  end
+
   get "/showmyinfo" => "basic_infos#edit"
   patch "/update_myinfo" => "basic_infos#update"
 
@@ -103,8 +108,10 @@ Onestep::Application.routes.draw do
   get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:course_name/:position/edit" => "courses#edit_video"
+  get "/:member_name/:sick_case_name/:position/edithist" => "sick_cases#edit_sick_hist"
   get "/:member_name/:course_name/add_video" => "courses#add_video"
   patch "/update_video/:id" => "videos#update"
+  patch "/update_sick_hist/:id" => "sick_hists#update"
   post "/sort_videos" => "videos#sort"
 
 end

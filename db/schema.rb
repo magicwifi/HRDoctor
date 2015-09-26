@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924114038) do
+ActiveRecord::Schema.define(version: 20150925072252) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -162,6 +162,13 @@ ActiveRecord::Schema.define(version: 20150924114038) do
     t.integer  "sick_case_id"
     t.boolean  "public"
     t.float    "price",        limit: 24
+    t.string   "asset"
+    t.string   "user_id"
+    t.string   "integer"
+    t.integer  "size"
+    t.string   "filename"
+    t.string   "content_type"
+    t.integer  "position"
   end
 
   create_table "users", force: true do |t|
