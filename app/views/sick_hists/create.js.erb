@@ -1,4 +1,4 @@
 $('form#new_sick_hist').get(0).setAttribute("action", "/sick_hists/<%= @sick_hist.id %>");
 $('form#new_sick_hist > div').append('<input name="_method" type="hidden" value="put">');
 $('input#submit_sick_hist_info').removeAttr('disabled');
-$('input#submit_sick_hist_info').get(0).setAttribute('value', '保存视频信息');
+$('input#submit_sick_hist_info').get(0).setAttribute('value', '保存附件信息');

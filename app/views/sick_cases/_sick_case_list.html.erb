@@ -4,8 +4,8 @@
     <span class="date"><%= sick_case.created_at.strftime("%B %d, %Y") %></span>
     <div class="action">
       <% if owner?(sick_case) %>
-        <%= link_to edit_sick_case_path(sick_case) do %>
-        <%= link_to "javascript:;" do %>
+        <%= link_to '/'+sick_case.user.name+'/'+sick_case.name+'/editcase' do %>
+        <%#= link_to "javascript:;" do %>
           <i class="fa fa-pencil"></i>
           <%= t('edit_course') %>
           <!--编辑功能暂不开放-->
@@ -13,7 +13,7 @@
       <% end %>
     </div>
   </div>
-  <%= link_to sick_case_path(sick_case) do %>
+  <%= link_to '/'+sick_case.user.name+'/'+sick_case.name+'/showcase' do %>
     <%= image_tag sick_case.poster_url %>
   <% end %>
   <div class="meta">
@@ -27,13 +27,13 @@
       <%= sick_case.description %>
     </div>
     <div class="details">
-      <i class="fa fa-video-camera"></i><span class="tip">处理人: <%= sick_case.sick_hists.count %></span>
+      <i class="fa fa-video-camera"></i><span class="tip">附件: <%= sick_case.sick_hists.count %></span>
     </div>
     <div class="details">
     </div>
     <div class="details">
-      <i class="fa fa-user"></i><span class="tip">发起人: <%= link_to sick_case.user.name, member_path(sick_case.user.name) %></span>
+      <i class="fa fa-user"></i><span class="tip">咨询人: <%= link_to sick_case.user.name, member_path(sick_case.user.name) %></span>
     </div>
   </div>
-  <%= link_to "跟踪咨询", sick_case_path(sick_case), :class => "course-button" %>
+  <%= link_to "查看咨询", '/'+sick_case.user.name+'/'+sick_case.name+'/showcase', :class => "course-button" %>
 </div>

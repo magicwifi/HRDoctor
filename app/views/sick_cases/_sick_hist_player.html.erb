@@ -1,0 +1,8 @@
+<div id="html5-player" class="video-js vjs-default-skin" controls preload="auto"
+  width="840" height="<%= (840).to_i %>" data-setup="{}">
+  <img src="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_hist.asset %>" width="840" height="<%= (840).to_i %>">
+</div>
+<div class="download-btn">
+  <%= link_to t('download_video'), download_sick_hist_path(:asset => @sick_hist.asset),
+    class: "minibutton primary" %>
+</div>

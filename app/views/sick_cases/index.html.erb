@@ -1,11 +1,11 @@
 <div class="container marketing">
 
-  <% if !@course_groups.empty? %>
-    <% @course_groups.each do |row| %>
+  <% if !@sick_case_groups.empty? %>
+    <% @sick_case_groups.each do |row| %>
       <div class="courses">
-        <% row.each do |course| %>
+        <% row.each do |sick_case| %>
           <div class="course">
-            <%= render course %>
+            <%= render sick_case %>
           </div>
         <% end %>
       </div>

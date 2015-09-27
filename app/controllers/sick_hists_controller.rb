@@ -48,10 +48,10 @@ class SickHistsController < ApplicationController
 
   def destroy
     sick_hist = SickHist.find(params[:id])
-    track_activity sick_hist, sick_hist.sick_case.id
+    #track_activity sick_hist, sick_hist.sick_case.id
     destroy_notifications sick_hist
     sick_hist.destroy
-    redirect_to edit_sick_case_path(sick_hist.sick_case)
+    redirect_to edit_sick_case_path(sick_hist.user.name,sick_hist.sick_case.name)
   end
 
   def download

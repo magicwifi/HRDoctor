@@ -1,0 +1,20 @@
+<%= link_to '/'+sick_case.user.name+'/'+sick_case.name+'/showcase', class: "course-thumb-container clearfix" do %>
+  <div class="course-thumb center-course-thumb light-shadow">
+    <div class="course-main">
+      <%= image_tag sick_case.poster_url %>
+      <div class="course-title">
+        <%= sick_case.title %>
+        <% if !sick_case.public %>
+          <div class="course-private-label"><i class="fa fa-lock fa-2x"></i></div>
+        <% end %>
+      </div>
+      <div class="course-desc">
+        <%= sick_case.description %>
+      </div>
+      <div class="course-author">
+        <%= image_tag sick_case.user.final_avatar_url, class: "course-thumb-avatar" %>
+        <%= sick_case.user.name %>
+      </div>
+    </div>
+  </div>
+<% end %>

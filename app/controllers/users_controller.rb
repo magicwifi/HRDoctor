@@ -77,11 +77,11 @@ class UsersController < ApplicationController
   end
 
   def create_login_session
-    user = User.find_by(name: params[:login])
-    user ||= User.find_by(email: params[:login])
-    if user && user.authenticate(params[:password])
-      cookies.permanent[:token] = user.token
-      redirect_to_target_or_default root_url
+    @user = User.find_by(name: params[:login])
+    @user ||= User.find_by(email: params[:login])
+    if @user && @user.authenticate(params[:password])
+      cookies.permanent[:token] = @user.token
+      redirect_to member_path(@user.name), :notice => '登陆成功'
     else
       flash[:notice] = t('invalid_name_or_password')
       redirect_to :login
@@ -103,11 +103,11 @@ class UsersController < ApplicationController
 
     raise ActiveRecord::RecordNotFound if @user.nil?
 
-    @courses = @user == current_user ? @user.courses : @user.courses.pub
-    @watched_courses = @user == current_user ? @user.watched_courses : @user.watched_courses.pub
-    @paid_courses = @user.paid_courses
+    @sick_cases = @user == current_user ? @user.sick_cases : @user.sick_cases.pub
+    #@watched_courses = @user == current_user ? @user.watched_courses : @user.watched_courses.pub
+    #@paid_courses = @user.paid_courses
 
-    @activities = @user.activities.last(10).reverse
+   @activities = @user.activities.last(10).reverse
 
     session[:return_to] = request.url
   end

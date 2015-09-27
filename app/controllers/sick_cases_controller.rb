@@ -17,7 +17,7 @@ class SickCasesController < ApplicationController
       @sick_cases = SickCase.all
       @sick_cases.in_groups_of(3, false) { |group| @sick_case_groups << group }
     elsif params[:sort] == "star"
-      c_sorted = sick_cases_sorted_by_star
+      c_sorted = SickCase.all
       c_sorted.in_groups_of(3, false) { |group| @sick_case_groups << group }
     end
   end
@@ -47,7 +47,8 @@ class SickCasesController < ApplicationController
     @sick_case.name = PinYin.of_string(params[:sick_case][:title]).join('-').downcase
     respond_to do |format|
       if @sick_case.save
-        format.html { redirect_to sick_case_path(@sick_case), :success => 'SickCase was successfully updated.' }
+        format.html { redirect_to '/'+@sick_case.user.name, :success => 'SickCase was successfully updated.' }
+        #format.html { render :action => "edit" }
       else
         format.html { render :action => "edit" }
       end
@@ -64,7 +65,7 @@ class SickCasesController < ApplicationController
       end
     end
     if defined? @name_exsits
-      redirect_to_target_or_default :root, :notice => "你已经创建了这门课程"
+      redirect_to_target_or_default :root, :notice => "你已经创建了同样的咨询"
       return
     end
     @sick_case = SickCase.new(params[:sick_case])
@@ -73,9 +74,9 @@ class SickCasesController < ApplicationController
     all_posters = Dir["app/assets/images/" + Settings.image.default_posters_dir + "*"]
     @sick_case.poster = open(all_posters[rand(all_posters.length)])
     if @sick_case.save
-      render :edit, :notice => "新课程创建成功！"
+      render :edit, :notice => "创建成功！"
     else
-      redirect_to_target_or_default :root, :notice => "新课程创建失败！"
+      redirect_to_target_or_default :root, :notice => "创建失败！"
     end
   end
 

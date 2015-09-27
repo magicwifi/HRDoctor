@@ -8,8 +8,9 @@ Onestep::Application.routes.draw do
   post '/checkout' => "orders#checkout"
   get '/orders/done' => "orders#done"
   post '/orders/notify' => "orders#notify"
-  get "/orders/new" => "orders#new",  :as => "new_order"
+  #get "/orders/new" => "orders#new",  :as => "new_order"
   get "/download" => "videos#download", :as => "download_video"
+  get "/download" => "sick_hists#download", :as => "download_sick_hist"
 
   get "about" => "about#main", :as => "about"
   get "about/team" => "about#team"
@@ -107,9 +108,11 @@ Onestep::Application.routes.draw do
   get "/:member_name/:sick_case_name/editcase" => "sick_cases#edit" , :as => "edit_sick_case"
   get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
+  get "/:member_name/:sick_case_name(/:position)/showcase" => "sick_cases#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:course_name/:position/edit" => "courses#edit_video"
   get "/:member_name/:sick_case_name/:position/edithist" => "sick_cases#edit_sick_hist"
   get "/:member_name/:course_name/add_video" => "courses#add_video"
+  get "/:member_name/:sick_case_name/add_sick_hist" => "sick_cases#add_sick_hist"
   patch "/update_video/:id" => "videos#update"
   patch "/update_sick_hist/:id" => "sick_hists#update"
   post "/sort_videos" => "videos#sort"

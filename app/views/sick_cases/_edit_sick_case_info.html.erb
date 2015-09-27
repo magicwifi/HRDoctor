@@ -14,7 +14,7 @@
     $("#course-title").bind("input", function() {
       if ($(this).val() == '') {
         $("#update-course-btn").attr("disabled", true);
-        $("#js-errors").html("课程标题不能为空").fadeIn();
+        $("#js-errors").html("标题不能为空").fadeIn();
         setTimeout(function() { $("#js-errors").fadeOut(); }, 3000);
       } else {
         $("#update-course-btn").attr("disabled", false);
@@ -122,7 +122,7 @@
     <%= f.hidden_field :id %>
       <% if sick_case.errors.any? %>
         <div id="error-message">
-          <div class="title">不能保存课程信息有 <strong><%= sick_case.errors.count %></strong> 个错误:</div>
+          <div class="title">不能保存咨询信息有 <strong><%= sick_case.errors.count %></strong> 个错误:</div>
           <ul class="list">
           <% sick_case.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
@@ -136,16 +136,16 @@
           <%= image_tag sick_case.poster_url, :id => "poster" %>
           <a class= "fileupload-btn">
             <i class="fa fa-pencil fa-lg"></i>
-            <input id="poster-fileupload" name="sick_case[poster]" type="file" title="编辑课程封面">
+            <input id="poster-fileupload" name="sick_case[poster]" type="file" title="编辑咨询封面">
           </a>
         </div>
-        <%= f.text_field :title, :placeholder => "不求惊世骇俗，但求意义明确", :id => "course-title" %>
-        <%= f.text_area :description, :rows => "6", :id => "course-desc", :placeholder => "这是一门实用的课程" %>
+        <%= f.text_field :title, :placeholder => "咨询标题", :id => "course-title",class: "long short", rows:'8' %>
       </div>
 
       <div class="course-extra-info">
-        <div class="item">
-        </div>
+        <div class="item" >
+         <%= f.text_area :description, :placeholder => "咨询描述", id: "course-desc1", class: "long short", rows: '8' %>
+	</div>
         <div class="item ui toggle checkbox">
           <%= f.check_box :public %>
           <label for="course_public">
