@@ -59,7 +59,7 @@ Styleguide 4.1
       display: block;
       padding: 12px 10px 12px 8px;
       text-shadow: 0 1px 0 white;
-      border-left: 2px solid #FAFAFB;
+      border-left: solid #FAFAFB;
       &:hover {
         text-decoration: none;
         background: #FDFDFE;
@@ -72,6 +72,18 @@ Styleguide 4.1
       color: #222;
       cursor: default;
       box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.1);
+    }
+    a.team{
+    border-left-width: 20px;
+    }
+    a.main{
+    border-left-width: 20px;
+    }
+    a.jobs{
+    border-left-width: 20px;
+    }
+    a.faq{
+    border-left-width: 20px;
     }
   }
 }
