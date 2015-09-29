@@ -28,6 +28,9 @@ dl.form {
     input[type="text"].short, input[type="password"].short, input[type="email"].short {
       width: 250px;
     }
+    input[type="text"].supershort, input[type="password"].supershort, input[type="email"].supershort {
+      width: 150px;
+    }
     textarea {
       width: 100%;
       height: 200px;

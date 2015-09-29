@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925072252) do
+ActiveRecord::Schema.define(version: 20150929112908) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150925072252) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "age"
+    t.string   "smokeinfo"
+    t.string   "drink"
   end
 
   create_table "blog_images", force: true do |t|
@@ -79,6 +81,18 @@ ActiveRecord::Schema.define(version: 20150925072252) do
     t.integer  "user_id"
     t.boolean  "public"
     t.float    "price",       limit: 24
+  end
+
+  create_table "hypertensions", force: true do |t|
+    t.boolean  "ishave"
+    t.integer  "before_high"
+    t.integer  "before_low"
+    t.integer  "now_high"
+    t.integer  "now_low"
+    t.datetime "diagnosis_date"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", force: true do |t|

@@ -6,7 +6,7 @@
     <li><a class="<%= request.path == (member_url(@user.name)+'#paid-courses')? "active":"team" %>" href="<%= member_url(@user.name)+'#paid-courses' %>">未答复的咨询</a></li>
     <li><a class="button" href="#">我的病历管理</a></li>
     <li><a class="<%= request.path == "/showmyinfo"? "active":"faq" %>" href="/showmyinfo">个人基本情况</a></li>
-    <li><a class="<%= request.path == "/showmyinfo1"? "active":"faq" %>" href="/showmyinfo1">既往病史</a></li>
+    <li><a class="<%= request.path == "/showmyhyper"? "active":"faq" %>" href="/showmyhyper">高血压史</a></li>
     <li><a class="button" href="#">我要咨询</a></li>
     <li><a class="<%= request.path == "/showmyinfo2"? "active":"faq" %>" href="/showmyinfo2">医生查询</a></li>
     <li><a class="<%= request.path == "/create_sick_case"? "active":"faq" %>" href="/create_sick_case">发起咨询</a></li>

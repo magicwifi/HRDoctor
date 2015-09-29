@@ -1,5 +1,5 @@
 class BasicInfo < ActiveRecord::Base
-  attr_accessible :age, :name, :gender, :height, :weight, :edited, :user_id
+  attr_accessible :age, :name, :gender, :height, :weight, :edited, :user_id, :drink, :smokeinfo 
   belongs_to :user
   validates :name,  presence: true, format: { without: /(\-| |\.|\/|\\)/, message: "不能包含横线, 斜线, 句点或空格" }
   validates :gender, presence: true, format: { with: /male|female/ }

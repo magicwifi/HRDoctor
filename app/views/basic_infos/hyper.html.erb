@@ -1,0 +1,38 @@
+<div class="single-form-container">
+  <div class="boxed-group" id="login">
+    <h3>高血压病史</h3>
+    <div class="boxed-group-inner">
+      <%= form_for @hypertension, :url =>"/update_myhyper" do |f| %>
+        <%= f.hidden_field :id %>
+        <dl class="form">
+          <dt>
+          <%= f.label '高血压史' %>
+          </dt>
+          <dd>
+          <%= f.select(:ishave,'<option value=false >无</option><option value=true >有</option>'.html_safe ) %>  
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '最高血压（高压/低压）' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :before_high, :class => "supershort", :placeholder => "请输入2-3位数字" %>
+          / <%= f.text_field  :before_low, :class => "supershort", :placeholder => "请输入2-3位数字" %>
+           </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '当前血压（高压/低压）' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :now_high, :class => "supershort", :placeholder => "请输入2-3位数字" %>
+          / <%= f.text_field  :now_low, :class => "supershort", :placeholder => "请输入2-3位数字" %>
+           </dd>
+        </dl>
+	<p style="height: 10px;" ></p>
+        <p> <%= f.submit '保存', :class => "button primary" %> </p>
+      <% end %>
+    </div>
+  </div>
+</div>

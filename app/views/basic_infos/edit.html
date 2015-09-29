@@ -27,6 +27,7 @@
           <dd>
           <%= f.select(:gender,'<option value="male" >男</option><option value="female" >女</option>'.html_safe ) %>  
 	</dd>
+        </dl>
         <dl class="form">
           <dt>
           <%= f.label '身高(cm)' %>
@@ -43,6 +44,22 @@
           <dd>
           <%= f.text_field  :weight, :class => "short", :placeholder => "如85"  %>
           </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '吸烟状态' %>
+          </dt>
+          <dd>
+          <%= f.select(:smokeinfo,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe ) %>  
+	</dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '饮酒状态' %>
+          </dt>
+          <dd>
+          <%= f.select(:drink,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe ) %>  
+	</dd>
         </dl>
 	<p style="height: 10px;" ></p>
         <p> <%= f.submit '保存', :class => "button primary" %> </p>

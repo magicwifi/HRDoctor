@@ -97,6 +97,9 @@ Onestep::Application.routes.draw do
   get "/showmyinfo" => "basic_infos#edit"
   patch "/update_myinfo" => "basic_infos#update"
 
+  get "/showmyhyper" => "basic_infos#hyper"
+  patch "/update_myhyper" => "basic_infos#update_hyper"
+
   post "/:member_name/follow" => "users#follow"
   post "/:member_name/unfollow" => "users#unfollow"
 

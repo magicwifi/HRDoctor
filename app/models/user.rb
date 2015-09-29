@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :posts
   has_one  :basic_info
+  has_one  :hypertension
   has_many :courses
   has_many :sick_cases
   has_many :sick_hists
