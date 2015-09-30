@@ -24,6 +24,8 @@
 //= require jquery.NobleCount
 //= require jquery.tooltipster.min.js
 //= require qiniu-video-upload
+//= require moment
+//= require pikaday
 
 jQuery(document).ready(function() {
   var commenter_exist = [];

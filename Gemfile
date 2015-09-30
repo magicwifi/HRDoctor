@@ -52,3 +52,5 @@ gem 'protected_attributes'
 
 # upload videos to qiniu
 gem 'qiniu', '~> 6.4.1'
+gem 'momentjs-rails'
+gem 'pikaday-gem', '~> 1.2.0'
