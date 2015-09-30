@@ -100,6 +100,12 @@ Onestep::Application.routes.draw do
   get "/showmyhyper" => "basic_infos#hyper"
   patch "/update_myhyper" => "basic_infos#update_hyper"
 
+  get "/showmydiabetes" => "basic_infos#diabetes"
+  patch "/update_mydiabetes" => "basic_infos#update_diabetes"
+
+  get "/showmyhyperlipidemia" => "basic_infos#hyperlipidemia"
+  patch "/update_hyperlipidemia" => "basic_infos#update_hyperlipidemia"
+
   post "/:member_name/follow" => "users#follow"
   post "/:member_name/unfollow" => "users#unfollow"
 

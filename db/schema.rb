@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929112908) do
+ActiveRecord::Schema.define(version: 20150930075950) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -81,6 +81,24 @@ ActiveRecord::Schema.define(version: 20150929112908) do
     t.integer  "user_id"
     t.boolean  "public"
     t.float    "price",       limit: 24
+  end
+
+  create_table "diabetes", force: true do |t|
+    t.boolean  "ishave"
+    t.integer  "limosis"
+    t.integer  "after_meal"
+    t.datetime "diagnosis_date"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hyperlipidemia", force: true do |t|
+    t.boolean  "ishave"
+    t.datetime "diagnosis_date"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "hypertensions", force: true do |t|

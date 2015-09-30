@@ -1,0 +1,72 @@
+
+<% content_for :template_js do %>
+  <script>
+$(document).ready(function(){
+
+	var i18n = { // 本地化
+		previousMonth	: '上个月',
+		nextMonth		: '下个月',
+		months			: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+		weekdays		: ['周日','周一','周二','周三','周四','周五','周六'],
+		weekdaysShort	: ['日','一','二','三','四','五','六']
+	}
+
+	var datepicker = new Pikaday({ 
+		field:		jQuery('#datepicker')[0],  
+		minDate:	new Date('2000-01-01'), 
+		maxDate:	new Date('2020-12-31'), 
+		yearRange:	[2000,2020],
+		i18n: 		i18n,
+		onSelect: 	function() {
+			var date = document.createTextNode(this.getMoment().format('YYYY-MM-DD') + ' '); //生成的时间格式化成 2013-09-25
+			$('#datepicker').appendChild(date);
+		}
+	});
+
+});
+</script>
+<% end %>
+<div class="single-form-container">
+  <div class="boxed-group" id="login">
+    <h3>糖尿病史</h3>
+    <div class="boxed-group-inner">
+      <%= form_for @diabetes, :url =>"/update_mydiabetes" do |f| %>
+        <%= f.hidden_field :id %>
+        <dl class="form">
+          <dt>
+          <%= f.label '糖尿病史' %>
+          </dt>
+          <dd>
+          <%= f.select(:ishave,'<option value=false >无</option><option value=true >有</option>'.html_safe ) %>  
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '餐前血糖' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :limosis, :class => "supershort", :placeholder => "请输入整数" %>
+           </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '当前血压（高压/低压）' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :after_meal, :class => "supershort", :placeholder => "请输入整数" %>
+           </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '确诊日期' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :diagnosis_date, :class =>"supershort", :id=>"datepicker"  %>
+          </dd>
+        </dl>
+	<p style="height: 10px;" ></p>
+        <p> <%= f.submit '保存', :class => "button primary" %> </p>
+      <% end %>
+    </div>
+  </div>
+</div>

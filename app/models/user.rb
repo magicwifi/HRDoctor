@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :posts
   has_one  :basic_info
   has_one  :hypertension
+  has_one  :hyperlipidemia
+  has_one  :diabetes
   has_many :courses
   has_many :sick_cases
   has_many :sick_hists

@@ -11,6 +11,44 @@ class BasicInfosController < ApplicationController
     @hypertension = @user.hypertension
   end
 
+  def diabetes
+    @user = current_user
+    @diabetes = @user.diabetes
+  end
+
+  def hyperlipidemia
+    @user = current_user
+    @hyperlipidemia = @user.hyperlipidemia
+  end
+
+  def update_hyperlipidemia
+    @user = current_user
+    @hyperlipidemia = Hyperlipidemia.find(params[:hyperlipidemia][:id])
+    @hyperlipidemia.update_attributes(params[:hyperlipidemia])
+    respond_to do |format|
+      if @hyperlipidemia.save
+        format.html { redirect_to member_path(@user.name), :success => 'hyperlipidemia was successfully updated.' }
+      else
+      	flash[:notice] = @hyperlipidemia.errors.full_messages.first
+        format.html { render :action => "hyperlipidemia" }
+      end
+    end
+  end
+
+  def update_diabetes
+    @user = current_user
+    @diabetes = Diabetes.find(params[:diabetes][:id])
+    @diabetes.update_attributes(params[:diabetes])
+    respond_to do |format|
+      if @diabetes.save
+        format.html { redirect_to member_path(@user.name), :success => 'diabetes was successfully updated.' }
+      else
+      	flash[:notice] = @diabetes.errors.full_messages.first
+        format.html { render :action => "diabetes" }
+      end
+    end
+  end
+
   def update_hyper
     @user = current_user
     @hypertension = Hypertension.find(params[:hypertension][:id])
