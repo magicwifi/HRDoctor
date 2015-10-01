@@ -31,6 +31,7 @@ Onestep::Application.routes.draw do
   resources :blog_images
   resources :videos
   resources :sick_hists
+  resources :sicknesses
   resources :password_resets
 
   get "notifications" => "notifications#index", :as => "notifications"
@@ -95,6 +96,7 @@ Onestep::Application.routes.draw do
   end
 
   get "/showmyinfo" => "basic_infos#edit"
+  get "/editmysick" => "basic_infos#edit_sick"
   patch "/update_myinfo" => "basic_infos#update"
 
   get "/showmyhyper" => "basic_infos#hyper"
@@ -125,5 +127,6 @@ Onestep::Application.routes.draw do
   patch "/update_video/:id" => "videos#update"
   patch "/update_sick_hist/:id" => "sick_hists#update"
   post "/sort_videos" => "videos#sort"
+  post "/sort_sicknesses" => "videos#sort"
 
 end

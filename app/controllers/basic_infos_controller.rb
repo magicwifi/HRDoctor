@@ -79,6 +79,10 @@ class BasicInfosController < ApplicationController
   end
 
 
+  def edit_sick
+    @user = current_user
+    session[:return_to] = request.url
+  end
 
 
 end
