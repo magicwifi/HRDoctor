@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_one  :hyperlipidemia
   has_one  :diabetes
   has_many :courses
-  has_many :sicknesses
+  has_many :sicknesses, -> { order :position }, :dependent => :destroy
   has_many :sick_cases
   has_many :sick_hists
   has_many :messages

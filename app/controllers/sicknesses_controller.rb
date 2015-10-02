@@ -2,12 +2,12 @@ class SicknessesController < ApplicationController
   def create
     respond_to do |f|
       f.js do
-        @sickness = SickHist.new
+        @sickness = Sickness.new
         @sickness.asset = params[:key]
         @sickness.size = params[:fsize]
         @sickness.filename = params[:fname]
         @sickness.content_type = params[:mimeType]
-        @sickness.user_id = current_user.id
+        @sickness.user_id = params[:custom_fields][:user_id]
         @sickness.save
         #track_activity @sickness, @sickness.sick_case.id
       end
@@ -15,7 +15,7 @@ class SicknessesController < ApplicationController
   end
 
   def update
-    sickness = params[:id] ? SickHist.find(params[:id]) : SickHist.find(params[:sickness][:id])
+    sickness = params[:id] ? Sickness.find(params[:id]) : Sickness.find(params[:sickness][:id])
     respond_to do |f|
       if params[:etag].present?
         old_asset = sickness.asset
@@ -40,17 +40,17 @@ class SicknessesController < ApplicationController
 
   def sort
     params[:sickness].each_with_index do |id, index|
-      SickHist.update_all({position: index + 1}, {id: id})
+      Sickness.update_all({position: index + 1}, {id: id})
     end
     render nothing: true
   end
 
   def destroy
-    sickness = SickHist.find(params[:id])
+    sickness = Sickness.find(params[:id])
     #track_activity sickness, sickness.sick_case.id
     destroy_notifications sickness
     sickness.destroy
-    redirect_to edit_sick_case_path(sickness.user.name,sickness.sick_case.name)
+    redirect_to "/editmysick"
   end
 
   def download

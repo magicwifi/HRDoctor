@@ -1,0 +1,5 @@
+$('.add-video-box').replaceWith("<%= escape_javascript render 'edit_sickness', :sickness => @sickness %>");
+$('.playlist li a.video').removeClass('active');
+$('.playlist li').removeClass('selected');
+$('.playlist li a.video').eq(<%= @sickness.position - 1 %>).addClass('active');
+$('.playlist li').eq(<%= @sickness.position - 1 %>).addClass('selected');

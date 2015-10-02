@@ -6,6 +6,13 @@ class BasicInfosController < ApplicationController
     @basic_info = @user.basic_info
   end
 
+  def add_sickness
+    @user = current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def hyper
     @user = current_user
     @hypertension = @user.hypertension
@@ -83,6 +90,15 @@ class BasicInfosController < ApplicationController
     @user = current_user
     session[:return_to] = request.url
   end
+  
+
+  def edit_sickness
+    @sickness = Sickness.where(:user_id => current_user.id, :position => params[:position]).first
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
 
 end

@@ -2,12 +2,12 @@
   <ul id="play-list" class="playlist" data-update-url="/sort_sicknesses">
     <% user.sicknesses.each do |sickness| %>
       <%= content_tag_for :li, sickness do %>
-        <a class="video" href="<%=  sickness.position.to_s + '/editsick.js' %>" data-remote='true'>
+        <a class="video" href="<%= @user.name+ '/'+sickness.position.to_s + '/editsick.js' %>" data-remote='true'>
           <span class="video-info edit-video-info">
             <%= sickness.title %>
           </span>
         </a>
-        <a href="<%= sickness.position.to_s + '/editsick.js' %>"
+        <a href="<%= @user.name+ '/'+sickness.position.to_s + '/editsick.js' %>"
           data-remote='true'>
           <div class="pencil-icon">
              <i class="fa fa-pencil"></i>
@@ -16,7 +16,7 @@
       <% end %>
     <% end %>
     <li class="add-video-btn">
-      <%=link_to  'add_sickness.js', class: "video active", remote: true do %>
+      <%=link_to  @user.name+ '/add_sickness.js', class: "video active", remote: true do %>
         <div class="video-icon">
           <i class="fa fa-plus fa-lg"></i>
         </div>

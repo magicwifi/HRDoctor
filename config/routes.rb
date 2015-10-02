@@ -118,15 +118,18 @@ Onestep::Application.routes.draw do
   get "/:member_name/:message_name/editmessage" => "messages#edit" , :as => "edit_message"
   get "/:member_name/:sick_case_name/editcase" => "sick_cases#edit" , :as => "edit_sick_case"
   get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
-  get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
+  #get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:sick_case_name(/:position)/showcase" => "sick_cases#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:course_name/:position/edit" => "courses#edit_video"
   get "/:member_name/:sick_case_name/:position/edithist" => "sick_cases#edit_sick_hist"
+  get "/:member_name/:position/editsick" => "basic_infos#edit_sickness"
+  get "/:member_name/add_sickness" => "basic_infos#add_sickness"
   get "/:member_name/:course_name/add_video" => "courses#add_video"
   get "/:member_name/:sick_case_name/add_sick_hist" => "sick_cases#add_sick_hist"
   patch "/update_video/:id" => "videos#update"
   patch "/update_sick_hist/:id" => "sick_hists#update"
+  patch "/update_sickness/:id" => "sicknesses#update"
   post "/sort_videos" => "videos#sort"
-  post "/sort_sicknesses" => "videos#sort"
+  post "/sort_sicknesses" => "sicknesses#sort"
 
 end
