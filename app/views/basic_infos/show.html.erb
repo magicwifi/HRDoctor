@@ -1,0 +1,50 @@
+<div id="user-show" class="container clearfix">
+  <div id="user-course" >
+    <ul class="main-nav">
+      <li class="active" data-course-type="owned">
+        <a href="#owned-courses">一般信息</a>
+      </li>
+      <li data-course-type="watched">
+        <a href="#watched-courses">体征信息</a>
+      </li>
+      <li data-course-type="paid">
+        <a href="#paid-courses">附件上传</a>
+      </li>
+    </ul>
+    <div class="content owned-courses-section active clearfix">
+    </div>
+    <div class="content paid-courses-section clearfix">
+    </div>
+    <div class="content watched-courses-section clearfix">
+    </div>
+  </div><!--end user-course -->
+</div><!-- user-show -->
+<% content_for :template_js do %>
+  <script>
+    var menuItems = $(".main-nav li");
+    var contentItems = $(".content");
+
+    menuItems.on("click", function(event) {
+
+      menuItems.removeClass("active");
+      $(this).addClass("active");
+
+      contentItems.removeClass("active");
+
+      var type = $(this).data("course-type");
+
+      if (type == "owned") {
+        $(".owned-courses-section").addClass("active");
+      }else if (type == "paid") {
+        $(".paid-courses-section").addClass("active");
+      }else {
+        $(".watched-courses-section").addClass("active");
+      }
+    });
+    if ($(".follow-user-button").data("followed")) {
+      $(".follow-user-button").css('background-color','#34CF7A');
+    }else {
+      $(".follow-user-button").css('background-color','#2589CC');
+    }
+  </script>
+<% end %>

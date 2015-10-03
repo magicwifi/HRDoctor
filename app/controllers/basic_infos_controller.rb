@@ -6,6 +6,10 @@ class BasicInfosController < ApplicationController
     @basic_info = @user.basic_info
   end
 
+  def show
+    @user = current_user
+  end
+
   def add_sickness
     @user = current_user
     respond_to do |format|
