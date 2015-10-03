@@ -12,6 +12,50 @@
       </li>
     </ul>
     <div class="content owned-courses-section active clearfix">
+<div class="single-form-container">
+  <div class="boxed-group" id="login">
+    <h3>一般信息</h3>
+    <div class="boxed-group-inner">
+      <%= form_for @basic_case, :url =>"/update_myfaq" do |f| %>
+        <%= f.hidden_field :id %>
+        <dl class="form">
+          <dt>
+          <%= f.label '主诉' %>
+          </dt>
+          <dd>
+          <%= f.text_area  :main_desc, :class => "short", :placeholder => "包括主要症状、首次发作至今为止持续时间,限20-50字，如：快走时胸闷、胸痛10年，加重1周" %>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '详细描述' %>
+          </dt>
+          <dd>
+          <%= f.text_area  :detail_desc, :class => "short", :placeholder => "详细表述,内容包括：主要症状，每次持续时间、多于什么情况下发作（活动）、怎么缓解（服药还是其他处理），其他伴随不适, 限500字。" %>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '诊疗经过' %>
+          </dt>
+          <dd>
+          <%= f.text_area  :treat_desc, :class => "short", :placeholder => "去那些医院看过、诊断是什么，怎么治疗，效果怎么样" %>
+	</dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '详细描述' %>
+          </dt>
+          <dd>
+          <%= f.text_area  :detail_desc, :class => "short", :placeholder => "" %>
+          </dd>
+        </dl>
+	<p style="height: 10px;" ></p>
+        <p> <%= f.submit '保存', :class => "button primary" %> </p>
+      <% end %>
+    </div>
+  </div>
+</div>
     </div>
     <div class="content paid-courses-section clearfix">
     </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001005804) do
+ActiveRecord::Schema.define(version: 20151003094516) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20151001005804) do
 
   add_index "activities", ["course_id"], name: "index_activities_on_course_id", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
+
+  create_table "basic_cases", force: true do |t|
+    t.text     "main_desc"
+    t.text     "detail_desc"
+    t.text     "treat_desc"
+    t.text     "now_desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "poster"
+    t.integer  "user_id"
+    t.boolean  "public"
+    t.boolean  "edited"
+  end
 
   create_table "basic_infos", force: true do |t|
     t.string   "name"

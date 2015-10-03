@@ -2,6 +2,7 @@
 class User < ActiveRecord::Base
   has_many :activities
   has_many :comments
+  has_many :basic_cases
   has_many :posts
   has_one  :basic_info
   has_one  :hypertension

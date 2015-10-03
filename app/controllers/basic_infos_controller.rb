@@ -8,6 +8,10 @@ class BasicInfosController < ApplicationController
 
   def show
     @user = current_user
+    @basic_case = @user.basic_cases.where(:edited=>false).last
+    if @basic_case.nil?
+    	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true,:edited=>false)
+    end
   end
 
   def add_sickness
@@ -70,6 +74,21 @@ class BasicInfosController < ApplicationController
       else
       	flash[:notice] = @hypertension.errors.full_messages.first
         format.html { render :action => "hyper" }
+      end
+    end
+  end
+
+  def update_faq
+    @user = current_user
+    @basic_case = BasicCase.find(params[:basic_case][:id])
+    @basic_case.update_attributes(params[:basic_case])
+    @basic_case.edited = true
+    respond_to do |format|
+      if @basic_case.save
+        format.html { redirect_to member_path(@user.name), :success => 'basiccase was successfully updated.' }
+      else
+      	flash[:notice] = @basic_case.errors.full_messages.first
+        format.html { render :action => "show" }
       end
     end
   end
