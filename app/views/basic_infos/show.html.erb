@@ -44,10 +44,10 @@
         </dl>
         <dl class="form">
           <dt>
-          <%= f.label '详细描述' %>
+          <%= f.label '目前情况' %>
           </dt>
           <dd>
-          <%= f.text_area  :detail_desc, :class => "short", :placeholder => "" %>
+          <%= f.select(:now_desc,'<option value="better" >有所好转</option><option value="normal" >无明显变化</option><option value="worse" >持续加重</option>'.html_safe ) %>  
           </dd>
         </dl>
 	<p style="height: 10px;" ></p>

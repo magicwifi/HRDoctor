@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003094516) do
+ActiveRecord::Schema.define(version: 20151004073048) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20151003094516) do
     t.text     "main_desc"
     t.text     "detail_desc"
     t.text     "treat_desc"
-    t.text     "now_desc"
+    t.string   "now_desc"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "poster"
