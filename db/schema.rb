@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004073048) do
+ActiveRecord::Schema.define(version: 20151005024754) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20151004073048) do
     t.integer  "size"
     t.string   "content_type"
     t.string   "filename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "body_signs", force: true do |t|
+    t.integer  "temperature"
+    t.integer  "pulse"
+    t.integer  "high_pressure"
+    t.integer  "low_pressure"
+    t.boolean  "swelling"
+    t.integer  "basic_case_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
