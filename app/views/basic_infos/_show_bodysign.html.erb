@@ -1,0 +1,53 @@
+ 
+<div class="single-form-container">
+  <div class="boxed-group" id="login">
+    <h3>体征信息</h3>
+    <div class="boxed-group-inner">
+      <%= form_for body_sign, :url =>"/update_bodysign" do |f| %>
+        <%= f.hidden_field :id %>
+        <dl class="form">
+          <dt>
+          <%= f.label '体温' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :temperature, :class => "short", :placeholder => "请输入体温（36-42）" %>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '脉搏(次/分)' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :pulse, :class => "short", :placeholder => "请输入每分钟脉搏跳动数" %>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '高压' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :high_pressure, :class => "short", :placeholder => "请输入高压" %>
+	</dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '低压' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :low_pressure, :class => "short", :placeholder => "请输入低压" %>
+	</dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '双下肢是否肿胀' %>
+          </dt>
+          <dd>
+          <%= f.select(:swelling,'<option value="no" >无肿胀</option><option value="little" >有轻微肿胀</option><option value="worse" >肿胀较严重</option>'.html_safe ) %>  
+	</dd>
+        </dl>
+	<p style="height: 10px;" ></p>
+        <p> <%= f.submit '保存', :class => "button primary" %> </p>
+      <% end %>
+    </div>
+  </div>
+</div>

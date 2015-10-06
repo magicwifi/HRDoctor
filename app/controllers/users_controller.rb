@@ -72,6 +72,7 @@ class UsersController < ApplicationController
       Diabetes.create!(:user_id=>@user.id,:ishave=>false,:after_meal=>120,:limosis=>60,:diagnosis_date=>DateTime.new(2001,2,3) )
       Hyperlipidemia.create!(:user_id=>@user.id,:ishave=>false,:diagnosis_date=>DateTime.new(2001,2,3) )
       BasicCase.create!(:user_id =>@user.id,:public=>true,:edited=>false)
+      BodySign.create!(:basic_case_id=>@user.basic_case.id,:temperature=>38,:pulse=>60,:high_pressure=>120,:low_pressure=>80,:swelling=>"")
       cookies.permanent[:token] = @user.token
       redirect_to member_path(@user.name), :notice => t('signed_up')
     else

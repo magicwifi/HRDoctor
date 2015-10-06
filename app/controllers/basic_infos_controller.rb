@@ -11,6 +11,7 @@ class BasicInfosController < ApplicationController
     @basic_case = @user.basic_cases.where(:edited=>false).last
     if @basic_case.nil?
     	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true,:edited=>false)
+        BodySign.create!(:basic_case_id=>@basic_case.id,:temperature=>38,:pulse=>60,:high_pressure=>120,:low_pressure=>80,:swelling=>"")
     end
   end
 
@@ -82,12 +83,26 @@ class BasicInfosController < ApplicationController
     @user = current_user
     @basic_case = BasicCase.find(params[:basic_case][:id])
     @basic_case.update_attributes(params[:basic_case])
-    @basic_case.edited = true
+    #@basic_case.edited = true
     respond_to do |format|
       if @basic_case.save
         format.html { redirect_to member_path(@user.name), :success => 'basiccase was successfully updated.' }
       else
       	flash[:notice] = @basic_case.errors.full_messages.first
+        format.html { render :action => "show" }
+      end
+    end
+  end
+
+  def update_bodysign
+    @user = current_user
+    @body_sign = BasicCase.find(params[:body_sign][:id])
+    @body_sign.update_attributes(params[:basic_case])
+    respond_to do |format|
+      if @body_sign.save
+        format.html { redirect_to member_path(@user.name), :success => 'basiccase was successfully updated.' }
+      else
+      	flash[:notice] = @body_sign.errors.full_messages.first
         format.html { render :action => "show" }
       end
     end

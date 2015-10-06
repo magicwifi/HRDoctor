@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005024754) do
+ActiveRecord::Schema.define(version: 20151006022136) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20151005024754) do
     t.integer  "pulse"
     t.integer  "high_pressure"
     t.integer  "low_pressure"
-    t.boolean  "swelling"
+    t.string   "swelling"
     t.integer  "basic_case_id"
     t.datetime "created_at"
     t.datetime "updated_at"

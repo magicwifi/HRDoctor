@@ -103,6 +103,7 @@ Onestep::Application.routes.draw do
   get "/showmyhyper" => "basic_infos#hyper"
   patch "/update_myhyper" => "basic_infos#update_hyper"
   patch "/update_myfaq" => "basic_infos#update_faq"
+  patch "/update_bodysign" => "basic_infos#update_bodysign"
 
   get "/showmydiabetes" => "basic_infos#diabetes"
   patch "/update_mydiabetes" => "basic_infos#update_diabetes"
