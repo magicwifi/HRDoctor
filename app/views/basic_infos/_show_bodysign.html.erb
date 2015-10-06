@@ -3,7 +3,7 @@
   <div class="boxed-group" id="login">
     <h3>体征信息</h3>
     <div class="boxed-group-inner">
-      <%= form_for body_sign, :url =>"/update_bodysign" do |f| %>
+      <%= form_for body_sign, :url =>"/update_bodysign",:remote => true  do |f| %>
         <%= f.hidden_field :id %>
         <dl class="form">
           <dt>
