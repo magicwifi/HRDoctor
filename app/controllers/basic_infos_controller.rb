@@ -12,12 +12,16 @@ class BasicInfosController < ApplicationController
     if @basic_case.nil?
     	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true,:edited=>false)
     end
-    if @basic_case.body_sign.nil?
-         BodySign.create!(:basic_case_id=>@basic_case.id,:swelling=>"",:status_name=>"")
+    	body_sign = @basic_case.body_sign
+    if body_sign.nil?
+      body_sign =   BodySign.create!(:basic_case_id=>@basic_case.id,:swelling=>"",:status_name=>"")
+     @basic_case.body_sign = body_sign
+     @basic_case.save
     end
+    
     #@status_names = Array.new 
     #if !body_sign.status_name.blank?    
-    @status_names =@basic_case.body_sign.status_name.split  
+    @status_names =body_sign.status_name.split  
     #end
   end
 
@@ -96,6 +100,12 @@ class BasicInfosController < ApplicationController
     end
   end
 
+  def commit_ready
+    respond_to do |format|
+      	format.js
+    end
+  end
+
   def update_bodysign
     @user = current_user
     @body_sign = BodySign.find(params[:body_sign][:id])
@@ -146,6 +156,22 @@ class BasicInfosController < ApplicationController
     end
   end
 
+  def edit_sick_asset
+    @sick_asset = SickAsset.where(:basic_case_id => params[:basic_case_id] , :position => params[:position]).first
+    respond_to do |format|
+      format.js
+    end
+  end
 
+  def case_commit
+    @basic_case = BasicCase.find(params[:basic_case_id])
+    @basic_case.edited = true
+    @basic_case.save    
+    @user = current_user
+    respond_to do |format|
+    	format.html { redirect_to member_path(@user.name), :success => 'faq was successfully updated.' }
+    end
+ 
+  end
 
 end

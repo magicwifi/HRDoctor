@@ -31,9 +31,13 @@ class SickAssetsController < ApplicationController
         f.json { render :json => {} }
       else
         sick_asset.update_attributes(params[:sick_asset])
-        f.html do
-          redirect_to_target_or_default root_url
+        #f.json { render :json => {} }
+        f.js do
+	   @basic_case = sick_asset.basic_case
         end
+        #f.html do
+          #redirect_to_target_or_default root_url
+        #end
       end
     end
   end
@@ -47,10 +51,14 @@ class SickAssetsController < ApplicationController
 
   def destroy
     sick_asset = SickAsset.find(params[:id])
+    @basic_case = sick_asset.basic_case
     #track_activity sick_asset, sick_asset.sick_case.id
     destroy_notifications sick_asset
     sick_asset.destroy
-    redirect_to "/editmysick"
+    respond_to do |f|
+      f.js do
+      end
+    end
   end
 
   def download

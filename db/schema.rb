@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007074609) do
+ActiveRecord::Schema.define(version: 20151007094357) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(version: 20151007074609) do
     t.datetime "updated_at"
     t.string   "poster"
     t.string   "asset"
-    t.integer  "base_case_id"
+    t.integer  "basic_case_id"
     t.integer  "size"
     t.string   "filename"
     t.string   "content_type"

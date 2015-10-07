@@ -1,0 +1,5 @@
+$('.flash-message').get(0).innerHTML='Success Delete!';
+$('.playlist-container').replaceWith("<%= escape_javascript render 'basic_infos/all_added_sick_assets', :basic_case => @basic_case %>");
+$('.add-video-box').replaceWith("<%= escape_javascript render 'basic_infos/add_sick_asset', :basic_case => @basic_case %>");
+
+

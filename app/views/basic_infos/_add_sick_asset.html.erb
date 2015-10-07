@@ -70,7 +70,7 @@ $(document).ready(function() {
  </div>
 <div class="third-info"></div>
   <div class="primary-info">
-    <%= form_for(Sickness.new) do |f| %>
+    <%= form_for(SickAsset.new,:remote => true) do |f| %>
       <dl class="form">
         <dt><%= f.label '病历标题' %></dt>
         <dd><%= f.text_field :title, id: "video-title",:placeholder => "如：一次冠心病检查" %></dd>
