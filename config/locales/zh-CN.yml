@@ -187,6 +187,14 @@ zh-CN:
 
   about_haoqicat: "关于好奇猫"
   more: "更多"
+  xiongmen: "胸闷"
+  xiongtong: "胸闷"
+  huxikunnan: "呼吸困难"
+  xinji: "心悸"
+  fare: "发热"
+  yanqianfahei: "眼前发黑"
+  yundao: "晕倒"
+  yisixingyishisangshi: "一次性意识丧失"
 
   #error message
   error_blank_content: "内容不能为空！"

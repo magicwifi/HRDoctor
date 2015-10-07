@@ -31,6 +31,7 @@ Onestep::Application.routes.draw do
   resources :blog_images
   resources :videos
   resources :sick_hists
+  resources :sick_assets
   resources :sicknesses
   resources :password_resets
 

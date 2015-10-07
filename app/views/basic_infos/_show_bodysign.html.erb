@@ -45,6 +45,19 @@
           <%= f.select(:swelling,'<option value="no" >无肿胀</option><option value="little" >有轻微肿胀</option><option value="worse" >肿胀较严重</option>'.html_safe ) %>  
 	</dd>
         </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '其它体征(多选)' %>
+          </dt>
+          <dd>
+	 <% StatusSign.all.each do |ss| %>
+    <div>
+      <%= check_box_tag :status_sign_ids,ss.name,status_names.include?(ss.name),:name=>'status_sign_ids[]' %>
+      <%= label_tag t(ss.name) %>
+    </div>
+  <% end %>
+	</dd>
+        </dl>
 	<p style="height: 10px;" ></p>
         <p> <%= f.submit '保存', :class => "button primary" %> </p>
       <% end %>

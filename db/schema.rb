@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006022136) do
+ActiveRecord::Schema.define(version: 20151007074609) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20151006022136) do
     t.integer  "basic_case_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "status_name"
   end
 
   create_table "collaboratings", force: true do |t|
@@ -197,6 +198,20 @@ ActiveRecord::Schema.define(version: 20151006022136) do
   add_index "relationships", ["follower_id", "followed_user_id"], name: "index_relationships_on_follower_id_and_followed_user_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
+  create_table "sick_assets", force: true do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "poster"
+    t.string   "asset"
+    t.integer  "base_case_id"
+    t.integer  "size"
+    t.string   "filename"
+    t.string   "content_type"
+    t.integer  "position"
+  end
+
   create_table "sick_cases", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -241,6 +256,12 @@ ActiveRecord::Schema.define(version: 20151006022136) do
     t.string   "filename"
     t.string   "content_type"
     t.integer  "position"
+  end
+
+  create_table "status_signs", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

@@ -13,8 +13,12 @@ class BasicInfosController < ApplicationController
     	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true,:edited=>false)
     end
     if @basic_case.body_sign.nil?
-        BodySign.create!(:basic_case_id=>@basic_case.id,:swelling=>"")
+         BodySign.create!(:basic_case_id=>@basic_case.id,:swelling=>"",:status_name=>"")
     end
+    #@status_names = Array.new 
+    #if !body_sign.status_name.blank?    
+    @status_names =@basic_case.body_sign.status_name.split  
+    #end
   end
 
   def add_sickness
@@ -96,6 +100,15 @@ class BasicInfosController < ApplicationController
     @user = current_user
     @body_sign = BodySign.find(params[:body_sign][:id])
     @body_sign.update_attributes(params[:body_sign])
+    @body_sign.status_name = ""
+    
+    status_names = params[:status_sign_ids]    
+    if !status_names.nil?
+    	status_names.each do |ss|
+    		@body_sign.status_name += ss+" "
+    	end
+    end
+
     respond_to do |format|
       @body_sign.save
         #format.html { redirect_to member_path(@user.name), :success => 'basiccase was successfully updated.' }

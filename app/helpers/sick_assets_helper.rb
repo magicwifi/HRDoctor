@@ -1,0 +1,2 @@
+module SickAssetsHelper
+end

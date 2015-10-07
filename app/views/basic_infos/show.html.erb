@@ -2,13 +2,13 @@
   <div id="user-course" >
     <ul class="main-nav">
       <li class="active" data-course-type="owned" id="owned-li" >
-        <a href="#owned-courses">一般信息</a>
+        <a href="#owned-courses">1.一般信息</a>
       </li>
       <li data-course-type="watched" id="watched-li" >
-        <a href="#watched-courses">体征信息</a>
+        <a href="#watched-courses">2.体征信息</a>
       </li>
       <li data-course-type="paid" id="paid-li" >
-        <a href="#paid-courses">附件上传</a>
+        <a href="#paid-courses">3.附件上传</a>
       </li>
     </ul>
     <div class="content owned-courses-section active clearfix">
@@ -58,9 +58,24 @@
 </div>
     </div>
     <div class="content paid-courses-section clearfix">
+<div class='container1'>
+  <div class="tutorial-page">
+    <div class="boxed-group">
+      <h3><i class="fa fa-plus fa-lg"></i> 病历</h3>
+      <div class="boxed-group-inner videos-section">
+        <div class="tutorial-nav added-videos-wrap">
+            <%= render "all_added_sick_assets", :basic_case=>@basic_case %>
+        </div><!-- end tutorial-nav -->
+        <div class="tutorial-content add-video-wrap">
+          <%= render "add_sick_asset", :basic_case=>@basic_case %>
+        </div>
+      </div>  <!-- boxed-group-inner -->
+    </div> <!-- boxed-group -->
+  </div><!-- end tutorial-page -->
+</div>
     </div>
     <div class="content watched-courses-section clearfix">
-          <%= render "show_bodysign", :body_sign=>@basic_case.body_sign %>
+          <%= render "show_bodysign", :body_sign=>@basic_case.body_sign,:status_names=>@status_names %>
     </div>
   </div><!--end user-course -->
 </div><!-- user-show -->
