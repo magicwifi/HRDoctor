@@ -96,6 +96,10 @@ Onestep::Application.routes.draw do
     get :autocomplete_user_name, :on => :collection
   end
 
+  resources :basic_cases, :except => :edit do
+    get :autocomplete_user_name, :on => :collection
+  end
+
   get "/createmyfaq" => "basic_infos#show"
   get "/showmyinfo" => "basic_infos#edit"
   get "/editmysick" => "basic_infos#edit_sick"

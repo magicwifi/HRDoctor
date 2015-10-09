@@ -1,8 +1,7 @@
 <div class="header header-logged-in">
-  <div class="container clearfix">
-    <a class="header-logo-wordmark" href="/">
-    </a>
-    <ul class="top-nav">
+  <div class="container clearfix" style="padding-top: 10px;" >
+	<img src="/logo.png" style="width: 100px;height: 50px;" class="tstart-toolbar-top" />
+    <ul class="top-nav" style="padding-left: 90px;" >
       <li> <%= link_to "个人空间",  member_path(current_user.name) %></li>
       <li><a href="<%= member_path(current_user.name) %>">开始咨询</a></li>
       <li><a href="<%= member_path(current_user.name) %>">查找医生</a></li>

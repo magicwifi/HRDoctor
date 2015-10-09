@@ -15,10 +15,10 @@
   }
 }
 .header-logo-wordmark {
-  float: left;
+  //float: left;
   position: relative;
   padding-top: 9px;
-  padding-bottom: 9px;
+  //padding-bottom: 9px;
   color: black;
   font-weight: bold;
   font-size: 25px;
@@ -27,6 +27,17 @@
     text-decoration: none;
   }
 }
+.tstart-toolbar-top {  
+            top: 5px; /*最上*/  
+            color: #3E3E3E;  
+            left: 5px;  
+            position: absolute;  
+            text-align: left;  
+            z-index: 10000;  
+            _position: absolute; /* for IE6 */  
+            _top: expression(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight); /* for IE6 */  
+            overflow: visible;  
+}  
 
 .top-nav {
   float: left;
@@ -58,7 +69,9 @@
 
 .header-logged-in {
   background-color: #F3F3F3;
-  height: 40px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
   a {
     text-decoration: none;
   }

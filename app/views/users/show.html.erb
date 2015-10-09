@@ -15,12 +15,13 @@
     <li><a class="button" href="#">我要咨询</a></li>
     <li><a class="<%= request.path == "/showmyinfo2"? "active":"faq" %>" href="/showmyinfo2">医生查询</a></li>
     <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">发起咨询</a></li>
-    <li><a class="<%= request.path == "/sick_case"? "active":"faq" %>" href="/sick_case">查看相关咨询</a></li>
+    <li><a class="<%= request.path == "/basic_case"? "active":"faq" %>" href="/basic_case">查看相关咨询</a></li>
     <li><a class="button" href="#">我的私人医生</a></li>
     <li><a class="<%= request.path == "/showmyinfo3"? "active":"faq" %>" href="#">我的医生</a></li>
   </ul>
 </div>
   </div><!--end user-info -->
+    <div class="about-content">
 <div id="user-show" class="container clearfix">
   <div id="user-course" >
     <ul class="main-nav">
@@ -35,10 +36,10 @@
       </li>
     </ul>
     <div class="content owned-courses-section active clearfix">
-      <% if @sick_cases.present? %>
+      <% if @basic_cases.present? %>
         <div class="courses-wrap">
-          <% @sick_cases.each do |sick_case| %>
-            <%= render "sick_cases/sick_case_list", :sick_case => sick_case %>
+          <% @basic_cases.each do |basic_case| %>
+            <%= render "basic_infos/basic_case_list", :basic_case => basic_case %>
           <% end %>
         </div>
       <% else %>
@@ -46,7 +47,7 @@
           <i class="fa fa-smile-o fa-2x"></i>
           <%= t('no_courses_found') %>
           <% if current_user == @user %>
-            <%= link_to create_sick_case_path, :class => "new-course-button" do %>
+            <%= link_to create_basic_case_path, :class => "new-course-button" do %>
             <%#= link_to "javascript:;", :class => "new-course-button" do %>
               <%= t('create_course') %>
               <!--创建课程暂不开放-->
@@ -108,6 +109,7 @@
   </div><!--end user-course -->
 
 </div><!-- user-show -->
+</div>
 </div>
 <% content_for :template_js do %>
   <script>
