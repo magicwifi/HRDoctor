@@ -103,6 +103,7 @@ Onestep::Application.routes.draw do
   get "/createmyfaq" => "basic_infos#show"
   get "/showmyinfo" => "basic_infos#edit"
   get "/editmysick" => "basic_infos#edit_sick"
+  get "/explore_doctor" => "basic_infos#explore_doctor"
   patch "/update_myinfo" => "basic_infos#update"
 
   get "/showmyhyper" => "basic_infos#hyper"
@@ -124,8 +125,8 @@ Onestep::Application.routes.draw do
   get "/:member_name" => "users#show", :as => "member"
   delete "/:member_name/:course_name" => "courses#destroy"
   get "/:member_name/:message_name/editmessage" => "messages#edit" , :as => "edit_message"
-  get "/:member_name/:sick_case_name/editcase" => "sick_cases#edit" , :as => "edit_sick_case"
-  get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
+  get "/:member_name/:basic_case_id/editcase" => "basic_infos#edit_case" , :as => "edit_basic_case"
+  #get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   #get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:sick_case_name(/:position)/showcase" => "sick_cases#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:course_name/:position/edit" => "courses#edit_video"

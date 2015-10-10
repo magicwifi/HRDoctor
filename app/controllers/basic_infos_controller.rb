@@ -25,6 +25,13 @@ class BasicInfosController < ApplicationController
     #end
   end
 
+  def edit_case
+    @user = current_user
+    @basic_case = BasicCase.find(params[:basic_case_id].to_i)
+    body_sign = @basic_case.body_sign
+    @status_names =body_sign.status_name.split  
+  end
+
   def add_sickness
     @user = current_user
     respond_to do |format|
@@ -45,6 +52,10 @@ class BasicInfosController < ApplicationController
   def hyperlipidemia
     @user = current_user
     @hyperlipidemia = @user.hyperlipidemia
+  end
+
+  def explore_doctor
+    @user = current_user
   end
 
   def update_hyperlipidemia

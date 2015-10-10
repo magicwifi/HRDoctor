@@ -5,9 +5,8 @@
     <div class="action">
       <% if owner?(basic_case) %>
         <%= link_to '/'+basic_case.user.name+'/'+basic_case.id.to_s+'/editcase' do %>
-        <%#= link_to "javascript:;" do %>
-          <i class="fa fa-pencil"></i>
-          <%= t('edit_course') %>
+	 <%#= link_to "javascript:;" do %>
+          <%#= t('edit_course') %>
           <!--编辑功能暂不开放-->
         <% end %>
       <% end %>
@@ -18,7 +17,7 @@
   <%# end %> 
   <div class="meta">
     <div>
-      <span class="title"><%= link_to basic_case.main_desc, basic_case_path(basic_case) %></span>
+      <span class="title"><%= link_to basic_case.main_desc, '#' %></span>
       <% if !basic_case.edited %>
         <span class="lock"><i class="fa fa-lock fa-lg"></i></span>
       <% end %>
@@ -35,5 +34,5 @@
       <i class="fa fa-user"></i><span class="tip">咨询人: <%= link_to basic_case.user.name, member_path(basic_case.user.name) %></span>
     </div>
   </div>
-  <%= link_to "查看咨询", '/'+basic_case.user.name+'/'+basic_case.id.to_s+'/editcase', :class => "course-button" %>
+  <%= link_to "编辑咨询", edit_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %>
 </div>
