@@ -28,8 +28,9 @@ dl.form {
     input[type="text"].short, input[type="password"].short, input[type="email"].short {
       width: 250px;
     }
-    input[type="text"].supershort, input[type="password"].supershort, input[type="email"].supershort {
+    input[type="text"].supershort, input[type="password"].supershort, input[type="email"].supershort, select.supershort {
       width: 150px;
+      height: 30px;
     }
     textarea {
       width: 100%;
@@ -75,4 +76,21 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
     border-color: #51A7E8;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075),0 0 5px rgba(81, 167, 232, 0.5);
   }
+}
+
+dl.form.flattened>dt {
+    float: left;
+    margin: 0;
+    line-height: 32px;
+}
+dl.form.flattened>dd {
+    line-height: 32px;
+}
+
+
+form .flattened dt{
+	width: 230px;
+}
+form .flattened dd{
+    margin-left: 150px;
 }
