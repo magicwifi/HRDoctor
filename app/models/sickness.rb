@@ -1,5 +1,5 @@
 class Sickness < ActiveRecord::Base
-  attr_accessible :user_id, :title, :position, :desc,  :asset
+  attr_accessible :user_id, :title, :position, :desc,  :asset, :sick_date
 
   belongs_to :user, :touch => true
   

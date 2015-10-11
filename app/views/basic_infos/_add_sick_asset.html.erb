@@ -81,6 +81,12 @@ $(document).ready(function() {
           <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8',:placeholder => "如: 快走时胸闷、胸痛10年,加重1周" %>
         </dd>
       </dl>
+      <dl class="form">
+        <dt><%= f.label '选择附件类型' %></dt>
+        <dd>
+          <%= f.select(:asset_type,'<option value="CT" >影相科(CT)相关检查</option><option value="exper" >实验室相关检查</option><option value="heart" >心电图相关检查</option>'.html_safe, {}, { :class => 'supershort' } ) %>  
+        </dd>
+      </dl>
       <div class="video-button-group">
         <%= f.submit t('submit_video_info'), class: "button", :disabled => true,
           data: {disable_with: t('video_saving') + "..."},
