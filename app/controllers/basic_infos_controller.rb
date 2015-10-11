@@ -39,6 +39,13 @@ class BasicInfosController < ApplicationController
     end
   end
 
+  def add_operation
+    @user = current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def hyper
     @user = current_user
     @hypertension = @user.hypertension
@@ -159,9 +166,20 @@ class BasicInfosController < ApplicationController
     session[:return_to] = request.url
   end
   
+  def edit_oper
+    @user = current_user
+    session[:return_to] = request.url
+  end
 
   def edit_sickness
     @sickness = Sickness.where(:user_id => current_user.id, :position => params[:position]).first
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def edit_operation
+    @operation = Operation.where(:user_id => current_user.id, :position => params[:position]).first
     respond_to do |format|
       format.js
     end

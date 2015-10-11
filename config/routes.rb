@@ -33,6 +33,7 @@ Onestep::Application.routes.draw do
   resources :sick_hists
   resources :sick_assets
   resources :sicknesses
+  resources :operations
   resources :password_resets
 
   get "notifications" => "notifications#index", :as => "notifications"
@@ -103,6 +104,7 @@ Onestep::Application.routes.draw do
   get "/createmyfaq" => "basic_infos#show"
   get "/showmyinfo" => "basic_infos#edit"
   get "/editmysick" => "basic_infos#edit_sick"
+  get "/editmyoper" => "basic_infos#edit_oper"
   get "/explore_doctor" => "basic_infos#explore_doctor"
   patch "/update_myinfo" => "basic_infos#update"
 
@@ -132,16 +134,20 @@ Onestep::Application.routes.draw do
   get "/:member_name/:course_name/:position/edit" => "courses#edit_video"
   get "/:member_name/:sick_case_name/:position/edithist" => "sick_cases#edit_sick_hist"
   get "/:member_name/:position/editsick" => "basic_infos#edit_sickness"
+  get "/:member_name/:position/editoper" => "basic_infos#edit_operation"
   get "/:basic_case_id/:position/edit_sick_asset" => "basic_infos#edit_sick_asset"
   get "/:member_name/add_sickness" => "basic_infos#add_sickness"
+  get "/:member_name/add_oper" => "basic_infos#add_oper"
   get "/:member_name/:course_name/add_video" => "courses#add_video"
   get "/:member_name/:sick_case_name/add_sick_hist" => "sick_cases#add_sick_hist"
   patch "/update_video/:id" => "videos#update"
   patch "/update_sick_hist/:id" => "sick_hists#update"
   patch "/update_sickness/:id" => "sicknesses#update"
+  patch "/update_operation/:id" => "operations#update"
   patch "/update_sick_asset/:id" => "sick_assets#update"
   post "/sort_videos" => "videos#sort"
   post "/sort_sicknesses" => "sicknesses#sort"
+  post "/sort_operations" => "operations#sort"
   post "/commit_ready" => "basic_infos#commit_ready"
   post "/:basic_case_id/commit" => "basic_infos#case_commit", :as=>"basic_case_commit"
 

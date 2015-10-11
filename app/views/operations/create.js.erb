@@ -1,0 +1,4 @@
+$('form#new_operation').get(0).setAttribute("action", "/operations/<%= @operation.id %>");
+$('form#new_operation > div').append('<input name="_method" type="hidden" value="put">');
+$('input#submit_operation_info').removeAttr('disabled');
+$('input#submit_operation_info').get(0).setAttribute('value', '保存附件信息');

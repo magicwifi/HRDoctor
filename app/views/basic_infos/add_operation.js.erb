@@ -1,0 +1,4 @@
+$('.add-video-box').replaceWith("<%= escape_javascript render 'add_operation', :user => @user %>");
+$('.playlist li').removeClass('selected');
+$('.playlist li a.video').removeClass('active');
+$('.add-video-btn a.video').addClass('active');

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011081035) do
+ActiveRecord::Schema.define(version: 20151011142737) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -164,6 +164,23 @@ ActiveRecord::Schema.define(version: 20151011081035) do
   add_index "notifications", ["notifiable_id", "notifiable_type"], name: "index_notifications_on_notifiable_id_and_notifiable_type", using: :btree
   add_index "notifications", ["unread"], name: "index_notifications_on_unread", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+
+  create_table "operations", force: true do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "poster"
+    t.boolean  "public"
+    t.float    "price",        limit: 24
+    t.string   "asset"
+    t.integer  "user_id"
+    t.integer  "size"
+    t.string   "filename"
+    t.string   "content_type"
+    t.integer  "position"
+    t.datetime "sick_date"
+  end
 
   create_table "orders", force: true do |t|
     t.datetime "created_at"
