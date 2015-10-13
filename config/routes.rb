@@ -128,6 +128,7 @@ Onestep::Application.routes.draw do
   delete "/:member_name/:course_name" => "courses#destroy"
   get "/:member_name/:message_name/editmessage" => "messages#edit" , :as => "edit_message"
   get "/:member_name/:basic_case_id/editcase" => "basic_infos#edit_case" , :as => "edit_basic_case"
+  get "/:member_name/:basic_case_id/showcase" => "basic_infos#show_case" , :as => "show_basic_case"
   #get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   #get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:sick_case_name(/:position)/showcase" => "sick_cases#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
@@ -138,6 +139,7 @@ Onestep::Application.routes.draw do
   get "/:basic_case_id/:position/edit_sick_asset" => "basic_infos#edit_sick_asset"
   get "/:member_name/add_sickness" => "basic_infos#add_sickness"
   get "/:member_name/add_oper" => "basic_infos#add_oper"
+  get "/:basic_case_id/add_sick_asset" => "basic_infos#add_sick_asset"
   get "/:member_name/:course_name/add_video" => "courses#add_video"
   get "/:member_name/:sick_case_name/add_sick_hist" => "sick_cases#add_sick_hist"
   patch "/update_video/:id" => "videos#update"

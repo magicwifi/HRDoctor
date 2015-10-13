@@ -2,12 +2,12 @@
   <ul id="play-list" class="playlist" data-update-url="/sort_sick_assets">
     <% basic_case.sick_assets.each do |sick_asset| %>
       <%= content_tag_for :li, sick_asset do %>
-        <a class="video" href="<%= @basic_case.id.to_s+ '/'+sick_asset.position.to_s + '/edit_sick_asset.js' %>" data-remote='true'>
+        <a class="video" href="<%= "/" +@basic_case.id.to_s+ '/'+sick_asset.position.to_s + '/edit_sick_asset.js' %>" data-remote='true'>
           <span class="video-info edit-video-info">
             <%= sick_asset.title %>
           </span>
         </a>
-        <a href="<%= @basic_case.id.to_s+ '/'+sick_asset.position.to_s + '/edit_sick_asset.js' %>"
+        <a href="<%= "/"+@basic_case.id.to_s+ '/'+sick_asset.position.to_s + '/edit_sick_asset.js' %>"
           data-remote='true'>
           <div class="pencil-icon">
              <i class="fa fa-pencil"></i>
@@ -16,7 +16,7 @@
       <% end %>
     <% end %>
     <li class="add-video-btn">
-      <%=link_to  @basic_case.id.to_s+ '/add_sick_asset.js', class: "video active", remote: true do %>
+      <%=link_to "/"+ @basic_case.id.to_s+ '/add_sick_asset.js', class: "video active", remote: true do %>
         <div class="video-icon">
           <i class="fa fa-plus fa-lg"></i>
         </div>

@@ -195,6 +195,15 @@ zh-CN:
   yanqianfahei: "眼前发黑"
   yundao: "晕倒"
   yisixingyishisangshi: "一次性意识丧失"
+  better: "有所好转"
+  normal: "无明显变化"
+  worse: "持续加重"   
+  noswelling: "无肿胀"
+  littleswe: "有轻微肿胀"
+  worseswelling: "肿胀较严重"   
+  CT: "影相科(CT)相关检查"
+  exper: "实验室相关检查"
+  heart: "心电图相关检查"
 
   #error message
   error_blank_content: "内容不能为空！"

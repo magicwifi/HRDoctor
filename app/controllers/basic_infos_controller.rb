@@ -18,11 +18,14 @@ class BasicInfosController < ApplicationController
      @basic_case.body_sign = body_sign
      @basic_case.save
     end
-    
-    #@status_names = Array.new 
-    #if !body_sign.status_name.blank?    
     @status_names =body_sign.status_name.split  
-    #end
+  end
+
+  def show_case
+    @user = current_user
+    @basic_case = BasicCase.find(params[:basic_case_id].to_i)
+    body_sign = @basic_case.body_sign
+    @status_names =body_sign.status_name.split  
   end
 
   def edit_case
@@ -34,6 +37,13 @@ class BasicInfosController < ApplicationController
 
   def add_sickness
     @user = current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def add_sick_asset
+    @basic_case = BasicCase.find(params[:basic_case_id].to_i)
     respond_to do |format|
       format.js
     end
@@ -200,7 +210,6 @@ class BasicInfosController < ApplicationController
     respond_to do |format|
     	format.html { redirect_to member_path(@user.name), :success => 'faq was successfully updated.' }
     end
- 
   end
 
 end
