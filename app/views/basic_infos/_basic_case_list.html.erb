@@ -30,9 +30,12 @@
     </div>
     <div class="details">
     </div>
-    <div class="details">
-      <i class="fa fa-user"></i><span class="tip">咨询人: <%= link_to basic_case.user.name, member_path(basic_case.user.name) %></span>
+
+ <div class="details">
+      <i class="fa fa-user"></i><span class="tip">咨询医生: <%= link_to basic_case.user.name, member_path(basic_case.user.name) %></span>
     </div>
+
   </div>
   <%= link_to "编辑咨询", edit_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %>
+  <%= link_to "咨询其他医生", clone_basic_case_path(basic_case.user.name,basic_case),:method=>"post", :class => "course-button" %>
 </div>

@@ -102,6 +102,23 @@ hr {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
 }
 
+.container2 {
+ width: 1200px;
+ height: 150px;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+.center-username {
+    top: 120px;
+    color: white;
+    position: absolute;
+    text-align: center;
+    z-index: 10000;
+    width:1200px;
+    font-size: 24px;
+    font-weight: bolder;
+}
 
 
 .chinese {

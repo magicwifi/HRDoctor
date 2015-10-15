@@ -35,6 +35,16 @@ class BasicInfosController < ApplicationController
     @status_names =body_sign.status_name.split  
   end
 
+  def clonecase
+    @user = current_user
+    old_basic_case = BasicCase.find(params[:basic_case_id].to_i)
+    @basic_case = BasicCase.create!({:main_desc=>old_basic_case.main_desc,:detail_desc=>old_basic_case.detail_desc,:now_desc=>old_basic_case.now_desc,:treat_desc=>old_basic_case.treat_desc,:user_id =>@user.id,:public=>true,:edited=>false})
+    old_body_sign = old_basic_case.body_sign
+    body_sign = BodySign.create!({:basic_case_id=>@basic_case.id,:swelling=>old_body_sign.swelling,:status_name=>old_body_sign.status_name,:pulse=>old_body_sign.pulse,:high_pressure=>old_body_sign.high_pressure,:low_pressure=>old_body_sign.low_pressure,:temperature=>old_body_sign.temperature})
+    @status_names =body_sign.status_name.split  
+    render "edit_case"
+  end
+
   def add_sickness
     @user = current_user
     respond_to do |format|
