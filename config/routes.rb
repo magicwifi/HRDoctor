@@ -55,6 +55,7 @@ Onestep::Application.routes.draw do
 
   patch "/course" => "courses#update"
   get "/course" => "courses#index", :as => "course_index"
+  get "/doctor" => "doctors#index", :as => "doctor_index"
   post "/course" => "courses#create"
   get "/create_course" => "courses#new", :as => :create_course
 
@@ -105,6 +106,8 @@ Onestep::Application.routes.draw do
   get "/showmyinfo" => "basic_infos#edit"
   get "/editmysick" => "basic_infos#edit_sick"
   get "/editmyoper" => "basic_infos#edit_oper"
+  get "/edited_all_case" => "basic_infos#edited_all_case"
+  get "/change_all_case" => "basic_infos#change_all_case"
   get "/explore_doctor" => "basic_infos#explore_doctor"
   patch "/update_myinfo" => "basic_infos#update"
 

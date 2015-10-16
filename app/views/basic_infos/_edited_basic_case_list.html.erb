@@ -36,5 +36,5 @@
     </div>
 
   </div>
-  <%= link_to "查看咨询", show_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %>
+  <%= link_to "再次咨询", clone_basic_case_path(basic_case.user.name,basic_case),:method=>"post", :class => "course-button" %>
 </div>

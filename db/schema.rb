@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011142737) do
+ActiveRecord::Schema.define(version: 20151016031036) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20151011142737) do
 
   create_table "basic_infos", force: true do |t|
     t.string   "name"
-    t.float    "height",     limit: 24
-    t.float    "weight",     limit: 24
+    t.float    "height",        limit: 24
+    t.float    "weight",        limit: 24
     t.string   "gender"
     t.boolean  "edited"
     t.integer  "user_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20151011142737) do
     t.integer  "age"
     t.string   "smokeinfo"
     t.string   "drink"
+    t.integer  "smoke_account"
   end
 
   create_table "blog_images", force: true do |t|
@@ -116,6 +117,17 @@ ActiveRecord::Schema.define(version: 20151011142737) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "doctors", force: true do |t|
+    t.string   "name"
+    t.string   "avatar"
+    t.text     "main_desc"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "use_gravatar"
+    t.string   "url"
   end
 
   create_table "hyperlipidemia", force: true do |t|

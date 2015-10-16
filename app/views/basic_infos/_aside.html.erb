@@ -14,7 +14,8 @@
     <li><a class="button" href="#">我要咨询</a></li>
     <li><a class="<%= request.path == "/explore_doctor"? "active":"faq" %>" href="/explore_doctor">医生查询</a></li>
     <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">发起咨询</a></li>
-    <li><a class="<%= request.path == "/sick_case"? "active":"faq" %>" href="/sick_case">查看相关咨询</a></li>
+    <li><a class="<%= request.path == "/edited_all_case"? "active":"faq" %>" href="/edited_all_case">使用过往咨询</a></li>
+    <li><a class="<%= request.path == "/change_all_case"? "active":"faq" %>" href="/change_all_case">编辑未提交咨询</a></li>
     <li><a class="button" href="#">我的私人医生</a></li>
     <li><a class="<%= request.path == "/showmyinfo3"? "active":"faq" %>" href="#">我的医生</a></li>
   </ul>

@@ -10,9 +10,6 @@
       <li data-course-type="paid" id="paid-li" >
         <a href="#paid-courses">3.附件上传</a>
       </li>
-      <li data-course-type="commit" id="commit-li" >
-        <a href="#commit-courses">4.确认提交</a>
-      </li>
     </ul>
     <div class="content owned-courses-section active clearfix">
 <div class="single-form-container">
@@ -78,30 +75,13 @@
 </div>
 <p>
     <div class="ready-basic-case">
-    <%= link_to '提交本次咨询', 'commit_ready', :method => :post,:remote=>true, :class => "button primary" %>
+    <%= link_to '提交本次咨询', basic_case_commit_path(@basic_case), :method => :post, :class => "button danger" %>
 </div>
 </p>
 
     </div>
     <div class="content watched-courses-section clearfix">
           <%= render "show_bodysign", :body_sign=>@basic_case.body_sign,:status_names=>@status_names %>
-    </div>
-    <div class="content commit-courses-section clearfix">
-    <div class="">
-    <p>
-    <div class="commit-basic-case">
-    <%= link_to '免费咨询', basic_case_commit_path(@basic_case), :method => :post, :class => "button primary" %>
-    <h3>将对全部医生公开此次咨询</h3>
-    </div>
-<div class="height-commit"></div>
-    </p>
-    <p>
-    <div class="commit-basic-case">
-    <%= link_to '付费咨询', basic_case_commit_path(@basic_case), :method => :post, :class => "button danger" %>
-    <h3>指定医生完成此次咨询</h3>
-    </div>
-    </p>
-    </div>
     </div>
   </div><!--end user-course -->
 </div><!-- user-show -->
@@ -123,11 +103,9 @@
         $(".owned-courses-section").addClass("active");
       }else if (type == "paid") {
         $(".paid-courses-section").addClass("active");
-      }else if(type =="watched"){
+      }else {
         $(".watched-courses-section").addClass("active");
-      }else{
-        $(".commit-courses-section").addClass("active");
-     }
+      }
     });
   </script>
 <% end %>

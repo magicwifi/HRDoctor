@@ -108,7 +108,7 @@ class UsersController < ApplicationController
 
     raise ActiveRecord::RecordNotFound if @user.nil?
 
-    @basic_cases = @user == current_user ? @user.basic_cases : @user.basic_cases.pub
+    @basic_cases = @user == current_user ? @user.basic_cases.where(:edited=>true) : @user.basic_cases.where(:edited=>true)
     #@watched_courses = @user == current_user ? @user.watched_courses : @user.watched_courses.pub
     #@paid_courses = @user.paid_courses
 

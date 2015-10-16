@@ -1,3 +1,16 @@
+<% content_for :template_js do %>
+  <script>
+$('#basic_info_smokeinfo').on('change', function() {
+  if (this.value=="never"){
+  document.getElementById("display_smoke").style.display="none";	
+  }else{
+  document.getElementById("display_smoke").style.display="inline";	
+  }
+});
+
+</script>
+<% end %>
+
 <div class="single-form-container" style="margin-left: 50px;">
   <div class="boxed-group" id="login">
     <h3>基本情况</h3>
@@ -43,6 +56,7 @@
           </dt>
           <dd>
           <%= f.text_field  :weight, :class => "short", :placeholder => "如85"  %>
+           <div id="bmi">BMI指数为<%= (@basic_info.weight*10000/(@basic_info.height*@basic_info.height)).round(2)  %></div>
           </dd>
         </dl>
         <dl class="form">
@@ -53,6 +67,16 @@
           <%= f.select(:smokeinfo,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe ) %>  
 	</dd>
         </dl>
+	<div id="display_smoke" style="display: none;">
+        <dl class="form">
+          <dt>
+          <%= f.label '根/每天' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :smoke_account, :class => "short", :placeholder => "如:2"  %>
+	</dd>
+        </dl>
+	</div>
         <dl class="form">
           <dt>
           <%= f.label '饮酒状态' %>

@@ -1,0 +1,34 @@
+  
+<div id="user-show" class="container clearfix">
+  <div id="user-course" >
+    <ul class="main-nav">
+      <li class="active" data-course-type="owned">
+        <a href="#owned-courses">使用过往咨询</a>
+      </li>
+    </ul>
+    <div class="content owned-courses-section active clearfix">
+      <% if @basic_cases.present? %>
+        <div class="courses-wrap">
+          <% @basic_cases.each do |basic_case| %>
+            <%= render "basic_infos/edited_basic_case_list", :basic_case => basic_case %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="no-course">
+          <i class="fa fa-smile-o fa-2x"></i>
+          <%= t('no_courses_found') %>
+          <% if current_user == @user %>
+            <%= link_to create_basic_case_path, :class => "new-course-button" do %>
+            <%#= link_to "javascript:;", :class => "new-course-button" do %>
+              <%= t('create_course') %>
+              <!--创建课程暂不开放-->
+              <i class='fa fa-hand-o-right fa-lg'></i>
+            <% end %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div><!--end user-course -->
+
+  </div><!--end user-course -->
+</div><!-- user-show -->

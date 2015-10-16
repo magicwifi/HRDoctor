@@ -221,5 +221,17 @@ class BasicInfosController < ApplicationController
     	format.html { redirect_to member_path(@user.name), :success => 'faq was successfully updated.' }
     end
   end
+  def edited_all_case
+    @user = current_user
+    raise ActiveRecord::RecordNotFound if @user.nil?
+    @basic_cases = @user == current_user ? @user.basic_cases.where(:edited=>true) : @user.basic_cases.where(:edited=>true)
+    session[:return_to] = request.url
+  end
 
+  def change_all_case
+    @user = current_user
+    raise ActiveRecord::RecordNotFound if @user.nil?
+    @basic_cases = @user == current_user ? @user.basic_cases.where(:edited=>false) : @user.basic_cases.where(:edited=>false)
+    session[:return_to] = request.url
+  end
 end
