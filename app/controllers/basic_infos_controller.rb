@@ -1,10 +1,71 @@
 class BasicInfosController < ApplicationController
   before_filter :check_login
+  skip_before_filter :verify_authenticity_token, :only => [:check_my_doctor]
 
   def edit
     @user = current_user
     @basic_info = @user.basic_info
   end
+
+  def check_my_doctor
+    @user = current_user
+    commit = params[:commit] 
+    @doctor = Doctor.find_by_name(params[:doctor])	
+    @basic_case = @user.basic_cases.where(:edited=>true,:process=>nil,:doctor_id=>nil).last
+    if commit == "commit" && !@basic_case.nil?  
+    	@basic_cases = @user.basic_cases.where(:edited=>true,:process=>nil,:doctor_id=>nil)
+	#@basic_case = @user.basic_cases.where(:edited=>true,:doctor_id=>nil).last
+	render "new_order"
+	
+    else
+    	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true,:edited=>false)
+    	body_sign =   BodySign.create!(:basic_case_id=>@basic_case.id,:swelling=>"",:status_name=>"")
+    	@basic_case.body_sign = body_sign
+    	@basic_case.save
+    	@status_names =body_sign.status_name.split  
+	render "commit_doctor"
+    end
+  end
+
+  def new_order
+  end
+
+  def commit_doctor
+  end
+
+  def new_doctor
+    @user = current_user
+    @doctor = Doctor.find_by_name(params[:doctor_name])	
+    @basic_case = BasicCase.find(params[:basic_case_id])
+    @basic_case.edited = true;
+    @basic_case.save 
+    @basic_cases = @user.basic_cases.where(:edited=>true,:process=>nil,:doctor_id=>nil)
+    render "new_order"
+  end
+
+  def checkout
+    @user = current_user
+    basic_case = BasicCase.find(params[:basic_case_id])
+    doctor = Doctor.find(params[:doctor_id])  	
+    basic_case.doctor_id = doctor.id
+    basic_case.public = params[:basic_case_public]
+    basic_case.process = "fee"
+    basic_case.save
+    respond_to do |format|
+        format.html { redirect_to member_path(@user.name), :success => 'commit successfully .' }
+    end
+  end
+
+  def checkfree
+    @user = current_user
+    basic_case = BasicCase.find(params[:basic_case_process])
+    basic_case.process = "free"
+    basic_case.save
+    respond_to do |format|
+        format.html { redirect_to member_path(@user.name), :success => 'commit successfully .' }
+    end
+  end
+
 
   def show
     @user = current_user

@@ -2,7 +2,7 @@
   <ul class="menu">
     <li><a class="button" href="#">我的咨询记录</a></li>
     <li><a class="<%= request.path == member_url(@user.name)? "active":"main" %>" href="<%=member_url(@user.name) %>">全部咨询</a></li>
-    <li><a class="<%= request.path == (member_url(@user.name)+'#watched-courses')? "team":"team" %>" href="<%= member_url(@user.name)+'#watched-courses' %>">已答复的咨询</a></li>
+    <li><a class="<%= request.path == showmystatus_url(@user.name)? "active":"team" %>" href="<%=showmystatus_url(@user.name) %>">我的咨询状态</a></li>
     <li><a class="<%= request.path == (member_url(@user.name)+'#paid-courses')? "active":"team" %>" href="<%= member_url(@user.name)+'#paid-courses' %>">未答复的咨询</a></li>
     <li><a class="button" href="#">我的病历管理</a></li>
     <li><a class="<%= request.path == "/showmyinfo"? "active":"faq" %>" href="/showmyinfo">个人基本情况</a></li>

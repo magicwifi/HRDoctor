@@ -3,7 +3,7 @@
   <div class="boxed-group" id="login">
     <h3>医生查找</h3>
     <div class="boxed-group-inner">
-	<%= form_tag("/search_doctor", method: "post") do %>
+	<%= form_tag("/doctor", method: "get") do %>
         <dl class="form flattened">
           <dt>
            <%= label_tag 'room','按科室查询:' %>

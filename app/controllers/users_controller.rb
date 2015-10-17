@@ -105,15 +105,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_name(params[:member_name])
-
     raise ActiveRecord::RecordNotFound if @user.nil?
-
     @basic_cases = @user == current_user ? @user.basic_cases.where(:edited=>true) : @user.basic_cases.where(:edited=>true)
-    #@watched_courses = @user == current_user ? @user.watched_courses : @user.watched_courses.pub
-    #@paid_courses = @user.paid_courses
-
    @activities = @user.activities.last(10).reverse
+    session[:return_to] = request.url
+  end
 
+  def showmystatus
+    @user = User.find_by_name(params[:member_name])
+    raise ActiveRecord::RecordNotFound if @user.nil?
+    @cases_commit_group = @user.basic_cases.where(:edited=>true,:process=>nil,:doctor_id=>nil)
+    @cases_public_group = @user.basic_cases.where(:edited=>true,:process=>"free",:doctor_id=>nil)
+    @cases_fee_group = @user.basic_cases.where(:edited=>true,:process=>"fee")
     session[:return_to] = request.url
   end
 

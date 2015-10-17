@@ -6,5 +6,8 @@ class DoctorsController < ApplicationController
      @doctors.in_groups_of(3, false) { |group| @doctor_groups << group }
   end
 
+  def show
+     @doctor = Doctor.find(params[:id]);
+  end
 
 end

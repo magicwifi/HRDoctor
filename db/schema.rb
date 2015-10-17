@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016031036) do
+ActiveRecord::Schema.define(version: 20151017114705) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20151016031036) do
     t.integer  "user_id"
     t.boolean  "public"
     t.boolean  "edited"
+    t.integer  "doctor_id"
+    t.string   "process"
   end
 
   create_table "basic_infos", force: true do |t|

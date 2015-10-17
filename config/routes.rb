@@ -5,7 +5,10 @@ Onestep::Application.routes.draw do
 
   get 'timeline' => "activities#timeline", as: "timeline"
 
-  post '/checkout' => "orders#checkout"
+  post '/checkout' => "basic_infos#checkout"
+  post '/checkfree' => "basic_infos#checkfree"
+  post '/check_my_doctor' => "basic_infos#check_my_doctor"
+
   get '/orders/done' => "orders#done"
   post '/orders/notify' => "orders#notify"
   #get "/orders/new" => "orders#new",  :as => "new_order"
@@ -35,6 +38,7 @@ Onestep::Application.routes.draw do
   resources :sicknesses
   resources :operations
   resources :password_resets
+  resources :doctors
 
   get "notifications" => "notifications#index", :as => "notifications"
   delete "notifications/:id" => "notifications#destroy", :as => "notification"
@@ -128,6 +132,7 @@ Onestep::Application.routes.draw do
   get "/account" => "users#edit", :as => "account"
   patch "/account" => "users#update"
   get "/:member_name" => "users#show", :as => "member"
+  get "/:member_name/showmystatus" => "users#showmystatus", :as => "showmystatus"
   delete "/:member_name/:course_name" => "courses#destroy"
   get "/:member_name/:message_name/editmessage" => "messages#edit" , :as => "edit_message"
   get "/:member_name/:basic_case_id/editcase" => "basic_infos#edit_case" , :as => "edit_basic_case"
@@ -156,5 +161,6 @@ Onestep::Application.routes.draw do
   post "/sort_operations" => "operations#sort"
   post "/commit_ready" => "basic_infos#commit_ready"
   post "/:basic_case_id/commit" => "basic_infos#case_commit", :as=>"basic_case_commit"
+  post "/:basic_case_id/:doctor_name/new_doctor" => "basic_infos#new_doctor", :as=>"basic_case_new"
 
 end

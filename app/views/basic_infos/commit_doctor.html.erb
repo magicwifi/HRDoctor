@@ -1,0 +1,111 @@
+<div id="user-show" class="container clearfix">
+  <div id="user-course" >
+    <ul class="main-nav">
+      <li class="active" data-course-type="owned" id="owned-li" >
+        <a href="#owned-courses">1.一般信息</a>
+      </li>
+      <li data-course-type="watched" id="watched-li" >
+        <a href="#watched-courses">2.体征信息</a>
+      </li>
+      <li data-course-type="paid" id="paid-li" >
+        <a href="#paid-courses">3.附件上传</a>
+      </li>
+    </ul>
+    <div class="content owned-courses-section active clearfix">
+<div class="single-form-container">
+  <div class="boxed-group" id="login">
+    <h3>一般信息</h3>
+    <div class="boxed-group-inner">
+      <%= form_for @basic_case, :url =>"/update_myfaq", :remote=>true do |f| %>
+        <%= f.hidden_field :id %>
+        <dl class="form">
+          <dt>
+          <%= f.label '主诉' %>
+          </dt>
+          <dd>
+          <%= f.text_area  :main_desc, :class => "short", :placeholder => "包括主要症状、首次发作至今为止持续时间,限20-50字，如：快走时胸闷、胸痛10年，加重1周" %>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '详细描述' %>
+          </dt>
+          <dd>
+          <%= f.text_area  :detail_desc, :class => "short", :placeholder => "详细表述,内容包括：主要症状，每次持续时间、多于什么情况下发作（活动）、怎么缓解（服药还是其他处理），其他伴随不适, 限500字。" %>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '诊疗经过' %>
+          </dt>
+          <dd>
+          <%= f.text_area  :treat_desc, :class => "short", :placeholder => "去那些医院看过、诊断是什么，怎么治疗，效果怎么样" %>
+	</dd>
+        </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '目前情况' %>
+          </dt>
+          <dd>
+          <%= f.select(:now_desc,'<option value="better" >有所好转</option><option value="normal" >无明显变化</option><option value="worse" >持续加重</option>'.html_safe ) %>  
+          </dd>
+        </dl>
+	<p style="height: 10px;" ></p>
+        <p> <%= f.submit '保存', :class => "button primary" %> </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="content paid-courses-section clearfix">
+<div class='container1'>
+  <div class="tutorial-page">
+    <div class="boxed-group">
+      <h3><i class="fa fa-plus fa-lg"></i> 咨询附件</h3>
+      <div class="boxed-group-inner videos-section">
+        <div class="tutorial-nav added-videos-wrap">
+            <%= render "all_added_sick_assets", :basic_case=>@basic_case %>
+        </div><!-- end tutorial-nav -->
+        <div class="tutorial-content add-video-wrap">
+          <%= render "add_sick_asset", :basic_case=>@basic_case %>
+        </div>
+      </div>  <!-- boxed-group-inner -->
+    </div> <!-- boxed-group -->
+  </div><!-- end tutorial-page -->
+</div>
+<p>
+    <div class="ready-basic-case">
+    <%= link_to '提交本次咨询', basic_case_new_path(@basic_case,@doctor.name), :method => :post, :class => "button danger" %>
+</div>
+</p>
+
+    </div>
+    <div class="content watched-courses-section clearfix">
+          <%= render "show_bodysign", :body_sign=>@basic_case.body_sign,:status_names=>@status_names %>
+    </div>
+  </div><!--end user-course -->
+</div><!-- user-show -->
+<% content_for :template_js do %>
+  <script>
+    var menuItems = $(".main-nav li");
+    var contentItems = $(".content");
+
+    menuItems.on("click", function(event) {
+
+      menuItems.removeClass("active");
+      $(this).addClass("active");
+
+      contentItems.removeClass("active");
+
+      var type = $(this).data("course-type");
+
+      if (type == "owned") {
+        $(".owned-courses-section").addClass("active");
+      }else if (type == "paid") {
+        $(".paid-courses-section").addClass("active");
+      }else {
+        $(".watched-courses-section").addClass("active");
+      }
+    });
+  </script>
+<% end %>

@@ -1,5 +1,6 @@
 class Doctor < ActiveRecord::Base
   attr_accessible :name, :avatar,:use_gravatar, :main_desc, :price, :url
+  has_many :basic_cases
 
 
   def image_data=(data)

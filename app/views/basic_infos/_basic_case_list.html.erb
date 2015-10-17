@@ -17,7 +17,7 @@
   <%# end %> 
   <div class="meta">
     <div>
-      <span class="title"><%= link_to basic_case.main_desc, show_basic_case_path(basic_case.user.name,basic_case) %></span>
+      <span class="title"><%= link_to basic_case.main_desc.nil? ? "未填写":basic_case.main_desc, show_basic_case_path(basic_case.user.name,basic_case) %></span>
       <% if !basic_case.edited %>
         <span class="lock"><i class="fa fa-lock fa-lg"></i></span>
       <% end %>
@@ -32,7 +32,7 @@
     </div>
 
  <div class="details">
-      <i class="fa fa-user"></i><span class="tip">咨询医生: <%= link_to basic_case.user.name, member_path(basic_case.user.name) %></span>
+      <i class="fa fa-user"></i><span class="tip">咨询医生: <%= link_to (basic_case.doctor.nil? ? "无" : basic_case.doctor.name), '#' %></span>
     </div>
 
   </div>
