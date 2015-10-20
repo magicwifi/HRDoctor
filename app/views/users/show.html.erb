@@ -16,15 +16,11 @@
     <li><a class="<%= request.path == "/showmyhyper"? "active":"faq" %>" href="/showmyhyper">高血压史</a></li>
     <li><a class="<%= request.path == "/showmydiabetes"? "active":"faq" %>" href="/showmydiabetes">糖尿病史</a></li>
     <li><a class="<%= request.path == "/showmyhyperlipidemia"? "active":"faq" %>" href="/showmyhyperlipidemia">高脂血史</a></li>
-    <li><a class="<%= request.path == "/editmysick"? "active":"faq" %>" href="/editmysick">病历上传</a></li>
     <li><a class="<%= request.path == "/editmyoper"? "active":"faq" %>" href="/editmyoper">重大手术及外伤</a></li>
+    <li><a class="<%= request.path == "/editmysick"? "active":"faq" %>" href="/editmysick">病历上传</a></li>
     <li><a class="button" href="#">我要咨询</a></li>
     <li><a class="<%= request.path == "/explore_doctor"? "active":"faq" %>" href="/explore_doctor">医生查询</a></li>
     <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">发起咨询</a></li>
-    <li><a class="<%= request.path == "/edited_all_case"? "active":"faq" %>" href="/edited_all_case">使用过往咨询</a></li>
-    <li><a class="<%= request.path == "/change_all_case"? "active":"faq" %>" href="/change_all_case">编辑未提交咨询</a></li>
-    <li><a class="button" href="#">我的私人医生</a></li>
-    <li><a class="<%= request.path == "/showmyinfo3"? "active":"faq" %>" href="#">我的医生</a></li>
   </ul>
 </div>
   </div><!--end user-info -->
@@ -33,54 +29,35 @@
   <div id="user-course" >
     <ul class="main-nav">
       <li class="active" data-course-type="owned">
-        <a href="#owned-courses">全部咨询</a>
+        <a href="#owned-courses">全部历史咨询</a>
       </li>
     </ul>
-    <div class="content owned-courses-section active clearfix">
-      <% if @basic_cases.present? %>
-        <div class="courses-wrap">
-          <% @basic_cases.each do |basic_case| %>
-            <%= render "basic_infos/basic_case_list", :basic_case => basic_case %>
-          <% end %>
-        </div>
-      <% else %>
-        <p class="no-course">
-          <i class="fa fa-smile-o fa-2x"></i>
-          <%= t('no_courses_found') %>
-          <% if current_user == @user %>
-            <%= link_to create_basic_case_path, :class => "new-course-button" do %>
-            <%#= link_to "javascript:;", :class => "new-course-button" do %>
-              <%= t('create_course') %>
-              <!--创建课程暂不开放-->
-              <i class='fa fa-hand-o-right fa-lg'></i>
-            <% end %>
-          <% end %>
-        </p>
-      <% end %>
-      <div class="user-activity">
-        <div class="seperator">
-          <span class="mark">最新动态</span>
-        </div>
-        <% if @activities.present? %>
-          <table class="activities-wrap">
-            <% @activities.each do |activity| %>
-              <% if @user == current_user %>
-                <%= render "activities/user_activity", :activity => activity %>
-              <% else %>
-                <%= render "activities/user_activity", :activity => activity if Course.find(activity.course_id).public %>
-              <% end %>
-            <% end %>
-          </table>
-        <% else %>
-          <p class="no-activity">
-            <i class="fa fa-smile-o fa-2x"></i>
-            <%= t('no_activities_found') %>
-          </p>
-        <% end %>
-      </div>
-    </div>
-  </div><!--end user-course -->
 
+    <div class="content owned-courses-section active clearfix">
+    <table class="table table-bordered" style="width: 900px;">
+      <thead>
+        <tr>
+          <th>名称</th> <!-- Subject -->
+          <th>附件数</th>
+          <th>咨询状态</th>
+          <th>咨询医生</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @basic_cases.each do |basic_case| %>
+        <tr>
+          <td><%= link_to basic_case.main_desc.nil? ? "未填写":basic_case.main_desc, show_basic_case_path(basic_case.user.name,basic_case) %></td>
+          <td><%= basic_case.sick_assets.count %></td>
+          <td><%= basic_case.process.nil? ? "未提交": t(basic_case.process)  %> </td>
+          <td> <%= link_to (basic_case.doctor.nil? ? "无" : basic_case.doctor.name), '#' %> </td>
+          <td><%= link_to "查看咨询", show_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %></td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+    </div>
+</div><!-- user-show -->
 </div><!-- user-show -->
 </div>
 </div>

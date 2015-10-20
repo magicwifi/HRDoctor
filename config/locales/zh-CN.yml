@@ -99,7 +99,8 @@ zh-CN:
   saving: "保存中"
   video_saving: "病历附件保存中"
   cancel: "取消"
-  free: "免费"
+  free: "免费咨询"
+  fee: "已付费"
 
   #blog things
   blog: "好奇博客"

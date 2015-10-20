@@ -18,7 +18,7 @@
   <div class="meta">
     <div>
       <span class="title"><%= link_to basic_case.main_desc.nil? ? "未填写":basic_case.main_desc, show_basic_case_path(basic_case.user.name,basic_case) %></span>
-      <% if !basic_case.edited %>
+      <% if !basic_case.public %>
         <span class="lock"><i class="fa fa-lock fa-lg"></i></span>
       <% end %>
     </div>

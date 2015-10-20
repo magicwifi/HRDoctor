@@ -75,7 +75,8 @@
 </div>
 <p>
     <div class="ready-basic-case">
-    <%= link_to '提交本次咨询', basic_case_commit_path(@basic_case), :method => :post, :class => "button danger" %>
+    <%= link_to '指定医生咨询', basic_case_commit_path(@basic_case), :method => :post, :class => "button primary large" %>
+    <%= link_to '免费咨询', basic_case_free_path(@basic_case), :method => :post, :class => "button danger large right" %>
 </div>
 </p>
 
@@ -107,5 +108,11 @@
         $(".watched-courses-section").addClass("active");
       }
     });
-  </script>
+
+    $(".edit_basic_case").submit(function( event ) {
+	  if($.trim($('#basic_case_main_desc').val()) == ''){
+      		alert('Input can not be left blank');
+   	}	
+     });
+</script>
 <% end %>

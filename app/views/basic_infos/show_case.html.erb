@@ -15,7 +15,7 @@
     <p>脉搏 : <%= @basic_case.body_sign.pulse %></p>
     <p>高压 : <%= @basic_case.body_sign.high_pressure %></p>
     <p>低压 : <%= @basic_case.body_sign.low_pressure %></p>
-    <p>双下肢是否肿胀 : <%= t(@basic_case.body_sign.swelling) %></p>
+    <p>双下肢是否肿胀 : <%= (@basic_case.body_sign.swelling.nil? or @basic_case.body_sign.swelling.blank?) ? "否": t(@basic_case.body_sign.swelling) %></p>
     <p>其他体征 : <%= t(@basic_case.body_sign.status_name.split)  %></p>
     <p style="height: 40px;" ></p>
 

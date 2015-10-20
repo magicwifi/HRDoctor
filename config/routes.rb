@@ -110,8 +110,8 @@ Onestep::Application.routes.draw do
   get "/showmyinfo" => "basic_infos#edit"
   get "/editmysick" => "basic_infos#edit_sick"
   get "/editmyoper" => "basic_infos#edit_oper"
-  get "/edited_all_case" => "basic_infos#edited_all_case"
-  get "/change_all_case" => "basic_infos#change_all_case"
+  #get "/edited_all_case" => "basic_infos#edited_all_case"
+  #get "/change_all_case" => "basic_infos#change_all_case"
   get "/explore_doctor" => "basic_infos#explore_doctor"
   patch "/update_myinfo" => "basic_infos#update"
 
@@ -136,7 +136,7 @@ Onestep::Application.routes.draw do
   delete "/:member_name/:course_name" => "courses#destroy"
   get "/:member_name/:message_name/editmessage" => "messages#edit" , :as => "edit_message"
   get "/:member_name/:basic_case_id/editcase" => "basic_infos#edit_case" , :as => "edit_basic_case"
-  post "/:member_name/:basic_case_id/clonecase" => "basic_infos#clonecase" , :as => "clone_basic_case"
+  ##post "/:member_name/:basic_case_id/clonecase" => "basic_infos#clonecase" , :as => "clone_basic_case"
   get "/:member_name/:basic_case_id/showcase" => "basic_infos#show_case" , :as => "show_basic_case"
   #get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   #get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
@@ -161,6 +161,7 @@ Onestep::Application.routes.draw do
   post "/sort_operations" => "operations#sort"
   post "/commit_ready" => "basic_infos#commit_ready"
   post "/:basic_case_id/commit" => "basic_infos#case_commit", :as=>"basic_case_commit"
+  post "/:basic_case_id/free_commit" => "basic_infos#free_commit", :as=>"basic_case_free"
   post "/:basic_case_id/:doctor_name/new_doctor" => "basic_infos#new_doctor", :as=>"basic_case_new"
 
 end

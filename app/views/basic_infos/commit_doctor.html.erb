@@ -107,5 +107,11 @@
         $(".watched-courses-section").addClass("active");
       }
     });
+
+    $(".edit_basic_case").submit(function( event ) {
+	  if($.trim($('#basic_case_main_desc').val()) == ''){
+      		alert('Input can not be left blank');
+   	}	
+     });
   </script>
 <% end %>

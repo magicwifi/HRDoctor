@@ -28,9 +28,9 @@
   }
 }
 .tstart-toolbar-top {  
-            top: 5px; /*最上*/  
+            top: 0px; /*最上*/  
             color: #3E3E3E;  
-            left: 5px;  
+            left: 0px;  
             position: absolute;  
             text-align: left;  
             z-index: 10000;  
@@ -38,6 +38,11 @@
             _top: expression(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight); /* for IE6 */  
             overflow: visible;  
 }  
+
+#doctor_enter{
+	background:#ff0000;
+
+}
 
 .top-nav {
   float: left;
@@ -47,7 +52,7 @@
   a {
     font-weight: normal;
     display: block;
-    margin-left: 15px;
+    margin-left: 35px;
     transition: all 0.1s ease-in;
     -webkit-transition: all 0.1s ease-in 0;
     color: white;

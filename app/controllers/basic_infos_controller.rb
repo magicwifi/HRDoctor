@@ -11,14 +11,14 @@ class BasicInfosController < ApplicationController
     @user = current_user
     commit = params[:commit] 
     @doctor = Doctor.find_by_name(params[:doctor])	
-    @basic_case = @user.basic_cases.where(:edited=>true,:process=>nil,:doctor_id=>nil).last
+    @basic_case = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).where.not(:main_desc=>nil).last
     if commit == "commit" && !@basic_case.nil?  
-    	@basic_cases = @user.basic_cases.where(:edited=>true,:process=>nil,:doctor_id=>nil)
+    	@basic_cases = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).where.not(:main_desc=>nil)
 	#@basic_case = @user.basic_cases.where(:edited=>true,:doctor_id=>nil).last
 	render "new_order"
 	
     else
-    	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true,:edited=>false)
+    	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true)
     	body_sign =   BodySign.create!(:basic_case_id=>@basic_case.id,:swelling=>"",:status_name=>"")
     	@basic_case.body_sign = body_sign
     	@basic_case.save
@@ -37,9 +37,8 @@ class BasicInfosController < ApplicationController
     @user = current_user
     @doctor = Doctor.find_by_name(params[:doctor_name])	
     @basic_case = BasicCase.find(params[:basic_case_id])
-    @basic_case.edited = true;
     @basic_case.save 
-    @basic_cases = @user.basic_cases.where(:edited=>true,:process=>nil,:doctor_id=>nil)
+    @basic_cases = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).where.not(:main_desc=>nil)
     render "new_order"
   end
 
@@ -69,9 +68,9 @@ class BasicInfosController < ApplicationController
 
   def show
     @user = current_user
-    @basic_case = @user.basic_cases.where(:edited=>false).last
+    @basic_case = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).last
     if @basic_case.nil?
-    	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true,:edited=>false)
+    	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true)
     end
     	body_sign = @basic_case.body_sign
     if body_sign.nil?
@@ -189,6 +188,11 @@ class BasicInfosController < ApplicationController
   end
 
   def update_faq
+    main_desc = params[:basic_case][:main_desc]
+    if main_desc.nil? or main_desc.blank?
+    	redirect_to "/createmyfaq",:flash => { :success => 'main_desc not null .'}
+ 	return
+    end
     @user = current_user
     @basic_case = BasicCase.find(params[:basic_case][:id])
     @basic_case.update_attributes(params[:basic_case])
@@ -273,15 +277,28 @@ class BasicInfosController < ApplicationController
     end
   end
 
-  def case_commit
+  def free_commit
     @basic_case = BasicCase.find(params[:basic_case_id])
-    @basic_case.edited = true
+    @basic_case.process = "free"
+    #@basic_case.edited = true
     @basic_case.save    
     @user = current_user
     respond_to do |format|
     	format.html { redirect_to member_path(@user.name), :success => 'faq was successfully updated.' }
     end
   end
+
+  def case_commit
+    @basic_case = BasicCase.find(params[:basic_case_id])
+    #@basic_case.process = "free"
+    #@basic_case.edited = true
+    @basic_case.save    
+    @user = current_user
+    respond_to do |format|
+    	format.html { redirect_to "/explore_doctor", :success => 'faq was successfully updated.' }
+    end
+  end
+
   def edited_all_case
     @user = current_user
     raise ActiveRecord::RecordNotFound if @user.nil?
