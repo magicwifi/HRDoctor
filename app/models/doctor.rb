@@ -1,7 +1,16 @@
 class Doctor < ActiveRecord::Base
-  attr_accessible :name, :avatar,:use_gravatar, :main_desc, :price, :url
+  attr_accessible :name, :avatar,:use_gravatar, :main_desc, :price, :url,:doctor_id
   has_many :basic_cases
 
+  validates :name,  presence: true, 
+                    format: { without: /(\-| |\.|\/|\\)/, message: "不能包含横线, 斜线, 句点或空格" }
+  validates :main_desc, presence: true 
+  validates :price, presence: true, format: { with: /\d+/  }
+  validates :doctor_id, presence: true, uniqueness:true,format: { with: /\d+/  }
+  validates :url, presence: true, format: { with: /http:\/\/[^\s]*/   }
+  validates :avatar, presence: true, format: { with: /http:\/\/[^\s]*/   }
+
+  
 
   def image_data=(data)
     regex = /data:(.*);(.*),/
@@ -28,7 +37,7 @@ class Doctor < ActiveRecord::Base
   end
 
   def final_avatar_url
-    self.use_avatar? ? self.avatar_url : self.gravatar_url
+    self.use_avatar? ? self.avatar : self.gravatar_url
   end
 
 

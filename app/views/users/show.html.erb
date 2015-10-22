@@ -8,19 +8,16 @@
 <div class="menu-container">
   <ul class="menu">
     <li><a class="button" href="#">我的咨询记录</a></li>
-    <li><a class="active" href="<%= member_url(@user.name) %>">全部咨询</a></li>
-    <li><a class="<%= request.path == showmystatus_url(@user.name)? "active":"team" %>" href="<%= showmystatus_url(@user.name) %>">我的咨询状态</a></li>
-    <li><a class="<%= request.path == (member_url(@user.name)+'#paid-courses')? "active":"team" %>" href="<%= member_url(@user.name)+'#paid-courses' %>">已答复的咨询</a></li>
+    <li><a class="active" href="<%= member_url(@user.name) %>">历史咨询记录</a></li>
+    <li><a class="<%= request.path == showmystatus_url(@user.name)? "active":"team" %>" href="<%= showmystatus_url(@user.name) %>">编辑中的咨询</a></li>
+    <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">启动新的咨询</a></li>
     <li><a class="button" href="#">我的病历管理</a></li>
     <li><a class="<%= request.path == "/showmyinfo"? "active":"faq" %>" href="/showmyinfo">个人基本情况</a></li>
     <li><a class="<%= request.path == "/showmyhyper"? "active":"faq" %>" href="/showmyhyper">高血压史</a></li>
     <li><a class="<%= request.path == "/showmydiabetes"? "active":"faq" %>" href="/showmydiabetes">糖尿病史</a></li>
     <li><a class="<%= request.path == "/showmyhyperlipidemia"? "active":"faq" %>" href="/showmyhyperlipidemia">高脂血史</a></li>
-    <li><a class="<%= request.path == "/editmyoper"? "active":"faq" %>" href="/editmyoper">重大手术及外伤</a></li>
+    <li><a class="<%= request.path == "/editmyoper"? "active":"faq" %>" href="/editmyoper">重大手术及外伤史</a></li>
     <li><a class="<%= request.path == "/editmysick"? "active":"faq" %>" href="/editmysick">病历上传</a></li>
-    <li><a class="button" href="#">我要咨询</a></li>
-    <li><a class="<%= request.path == "/explore_doctor"? "active":"faq" %>" href="/explore_doctor">医生查询</a></li>
-    <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">发起咨询</a></li>
   </ul>
 </div>
   </div><!--end user-info -->
@@ -29,7 +26,7 @@
   <div id="user-course" >
     <ul class="main-nav">
       <li class="active" data-course-type="owned">
-        <a href="#owned-courses">全部历史咨询</a>
+        <a href="#owned-courses">我的咨询记录</a>
       </li>
     </ul>
 
@@ -37,20 +34,22 @@
     <table class="table table-bordered" style="width: 900px;">
       <thead>
         <tr>
-          <th>名称</th> <!-- Subject -->
-          <th>附件数</th>
-          <th>咨询状态</th>
+          <th>咨询日期</th> <!-- Subject -->
+          <th>咨询主题</th>
           <th>咨询医生</th>
+          <th>咨询状态</th>
+          <th>咨询类型</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
           <% @basic_cases.each do |basic_case| %>
         <tr>
+          <td><%= basic_case.updated_at.strftime '%Y-%m-%d %H:%M:%S' %></td>
           <td><%= link_to basic_case.main_desc.nil? ? "未填写":basic_case.main_desc, show_basic_case_path(basic_case.user.name,basic_case) %></td>
-          <td><%= basic_case.sick_assets.count %></td>
-          <td><%= basic_case.process.nil? ? "未提交": t(basic_case.process)  %> </td>
           <td> <%= link_to (basic_case.doctor.nil? ? "无" : basic_case.doctor.name), '#' %> </td>
+          <td><%= basic_case.process.nil? ? "未提交": t(basic_case.process)  %> </td>
+          <td><%= basic_case.process.nil? ? "未提交": t(basic_case.process)  %> </td>
           <td><%= link_to "查看咨询", show_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %></td>
         </tr>
           <% end %>

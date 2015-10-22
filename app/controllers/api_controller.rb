@@ -1,4 +1,5 @@
 class ApiController < ApplicationController
+
   def money
    respond_to do |f|
     f.json {

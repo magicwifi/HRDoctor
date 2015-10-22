@@ -106,7 +106,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_name(params[:member_name])
     raise ActiveRecord::RecordNotFound if @user.nil?
-    @basic_cases = @user == current_user ? @user.basic_cases : @user.basic_cases.where(:process=>"free",:doctor_id=>nil)
+    @basic_cases = @user == current_user ? @user.basic_cases.order("updated_at DESC") : @user.basic_cases.where(:process=>"free",:doctor_id=>nil).order("updated_at DESC")
    @activities = @user.activities.last(10).reverse
     session[:return_to] = request.url
   end
@@ -114,8 +114,7 @@ class UsersController < ApplicationController
   def showmystatus
     @user = User.find_by_name(params[:member_name])
     raise ActiveRecord::RecordNotFound if @user.nil?
-    @cases_commit_group = @user.basic_cases
-    @cases_public_group = @user.basic_cases.where(:process=>nil,:doctor_id=>nil)
+    @basic_cases = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).order("updated_at DESC")
     session[:return_to] = request.url
   end
 

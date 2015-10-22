@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019113554) do
+ActiveRecord::Schema.define(version: 20151021132518) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20151019113554) do
     t.datetime "updated_at"
     t.boolean  "use_gravatar"
     t.string   "url"
+    t.integer  "doctor_id"
   end
 
   create_table "hyperlipidemia", force: true do |t|
