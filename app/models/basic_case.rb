@@ -3,5 +3,18 @@ class BasicCase < ActiveRecord::Base
   belongs_to :user
   belongs_to :doctor
   has_one :body_sign
+  has_one :reply
   has_many :sick_assets
+
+
+  def self.show_basic_case(params)	
+    basic_case = BasicCase.find_by_id(params[:basic_case_id])
+    if  basic_case.nil?
+        {:check=>false, :code=>400,:msg=>"Not Find BasicCase",}
+    else
+        {:check=>true, :code=>200,:basic_case=>basic_case,:body_sign=>basic_case.body_sign,:sick_assets=>basic_case.sick_assets }
+    end	
+
+  end
+
 end

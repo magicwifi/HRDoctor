@@ -39,10 +39,16 @@ Onestep::Application.routes.draw do
   resources :operations
   resources :password_resets
   resources :doctors
+  post "/:basic_case_id/create_reply" => "replies#create"
   post "/:doctor_id/update_main_desc" => "doctors#update_main_desc"
   post "/:doctor_id/update_doctor_url" => "doctors#update_doctor_url"
   post "/:doctor_id/update_doctor_avatar" => "doctors#update_doctor_avatar"
   post "/:doctor_id/update_doctor_price" => "doctors#update_doctor_price"
+  get "/:doctor_id/index_basic_cases" => "api#show_basic_cases"
+  get "/:user_id/:basic_case_id/show_basic_info" => "api#show_basic_info"
+  get "/:basic_case_id/show_basic_case" => "api#show_basic_case"
+
+
 
   get "notifications" => "notifications#index", :as => "notifications"
   delete "notifications/:id" => "notifications#destroy", :as => "notification"

@@ -2,8 +2,7 @@
 class UsersController < ApplicationController
   layout 'users/edit', :only => [:edit, :edit_avatar]
   before_filter :redirect_to_root_if_logged_in, only: [:signup, :login]
-  before_filter :check_login, :only => [:edit, :update, :update_avatar, :edit_avatar, 
-                                        :restore_gravatar, :follow, :unfollow]
+  before_filter :check_login, :only => [:edit, :update, :update_avatar, :edit_avatar, :restore_gravatar, :follow, :unfollow]
 
   def login
     @user = User.new

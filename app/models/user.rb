@@ -134,4 +134,27 @@ class User < ActiveRecord::Base
   def followed_user_count
     @followed_user_count ||= self.followed_relationships.count
   end
+
+
+  def self.show_basic_info(params)	
+    user = User.find_by_id(params[:user_id])
+    basic_case = BasicCase.find_by_id(params[:basic_case_id])
+    if user.nil? or basic_case.nil?
+        {:check=>false, :code=>400,:msg=>"Not Find User",}
+    else
+	basic_info = user.basic_info
+	if !basic_info.edited or !basic_case.public 
+		{:check=>false, :code=>400,:msg=>"Not Open",}
+	else
+		hyperlipidemia = user.hyperlipidemia
+		diabetes = user.diabetes
+		hypertension = user.hypertension
+		operations = user.operations
+		sicknesses = user.sicknesses				
+		{:check=>true, :code=>200,:basic_info => basic_info,  :hyperlipidemia=>hyperlipidemia, :diabetes=>diabetes, :hypertension=>hypertension,  :operation=>operations, :sicknesses=>sicknesses }
+	end	
+
+    end
+
+  end
 end

@@ -48,7 +48,7 @@
           <td><%= basic_case.updated_at.strftime '%Y-%m-%d %H:%M:%S' %></td>
           <td><%= link_to basic_case.main_desc.nil? ? "未填写":basic_case.main_desc, show_basic_case_path(basic_case.user.name,basic_case) %></td>
           <td> <%= link_to (basic_case.doctor.nil? ? "无" : basic_case.doctor.name), '#' %> </td>
-          <td><%= basic_case.process.nil? ? "未提交": t(basic_case.process)  %> </td>
+          <td><%= basic_case.process.nil? ? "未提交": (basic_case.reply.nil? ? "待回复": "已回复")  %> </td>
           <td><%= basic_case.process.nil? ? "未提交": t(basic_case.process)  %> </td>
           <td><%= link_to "查看咨询", show_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %></td>
         </tr>

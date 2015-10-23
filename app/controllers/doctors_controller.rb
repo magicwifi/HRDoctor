@@ -73,9 +73,7 @@ skip_before_action :verify_authenticity_token
  	render :text => '{"result":400}'
 	return
      end
-
      doctor.update(:avatar=>params[:avatar])
-
      if doctor.save
  	render :text => '{"result":200}'
      else

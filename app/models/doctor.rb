@@ -8,7 +8,6 @@ class Doctor < ActiveRecord::Base
   validates :price, presence: true, format: { with: /\d+/  }
   validates :doctor_id, presence: true, uniqueness:true,format: { with: /\d+/  }
   validates :url, presence: true, format: { with: /http:\/\/[^\s]*/   }
-  validates :avatar, presence: true, format: { with: /http:\/\/[^\s]*/   }
 
   
 
@@ -48,4 +47,31 @@ class Doctor < ActiveRecord::Base
   def cropping?
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
   end
+
+ def self.show_basic_list(params)
+	doctor = Doctor.find_by_doctor_id(params[:doctor_id])
+	if doctor.nil?
+		  {:check=>false, :code=>400,:msg=>"Not Found Doctor"}
+ 	else
+		basic_list = []
+		basic_cases = doctor.basic_cases.limit(10)
+		basic_cases.each do |basic_case|
+			basic_case_id =  basic_case.id
+			basic_case_title = basic_case.main_desc
+			user_id = basic_case.user.id
+			if basic_case.public == true && basic_case.user.basic_info.edited == true
+				user_name = basic_case.user.basic_info.name 
+				user_age = basic_case.user.basic_info.age
+				user_gender = basic_case.user.basic_info.gender
+			else
+				user_name = "not open"
+				user_age = "not open"
+				user_gender = "not open"
+			end  
+			basic_list << {:basic_case_id =>basic_case_id, :basic_case_title=>basic_case_title, :user_id=>user_id, :user_name=>user_name, :user_age=>user_age, :user_gender=>user_gender }
+		end
+		{:check=>true, :result=>basic_list}
+	end
+  end
+
 end
