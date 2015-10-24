@@ -39,7 +39,7 @@ Onestep::Application.routes.draw do
   resources :operations
   resources :password_resets
   resources :doctors
-  post "/:basic_case_id/create_reply" => "replies#create"
+  post "/:basic_case_id/:doctor_id/create_reply" => "replies#create"
   post "/:doctor_id/update_main_desc" => "doctors#update_main_desc"
   post "/:doctor_id/update_doctor_url" => "doctors#update_doctor_url"
   post "/:doctor_id/update_doctor_avatar" => "doctors#update_doctor_avatar"

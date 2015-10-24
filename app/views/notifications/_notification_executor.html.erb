@@ -1,6 +1,7 @@
 <% executor = notification.executor %>
+<% reply = notification.notifiable %>
 
-<%= link_to member_path(executor.name) do %>
+<%= link_to doctor_path(reply.doctor) do %>
   <span><%= executor.name %></span>
 <% end %>
 <% if notification.notifiable_type == "Activity" %>

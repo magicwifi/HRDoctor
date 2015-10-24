@@ -1,0 +1,14 @@
+<% executor = notification.executor %>
+<% reply = notification.notifiable %>
+
+  <td class="notificon"><i class="fa fa-eye fa-2x"></i></td>
+  <td class="avatar">
+    <%= link_to doctor_path(reply.doctor) do %>
+      <%= image_tag executor.final_avatar_url, :class => "gavatar", :width => "30x30" %>
+    <% end %>
+  </td>
+  <td class="event">
+    <%= render :partial => "notification_executor", :locals => { :notification => notification } %>
+    <span class="annotate">回复了你的咨询: </span>
+    <%= link_to reply.basic_case.main_desc,show_basic_case_path(reply.basic_case.user.name,reply.basic_case) %>
+  </td>

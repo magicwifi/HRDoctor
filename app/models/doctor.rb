@@ -1,6 +1,7 @@
 class Doctor < ActiveRecord::Base
   attr_accessible :name, :avatar,:use_gravatar, :main_desc, :price, :url,:doctor_id
   has_many :basic_cases
+  has_many :replies
 
   validates :name,  presence: true, 
                     format: { without: /(\-| |\.|\/|\\)/, message: "不能包含横线, 斜线, 句点或空格" }
