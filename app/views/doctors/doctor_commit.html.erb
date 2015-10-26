@@ -3,6 +3,7 @@
 <br/>
 <form action = "/check_my_doctor" method = "post">
         <input type="hidden" name="doctor" value="<%= @doctor.doctor_id %>" >
+        <input type="hidden" name="process" value="commit" >
         <input type="submit" name="commit" value="love" >发起新的咨询</input>
 </form>
 <br/>
@@ -10,6 +11,7 @@
 <br/>
 <form action = "/check_my_doctor" method = "post">
         <input type="hidden" name="doctor" value="<%= @doctor.doctor_id %>" >
+        <input type="hidden" name="process" value="commit" >
         <input type="submit" name="commit" value="fee" >发起新的咨询</input>
 </form>
 <br>
@@ -17,5 +19,6 @@
 <br/>
 <form action = "/check_my_doctor" method = "post">
         <input type="hidden" name="doctor" value="<%= @doctor.doctor_id %>" >
+        <input type="hidden" name="process" value="commit" >
         <input type="submit" name="commit" value="plus" >发起新的咨询</input>
 </form>

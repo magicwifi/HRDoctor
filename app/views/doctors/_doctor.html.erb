@@ -1,3 +1,4 @@
+<% if process.blank? %>
 <%= link_to doctor_path(doctor), class: "course-thumb-container clearfix" do %>
   <div class="course-thumb center-course-thumb light-shadow">
     <div class="course-main">
@@ -14,4 +15,23 @@
       </div>
     </div>
   </div>
+<% end %>
+<% else %>
+<%= link_to doctor_commit_path(doctor), class: "course-thumb-container clearfix" do %>
+  <div class="course-thumb center-course-thumb light-shadow">
+    <div class="course-main">
+      <%= image_tag doctor.final_avatar_url %>
+      <div class="course-title">
+        <%= doctor.name %>
+      </div>
+      <div class="course-desc">
+        <%= doctor.main_desc %>
+      </div>
+      <div class="course-author">
+	咨询费:
+        <%= doctor.price.nil? ? 0 : doctor.price %>元
+      </div>
+    </div>
+  </div>
+<% end %>
 <% end %>

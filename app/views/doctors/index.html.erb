@@ -5,7 +5,7 @@
       <div class="courses">
         <% row.each do |doctor| %>
           <div class="course">
-            <%= render doctor %>
+            <%= render doctor, :process=>@process %>
           </div>
         <% end %>
       </div>

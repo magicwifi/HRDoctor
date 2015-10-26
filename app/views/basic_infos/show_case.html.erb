@@ -1,6 +1,12 @@
 <div class="about-main">
     <%= link_to '返回咨询列表', member_url(@user.name), :class => "button primary" %>
     <p style="height: 30px;" ></p>
+   <% if !@basic_case.reply.nil? %>
+    <h1>医生回复</h1>
+    <p>诊断结果 : <%= @basic_case.reply.sick_name %></p>
+    <p>问题回复 : <%= @basic_case.reply.main_desc %></p>
+    <p style="height: 70px;" ></p>
+   <% end %>
     <h1>一般信息</h1>
     <hr>
     <p>主诉 : <%= @basic_case.main_desc %></p>
@@ -33,9 +39,5 @@
     class: "minibutton primary" %>
 </div>
      <% end %>
-    <p style="height: 70px;" ></p>
-    <h1>医生回复</h1>
-    <p>诊断结果 : <%= @basic_case.reply.sick_name %></p>
-    <p>问题回复 : <%= @basic_case.reply.main_desc %></p>
 
 </div>

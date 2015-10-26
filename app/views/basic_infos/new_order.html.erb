@@ -60,19 +60,25 @@ $('#commit_faq').change(function() {
 
 
 
+ 	<% if @commit_status == 'love' %>
+    <div class="payment-form" style="margin-top: 70px;">
+      <%= form_tag "/checkfree" do %>
+        <%= hidden_field_tag :basic_case_process, @basic_case.id %>
+        <%= hidden_field_tag :doctor_id, @doctor.id %>
+        <%= hidden_field_tag :basic_case_public, @basic_case.public %>
+        <%= submit_tag '免费咨询(公开咨询)', :class => "button danger large right" %>
+      <% end %>
+    </div>
+ 	<% else %>
     <div class="payment-form">
       <%= form_tag "/checkout" do %>
         <%= hidden_field_tag :basic_case_id, @basic_case.id %>
         <%= hidden_field_tag :doctor_id, @doctor.id %>
+        <%= hidden_field_tag :commit_status, @commit_status %>
         <%= hidden_field_tag :basic_case_public, @basic_case.public %>
         <%= submit_tag t('checkout'), :class => "button primary large right" %>
       <% end %>
     </div>
-	<p style="height: 10px;" ></p>
-    <div class="payment-form" style="margin-top: 70px;">
-      <%= form_tag "/checkfree" do %>
-        <%= hidden_field_tag :basic_case_process, @basic_case.id %>
-        <%= submit_tag '免费咨询(公开咨询)', :class => "button danger large right" %>
       <% end %>
     </div>
   </div>

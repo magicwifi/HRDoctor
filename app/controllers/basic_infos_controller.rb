@@ -10,19 +10,27 @@ class BasicInfosController < ApplicationController
   def check_my_doctor
     @user = current_user
     commit = params[:commit] 
-    @doctor = Doctor.find_by_name(params[:doctor])	
+    process = params[:process] 
+    @doctor = Doctor.find_by_doctor_id(params[:doctor])	
     @basic_case = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).where.not(:main_desc=>nil).last
-    if commit == "commit" && !@basic_case.nil?  
+    if process == "commit" && !@basic_case.nil?  
     	@basic_cases = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).where.not(:main_desc=>nil)
+	@commit_status = commit
 	#@basic_case = @user.basic_cases.where(:edited=>true,:doctor_id=>nil).last
 	render "new_order"
 	
     else
-    	@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true)
-    	body_sign =   BodySign.create!(:basic_case_id=>@basic_case.id,:swelling=>"",:status_name=>"")
-    	@basic_case.body_sign = body_sign
-    	@basic_case.save
-    	@status_names =body_sign.status_name.split  
+	if @basic_case.nil?
+    		@basic_case = BasicCase.create!(:user_id =>@user.id,:public=>true)
+    		body_sign =   BodySign.create!(:basic_case_id=>@basic_case.id,:swelling=>"",:status_name=>"")
+    		@basic_case.body_sign = body_sign
+    		@basic_case.save
+	else
+		body_sign = @basic_case.body_sign
+	end
+	
+	@commit_status = commit
+    	@status_names = body_sign.status_name.split  
 	render "commit_doctor"
     end
   end
@@ -38,6 +46,7 @@ class BasicInfosController < ApplicationController
     @doctor = Doctor.find_by_name(params[:doctor_name])	
     @basic_case = BasicCase.find(params[:basic_case_id])
     @basic_case.save 
+    @commit_status = params[:commit_status]
     @basic_cases = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).where.not(:main_desc=>nil)
     render "new_order"
   end
@@ -48,7 +57,8 @@ class BasicInfosController < ApplicationController
     doctor = Doctor.find(params[:doctor_id])  	
     basic_case.doctor_id = doctor.id
     basic_case.public = params[:basic_case_public]
-    basic_case.process = "fee"
+    basic_case.process = params[:commit_status]
+	
     basic_case.save
     respond_to do |format|
         format.html { redirect_to member_path(@user.name), :success => 'commit successfully .' }
@@ -58,7 +68,10 @@ class BasicInfosController < ApplicationController
   def checkfree
     @user = current_user
     basic_case = BasicCase.find(params[:basic_case_process])
-    basic_case.process = "free"
+    basic_case.process = "love"
+    doctor = Doctor.find(params[:doctor_id])  	
+    basic_case.doctor_id = doctor.id
+    basic_case.public = params[:basic_case_public]
     basic_case.save
     respond_to do |format|
         format.html { redirect_to member_path(@user.name), :success => 'commit successfully .' }

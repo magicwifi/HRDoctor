@@ -39,6 +39,8 @@ Onestep::Application.routes.draw do
   resources :operations
   resources :password_resets
   resources :doctors
+  get "/doctor_index" => "doctors#doctor_index"
+  get "/doctors/commit/:id/" => "doctors#doctor_commit", :as=>"doctor_commit"
   post "/:basic_case_id/:doctor_id/create_reply" => "replies#create"
   post "/:doctor_id/update_main_desc" => "doctors#update_main_desc"
   post "/:doctor_id/update_doctor_url" => "doctors#update_doctor_url"
@@ -69,7 +71,6 @@ Onestep::Application.routes.draw do
 
   patch "/course" => "courses#update"
   get "/course" => "courses#index", :as => "course_index"
-  get "/doctor" => "doctors#index", :as => "doctor_index"
   post "/course" => "courses#create"
   get "/create_course" => "courses#new", :as => :create_course
 
@@ -172,6 +173,6 @@ Onestep::Application.routes.draw do
   post "/commit_ready" => "basic_infos#commit_ready"
   post "/:basic_case_id/commit" => "basic_infos#case_commit", :as=>"basic_case_commit"
   post "/:basic_case_id/free_commit" => "basic_infos#free_commit", :as=>"basic_case_free"
-  post "/:basic_case_id/:doctor_name/new_doctor" => "basic_infos#new_doctor", :as=>"basic_case_new"
+  post "/:basic_case_id/:doctor_name/:commit_status/new_doctor" => "basic_infos#new_doctor", :as=>"basic_case_new"
 
 end

@@ -9,8 +9,7 @@
   <ul class="menu">
     <li><a class="button" href="#">我的咨询记录</a></li>
     <li><a class="active" href="<%= member_url(@user.name) %>">历史咨询记录</a></li>
-    <li><a class="<%= request.path == showmystatus_url(@user.name)? "active":"team" %>" href="<%= showmystatus_url(@user.name) %>">编辑中的咨询</a></li>
-    <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">启动新的咨询</a></li>
+    <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">编辑中的咨询</a></li>
     <li><a class="button" href="#">我的病历管理</a></li>
     <li><a class="<%= request.path == "/showmyinfo"? "active":"faq" %>" href="/showmyinfo">个人基本情况</a></li>
     <li><a class="<%= request.path == "/showmyhyper"? "active":"faq" %>" href="/showmyhyper">高血压史</a></li>
@@ -34,7 +33,7 @@
     <table class="table table-bordered" style="width: 900px;">
       <thead>
         <tr>
-          <th>咨询日期</th> <!-- Subject -->
+          <th style="width: 170px;">咨询日期</th> <!-- Subject -->
           <th>咨询主题</th>
           <th>咨询医生</th>
           <th>咨询状态</th>
@@ -50,7 +49,7 @@
           <td> <%= link_to (basic_case.doctor.nil? ? "无" : basic_case.doctor.name), '#' %> </td>
           <td><%= basic_case.process.nil? ? "未提交": (basic_case.reply.nil? ? "待回复": "已回复")  %> </td>
           <td><%= basic_case.process.nil? ? "未提交": t(basic_case.process)  %> </td>
-          <td><%= link_to "查看咨询", show_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %></td>
+          <td><%= link_to "查看", show_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %></td>
         </tr>
           <% end %>
       </tbody>

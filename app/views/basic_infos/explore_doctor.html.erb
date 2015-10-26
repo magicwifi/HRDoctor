@@ -3,7 +3,7 @@
   <div class="boxed-group" id="login">
     <h3>医生查找</h3>
     <div class="boxed-group-inner">
-	<%= form_tag("/doctor", method: "get") do %>
+	<%= form_tag("/doctor_index", method: "get") do %>
         <dl class="form flattened">
           <dt>
            <%= label_tag 'room','按科室查询:' %>
@@ -14,7 +14,7 @@
         </dl>
         <dl class="form flattened">
           <dt>
-           <%= label_tag 'room','按科室查询:' %>
+           <%= label_tag 'rank','按职称查询:' %>
           </dt>
           <dd>
           <%= select_tag(:named,'<option value="zhuren" >主任医师</option><option value="fuzhuren" >副主任医师</option><option value="other" >其他</option> '.html_safe,{:class=>"supershort"} ) %>  

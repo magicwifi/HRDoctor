@@ -4,7 +4,20 @@ skip_before_action :verify_authenticity_token
      @doctor_groups = []
      @doctors = Doctor.all
      @doctors.in_groups_of(3, false) { |group| @doctor_groups << group }
+     @process = ""
   end
+  def doctor_index
+     @doctor_groups = []
+     @doctors = Doctor.all
+     @doctors.in_groups_of(3, false) { |group| @doctor_groups << group }
+     @process = "commit"
+     render 'index'
+  end
+
+  def doctor_commit
+     @doctor = Doctor.find(params[:id]);
+  end
+
 
   def show
      @doctor = Doctor.find(params[:id]);
@@ -13,7 +26,7 @@ skip_before_action :verify_authenticity_token
   def create
      doctor_id = params[:doctor_id].to_i
      price = params[:price].to_i
-     doctor = Doctor.new(:name=>params[:name],:main_desc=>params[:main_desc],:doctor_id=>doctor_id,:price=>price,:url=>params[:url],:avatar=>param[:avatar])
+     doctor = Doctor.new(:name=>params[:name],:main_desc=>params[:main_desc],:doctor_id=>doctor_id,:price=>price,:url=>params[:url],:avatar=>params[:avatar])
      if doctor.save
  	render :text => '{"result":200}'
      else
