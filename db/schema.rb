@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024062916) do
+ActiveRecord::Schema.define(version: 20151027121221) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -124,12 +124,17 @@ ActiveRecord::Schema.define(version: 20151024062916) do
     t.string   "name"
     t.string   "avatar"
     t.text     "main_desc"
-    t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "use_gravatar"
     t.string   "url"
     t.integer  "doctor_id"
+    t.string   "hospital"
+    t.string   "room"
+    t.string   "rank"
+    t.integer  "level"
+    t.string   "sex"
+    t.string   "speciality"
   end
 
   create_table "hyperlipidemia", force: true do |t|
@@ -236,6 +241,16 @@ ActiveRecord::Schema.define(version: 20151024062916) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "doctor_id"
+  end
+
+  create_table "reservations", force: true do |t|
+    t.integer  "support_number"
+    t.integer  "price"
+    t.string   "remark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
+    t.string   "price_type"
   end
 
   create_table "sick_assets", force: true do |t|

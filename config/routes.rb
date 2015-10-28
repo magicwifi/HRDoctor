@@ -45,7 +45,7 @@ Onestep::Application.routes.draw do
   post "/:doctor_id/update_main_desc" => "doctors#update_main_desc"
   post "/:doctor_id/update_doctor_url" => "doctors#update_doctor_url"
   post "/:doctor_id/update_doctor_avatar" => "doctors#update_doctor_avatar"
-  post "/:doctor_id/update_doctor_price" => "doctors#update_doctor_price"
+  post "/:doctor_id/update_doctor_reservation" => "doctors#update_doctor_reservation"
   get "/:doctor_id/index_basic_cases" => "api#show_basic_cases"
   get "/:user_id/:basic_case_id/show_basic_info" => "api#show_basic_info"
   get "/:basic_case_id/show_basic_case" => "api#show_basic_case"

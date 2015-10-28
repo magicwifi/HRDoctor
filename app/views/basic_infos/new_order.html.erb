@@ -35,7 +35,7 @@ $('#commit_faq').change(function() {
       <tbody>
         <tr>
           <td><%= @doctor.name %></td>
-          <td>￥<%= @doctor.price %></td>
+          <td>￥<%= (@price.nil? or @price.blank?) ? 0 : @price %> 元</td>
           <td><div id="main_commit" ><%= @basic_case.main_desc %></div></td>
         </tr>
         </tr>

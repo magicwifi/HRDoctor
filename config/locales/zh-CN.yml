@@ -103,6 +103,7 @@ zh-CN:
   fee: "在线咨询"
   love: "爱心咨询"
   plus: "加号咨询"
+  not_support_this_type: "该医生不支持这种咨询"
 
   #blog things
   blog: "好奇博客"

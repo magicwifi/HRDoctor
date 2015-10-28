@@ -1,12 +1,20 @@
 class Doctor < ActiveRecord::Base
-  attr_accessible :name, :avatar,:use_gravatar, :main_desc, :price, :url,:doctor_id
+  attr_accessible :name, :avatar,:use_gravatar, :main_desc,  :url,:doctor_id, :hospital, :room, :rank, :level, :sex, :speciality
   has_many :basic_cases
   has_many :replies
+  has_many :reservations
 
   validates :name,  presence: true, 
                     format: { without: /(\-| |\.|\/|\\)/, message: "不能包含横线, 斜线, 句点或空格" }
+  validates :hospital,  presence: true, 
+                    format: { without: /(\-| |\.|\/|\\)/, message: "不能包含横线, 斜线, 句点或空格" }
+  validates :room,  presence: true, 
+                    format: { without: /(\-| |\.|\/|\\)/, message: "不能包含横线, 斜线, 句点或空格" }
+  validates :rank,  presence: true, 
+                    format: { without: /(\-| |\.|\/|\\)/, message: "不能包含横线, 斜线, 句点或空格" }
   validates :main_desc, presence: true 
-  validates :price, presence: true, format: { with: /\d+/  }
+  validates :level, presence: true, format: { with: /\d+/  }
+  validates :sex, presence: true, format: { with: /male|female/  }
   validates :doctor_id, presence: true, uniqueness:true,format: { with: /\d+/  }
   validates :url, presence: true, format: { with: /http:\/\/[^\s]*/   }
 

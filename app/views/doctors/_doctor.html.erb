@@ -10,8 +10,11 @@
         <%= doctor.main_desc %>
       </div>
       <div class="course-author">
-	咨询费:
-        <%= doctor.price.nil? ? 0 : doctor.price %>元
+	<%  if !doctor.reservations.nil?  %>
+	<%  doctor.reservations.each do |reservation|  %>		
+	<%= t(reservation.price_type)  %> : ￥<%= (reservation.price.nil? or reservation.price.blank?) ? 0 : reservation.price %> 元<br/> 
+	<%  end  %>		
+	<%  end  %>
       </div>
     </div>
   </div>
@@ -28,8 +31,11 @@
         <%= doctor.main_desc %>
       </div>
       <div class="course-author">
-	咨询费:
-        <%= doctor.price.nil? ? 0 : doctor.price %>元
+	<%  if !doctor.reservations.nil?  %>
+	<%  doctor.reservations.each do |reservation|  %>		
+	<%= t(reservation.price_type)  %> : ￥<%= (reservation.price.nil? or reservation.price.blank?) ? 0 : reservation.price %> 元<br/> 
+	<%  end  %>		
+	<%  end  %>
       </div>
     </div>
   </div>

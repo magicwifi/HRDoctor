@@ -16,8 +16,14 @@ class BasicInfosController < ApplicationController
     if process == "commit" && !@basic_case.nil?  
     	@basic_cases = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).where.not(:main_desc=>nil)
 	@commit_status = commit
-	#@basic_case = @user.basic_cases.where(:edited=>true,:doctor_id=>nil).last
-	render "new_order"
+	reservation = @doctor.reservations.where(:price_type=>commit).first
+	if !reservation.nil?
+		@price = reservation.price
+		render "new_order"
+	else	
+		flash[:notice] = t('not_support_this_type')
+		redirect_to "/doctors"
+	end	
 	
     else
 	if @basic_case.nil?
@@ -48,7 +54,14 @@ class BasicInfosController < ApplicationController
     @basic_case.save 
     @commit_status = params[:commit_status]
     @basic_cases = @user.basic_cases.where(:process=>nil,:doctor_id=>nil).where.not(:main_desc=>nil)
-    render "new_order"
+    reservation = @doctor.reservations.where(:price_type=>@commit_status).first
+    if !reservation.nil?
+	@price = reservation.price
+	render "new_order"
+    else	
+	flash[:notice] = t('not_support_this_type')
+	redirect_to "/doctors"
+    end	
   end
 
   def checkout
