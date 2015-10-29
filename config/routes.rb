@@ -42,6 +42,7 @@ Onestep::Application.routes.draw do
   get "/doctor_index" => "doctors#doctor_index"
   get "/doctors/commit/:id/" => "doctors#doctor_commit", :as=>"doctor_commit"
   post "/:basic_case_id/:doctor_id/create_reply" => "replies#create"
+  post "/:basic_case_id/update_plus" => "replies#update_plus"
   post "/:doctor_id/update_main_desc" => "doctors#update_main_desc"
   post "/:doctor_id/update_doctor_url" => "doctors#update_doctor_url"
   post "/:doctor_id/update_doctor_avatar" => "doctors#update_doctor_avatar"

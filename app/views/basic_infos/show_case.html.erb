@@ -3,8 +3,9 @@
     <p style="height: 30px;" ></p>
    <% if !@basic_case.reply.nil? %>
     <h1>医生回复</h1>
-    <p>诊断结果 : <%= @basic_case.reply.sick_name %></p>
+    <p>诊断结果 : <%= @basic_case.reply.sick_name %> <%= @basic_case.reply.sick_sub_name %>  </p>
     <p>问题回复 : <%= @basic_case.reply.main_desc %></p>
+    <p>加号结果 : <%= @basic_case.reply.allow_plus ? "加号成功":"加号失败"  %></p>
     <p style="height: 70px;" ></p>
    <% end %>
     <h1>一般信息</h1>
