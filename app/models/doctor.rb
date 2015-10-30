@@ -63,7 +63,7 @@ class Doctor < ActiveRecord::Base
 		  {:check=>false, :code=>400,:msg=>"Not Found Doctor"}
  	else
 		basic_list = []
-		#basic_cases = doctor.basic_cases.limit(10)
+		basic_cases = doctor.basic_cases.where(:has_reply=>false).limit(10)
 		basic_cases.each do |basic_case|
 			basic_case_id =  basic_case.id
 			basic_case_title = basic_case.main_desc
