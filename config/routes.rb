@@ -159,7 +159,7 @@ Onestep::Application.routes.draw do
   get "/:member_name/:position/editoper" => "basic_infos#edit_operation"
   get "/:basic_case_id/:position/edit_sick_asset" => "basic_infos#edit_sick_asset"
   get "/:member_name/add_sickness" => "basic_infos#add_sickness"
-  get "/:member_name/add_oper" => "basic_infos#add_oper"
+  get "/:member_name/add_operation" => "basic_infos#add_operation"
   get "/:basic_case_id/add_sick_asset" => "basic_infos#add_sick_asset"
   get "/:member_name/:course_name/add_video" => "courses#add_video"
   get "/:member_name/:sick_case_name/add_sick_hist" => "sick_cases#add_sick_hist"

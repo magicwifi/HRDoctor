@@ -8,11 +8,11 @@
         <a href="#watched-courses">2.体征信息</a>
       </li>
       <li data-course-type="paid" id="paid-li" >
-        <a href="#paid-courses">3.附件上传</a>
+        <a href="#paid-courses">3.检查资料上传</a>
       </li>
     </ul>
     <div class="content owned-courses-section active clearfix">
-<div class="single-form-container">
+<div class="single-form-container" style="margin-left: 50px;">
   <div class="boxed-group" id="login">
     <h3>一般信息</h3>
     <div class="boxed-group-inner">
@@ -20,26 +20,26 @@
         <%= f.hidden_field :id %>
         <dl class="form">
           <dt>
-          <%= f.label '主诉' %>
+          <%= f.label '主诉' %>&nbsp;&nbsp;&nbsp;&nbsp;包括主要症状、首次发作至今为止持续时间,限20-50字
           </dt>
           <dd>
-          <%= f.text_area  :main_desc, :class => "short", :placeholder => "包括主要症状、首次发作至今为止持续时间,限20-50字，如：快走时胸闷、胸痛10年，加重1周" %>
+          <%= f.text_area  :main_desc, :class => "short", :placeholder => "如：快走时胸闷、胸痛10年，加重1周" %>
           </dd>
         </dl>
         <dl class="form">
           <dt>
-          <%= f.label '详细描述' %>
+          <%= f.label '详细描述' %>&nbsp;&nbsp;&nbsp;&nbsp;详细表述,内容包括：主要症状，每次持续时间、多于什么情况下发作（活动）、怎么缓解（服药还是其他处理），其他伴随不适, 限500字
           </dt>
           <dd>
-          <%= f.text_area  :detail_desc, :class => "short", :placeholder => "详细表述,内容包括：主要症状，每次持续时间、多于什么情况下发作（活动）、怎么缓解（服药还是其他处理），其他伴随不适, 限500字。" %>
+          <%= f.text_area  :detail_desc, :class => "short", :placeholder => "" %>
           </dd>
         </dl>
         <dl class="form">
           <dt>
-          <%= f.label '诊疗经过' %>
+          <%= f.label '诊疗经过' %>&nbsp;&nbsp;&nbsp;&nbsp;去那些医院看过、诊断是什么，怎么治疗，效果怎么样
           </dt>
           <dd>
-          <%= f.text_area  :treat_desc, :class => "short", :placeholder => "去那些医院看过、诊断是什么，怎么治疗，效果怎么样" %>
+          <%= f.text_area  :treat_desc, :class => "short", :placeholder => "" %>
 	</dd>
         </dl>
         <dl class="form">
@@ -47,21 +47,22 @@
           <%= f.label '目前情况' %>
           </dt>
           <dd>
-          <%= f.select(:now_desc,'<option value="better" >有所好转</option><option value="normal" >无明显变化</option><option value="worse" >持续加重</option>'.html_safe ) %>  
+          <%= f.select(:now_desc,'<option value="better" >有所好转</option><option value="normal" >无明显变化</option><option value="worse" >持续加重</option>'.html_safe , {}, { :class=>'supershort' }) %>  
           </dd>
         </dl>
 	<p style="height: 10px;" ></p>
-        <p> <%= f.submit '保存', :class => "button primary" %> </p>
+        <p> <%= f.submit '下一步', :class => "button primary" %> </p>
       <% end %>
     </div>
   </div>
 </div>
+
     </div>
     <div class="content paid-courses-section clearfix">
 <div class='container1'>
   <div class="tutorial-page">
     <div class="boxed-group">
-      <h3><i class="fa fa-plus fa-lg"></i> 咨询附件</h3>
+      <h3><i class="fa fa-plus fa-lg"></i> 检查资料列表</h3>
       <div class="boxed-group-inner videos-section">
         <div class="tutorial-nav added-videos-wrap">
             <%= render "all_added_sick_assets", :basic_case=>@basic_case %>

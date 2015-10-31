@@ -4,7 +4,7 @@
       <%= content_tag_for :li, sickness do %>
         <a class="video" href="<%= @user.name+ '/'+sickness.position.to_s + '/editsick.js' %>" data-remote='true'>
           <span class="video-info edit-video-info">
-            <%= sickness.title %>
+            <%= sickness.title %> &nbsp;&nbsp;&nbsp;&nbsp; <%= sickness.updated_at.strftime '%Y-%m-%d %H:%M:%S' %>
           </span>
         </a>
         <a href="<%= @user.name+ '/'+sickness.position.to_s + '/editsick.js' %>"

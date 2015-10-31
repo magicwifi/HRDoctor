@@ -71,7 +71,7 @@ $(document).ready(function(){
       <li>说明1  </li>
       <li>说明2 </li>
     </ul>
-    <p id="video-filename">文件名: <b><%= sickness.filename %></b></p>
+    <p id="video-filename">查看文件: <a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sickness.asset %>"><%= sickness.filename %></a></p>
     <%= qiniu_video_uploader_form callback_url: "/update_sickness/#{sickness.id}",
       callback_method: 'PATCH',
       bucket:        "#{Settings.qiniu.bucket}",

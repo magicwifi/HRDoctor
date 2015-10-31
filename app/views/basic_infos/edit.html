@@ -38,7 +38,7 @@ $('#basic_info_smokeinfo').on('change', function() {
           <%= f.label '性别' %>
           </dt>
           <dd>
-          <%= f.select(:gender,'<option value="male" >男</option><option value="female" >女</option>'.html_safe ) %>  
+          <%= f.select(:gender,'<option value="male" >男</option><option value="female" >女</option>'.html_safe, {}, { :class => 'supershort'} ) %>  
 	</dd>
         </dl>
         <dl class="form">
@@ -64,7 +64,7 @@ $('#basic_info_smokeinfo').on('change', function() {
           <%= f.label '吸烟状态' %>
           </dt>
           <dd>
-          <%= f.select(:smokeinfo,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe ) %>  
+          <%= f.select(:smokeinfo,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe, {}, { :class => 'supershort'} ) %>  
 	</dd>
         </dl>
 	<div id="display_smoke" style="display: none;">
@@ -82,7 +82,7 @@ $('#basic_info_smokeinfo').on('change', function() {
           <%= f.label '饮酒状态' %>
           </dt>
           <dd>
-          <%= f.select(:drink,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe ) %>  
+          <%= f.select(:drink,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe, {}, { :class => 'supershort'} ) %>  
 	</dd>
         </dl>
 	<p style="height: 10px;" ></p>

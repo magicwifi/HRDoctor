@@ -45,7 +45,7 @@ $('#hyperlipidemia_ishave').on('change', function() {
           <%= f.label '高脂血病史' %>
           </dt>
           <dd>
-          <%= f.select(:ishave,'<option value=true >有</option><option value=false >无</option>'.html_safe ) %>  
+          <%= f.select(:ishave,'<option value=true >有</option><option value=false >无</option>'.html_safe, {}, { :class => 'supershort'} ) %>  
           </dd>
         </dl>
 	<div id="display_hyperli">

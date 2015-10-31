@@ -48,7 +48,7 @@
       <li>说明1  </li>
       <li>说明2 </li>
     </ul>
-    <p id="video-filename">文件名: <b><%= sick_asset.filename %></b></p>
+    <p id="video-filename">查看文件: <a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_asset.asset %>"><%= sick_asset.filename %></a></p>
     <%= qiniu_video_uploader_form callback_url: "/update_sick_asset/#{sick_asset.id}",
       callback_method: 'PATCH',
       bucket:        "#{Settings.qiniu.bucket}",
