@@ -34,13 +34,11 @@
 }
 .add-video-box {
   .video-delete-btn {
-    padding-top: 20px;
+    padding-top: 30px;
     margin-right: -20px;
-    padding-left: 40px;
   }
   .primary-info {
     position: relative;
-    float: left;
     padding-top: 30px;
     #video-title, #video-desc {
       width: 380px !important;
@@ -50,7 +48,6 @@
     }
     .video-button-group {
       margin: 30px 120px 20px 0;
-      text-align: right;
       .cancel {
         margin-left: 20px;
       }
@@ -61,10 +58,9 @@
     height: 90px;
    }
   .secondary-info {
-    width: 300px;
-    height: 220px;
     text-align: center;
-    padding-top: 40px;
+    height: 350px;
+    padding-top: 20px;
     padding-left: 40px;
     position: relative;
     .upload-tip {

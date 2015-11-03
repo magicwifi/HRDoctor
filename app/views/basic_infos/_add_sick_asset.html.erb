@@ -35,6 +35,26 @@ $(document).ready(function() {
 });
 </script>
 <div class="add-video-box clearfix">
+  <div class="primary-info">
+    <%= form_for(SickAsset.new,:remote => true) do |f| %>
+      <dl class="form">
+        <dt><%= f.label '检查标题' %></dt>
+        <dd><%= f.text_field :title, id: "video-title",:placeholder => "如：一次冠心病检查" %></dd>
+      </dl>
+      <dl class="form">
+        <dt><%= f.label '症状简要描述' %></dt>
+        <dd>
+          <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8',:placeholder => "如: 快走时胸闷、胸痛10年,加重1周" %>
+        </dd>
+      </dl>
+      <dl class="form">
+        <dt><%= f.label '选择检查资料类型' %></dt>
+        <dd>
+          <%= f.select(:asset_type,'<option value="CT" >影相科(CT)相关检查</option><option value="exper" >实验室相关检查</option><option value="heart" >心电图相关检查</option>'.html_safe, {}, { :class => 'supershort' } ) %>  
+        </dd>
+      </dl>
+    <% end %>
+</div>
 	 <div class="secondary-info">
     <p id="video-filename"></p>
     <%= qiniu_video_uploader_form callback_url: sick_assets_path,
@@ -61,30 +81,20 @@ $(document).ready(function() {
         </div>
       </div>
     </script>
- </div>
-  <div class="primary-info">
-    <%= form_for(SickAsset.new,:remote => true) do |f| %>
-      <dl class="form">
-        <dt><%= f.label '检查标题' %></dt>
-        <dd><%= f.text_field :title, id: "video-title",:placeholder => "如：一次冠心病检查" %></dd>
-      </dl>
-      <dl class="form">
-        <dt><%= f.label '症状简要描述' %></dt>
-        <dd>
-          <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8',:placeholder => "如: 快走时胸闷、胸痛10年,加重1周" %>
-        </dd>
-      </dl>
-      <dl class="form">
-        <dt><%= f.label '选择检查资料类型' %></dt>
-        <dd>
-          <%= f.select(:asset_type,'<option value="CT" >影相科(CT)相关检查</option><option value="exper" >实验室相关检查</option><option value="heart" >心电图相关检查</option>'.html_safe, {}, { :class => 'supershort' } ) %>  
-        </dd>
-      </dl>
+
+<div class="third-info">
+</div>
       <div class="video-button-group">
-        <%= f.submit t('submit_video_info'), class: "button", :disabled => true,
-          data: {disable_with: t('video_saving') + "..."},
-          id: "submit_sick_asset_info" %>
+	<input class="button primary" data-disable-with="检查资料保存中..." disabled="disabled" id="submit_sick_asset_info" name="commit" type="submit" value="保存检查资料信息">
       </div>
-    <% end %>
+ </div>
 </div>
-</div>
+
+
+<% content_for :template_js do %>
+<script>
+$('input#submit_sick_asset_info').click(function(){
+         $('form#new_sick_asset').submit();
+});
+</script>
+<% end %>
