@@ -35,13 +35,29 @@ $(document).ready(function() {
 });
 </script>
 <div class="add-video-box clearfix">
+  <div class="primary-info">
+    <%= form_for(Operation.new) do |f| %>
+      <dl class="form">
+        <dt><%= f.label '手术/外伤名称' %></dt>
+        <dd><%= f.text_field :title, id: "video-title",:placeholder => "如：一次XX手术" %></dd>
+      </dl>
+      <dl class="form">
+        <dt><%= f.label '病情简要描述' %></dt>
+        <dd>
+          <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8',:placeholder => "如: 快走时胸闷、胸痛10年,加重1周" %>
+        </dd>
+      </dl>
+        <dl class="form">
+          <dt>
+          <%= f.label '手术/外伤日期' %>
+          </dt>
+          <dd>
+          <%= f.text_field  :sick_date, :class =>"supershort", :id=>"datepicker"   %>
+          </dd>
+        </dl>
+    <% end %>
+</div>
 	 <div class="secondary-info">
-    <ul class='upload-tip'>
-      <li>附件大小：最大100M</li>
-      <li>格式支持：xxx</li>
-      <li>说明1  </li>
-      <li>说明2 </li>
-    </ul>
     <p id="video-filename"></p>
     <%= qiniu_video_uploader_form callback_url: operations_path,
       bucket:        "#{Settings.qiniu.bucket}",
@@ -67,35 +83,12 @@ $(document).ready(function() {
         </div>
       </div>
     </script>
- </div>
 <div class="third-info"></div>
-  <div class="primary-info">
-    <%= form_for(Operation.new) do |f| %>
-      <dl class="form">
-        <dt><%= f.label '手术/外伤名称' %></dt>
-        <dd><%= f.text_field :title, id: "video-title",:placeholder => "如：一次XX手术" %></dd>
-      </dl>
-      <dl class="form">
-        <dt><%= f.label '病情简要描述' %></dt>
-        <dd>
-          <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8',:placeholder => "如: 快走时胸闷、胸痛10年,加重1周" %>
-        </dd>
-      </dl>
-        <dl class="form">
-          <dt>
-          <%= f.label '手术/外伤日期' %>
-          </dt>
-          <dd>
-          <%= f.text_field  :sick_date, :class =>"supershort", :id=>"datepicker"   %>
-          </dd>
-        </dl>
       <div class="video-button-group">
-        <%= f.submit '保存手术/外伤信息', class: "button", :disabled => true,
-          data: {disable_with: t('video_saving') + "..."},
-          id: "submit_operation_info" %>
+	<input class="button primary" data-disable-with="保存中..." disabled="disabled" id="submit_operation_info" name="commit" type="submit" value="保存存手术/外伤信息">
       </div>
-    <% end %>
-</div>
+ </div>
+ </div>
 </div>
 <% content_for :template_js do %>
   <script>
@@ -123,6 +116,9 @@ $(document).ready(function(){
 
 });
 
+$('input#submit_operation_info').click(function(){
+         $('form#new_operation').submit();
+});
 
 </script>
 <% end %>

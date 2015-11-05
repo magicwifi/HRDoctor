@@ -55,7 +55,6 @@ $(document).ready(function() {
           <%= f.text_field  :sick_date, :class =>"supershort", :id=>"datepicker"   %>
           </dd>
         </dl>
-      </div>
     <% end %>
 </div>
 	 <div class="secondary-info">
@@ -84,8 +83,11 @@ $(document).ready(function() {
         </div>
       </div>
     </script>
+<div class="third-info">
+</div>
       <div class="video-button-group">
-<input class="button" data-disable-with="检查资料保存中..." disabled="disabled" id="submit_sick_asset_info" name="commit"  value="保存检查资料信息">
+	<input class="button primary" data-disable-with="保存中..." disabled="disabled" id="submit_sickness_info" name="commit" type="submit" value="保存信息">
+      </div>
  </div>
 </div>
 <% content_for :template_js do %>
@@ -112,6 +114,9 @@ $(document).ready(function(){
 		}
 	});
 
+});
+$('input#submit_sickness_info').click(function(){
+         $('form#new_sickness').submit();
 });
 
 

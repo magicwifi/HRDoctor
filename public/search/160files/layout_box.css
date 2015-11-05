@@ -1,0 +1,129 @@
+@charset "utf-8";
+/*
+ * @Author By:LYD
+ * @Create Date:2012-6-29
+ * @Last Modify:
+*/
+#ec_cs_showdlg * {
+	margin:0;
+	padding:0;
+	font:normal 12px/normal Arial;
+}  /* 防止与主站样式冲突 */
+.txtCut {
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+/*=======邀请会话=======*/
+#ec_cs_showdlg {
+	background:url();
+	width:322px;
+	height:160px;
+	position:absolute;
+}
+#ec_cs_showdlg table {
+	border:none;
+	height:160px;
+}/*防止与主站样式冲突*/
+#ec_cs_showdlg table tr{
+	background:none !important;
+}
+#ec_cs_showdlg div, #ec_cs_showdlg h5, #ec_cs_showdlg h6 {
+	text-align:left
+}/*防止与主站样式冲突*/
+#ec_cs_showdlg table th, #ec_cs_showdlg table td {
+	vertical-align:top;
+	text-align:left;
+	border:none;
+	background:none;
+} /* 防止与主站样式冲突 */
+#ec_cs_showdlg .ec_cs_title {
+	color:#fff;
+	font-weight:bold;
+	width:240px;
+	padding:2px 0px 2px 10px;
+	*padding-top:6px;
+	text-align:left;
+	height:20px;
+	line-height:20px;
+	background:none; /*防止与主站样式冲突*/
+	overflow:hidden;
+}
+#ec_cs_showdlg .shutbtn {
+	float:right;
+	display:inline-block;
+	width:8px;
+	height:8px;
+	margin:6px 13px 0 0;
+	background:url(images/cslist_top_shut.gif) no-repeat 0 0;
+}
+#ec_cs_showdlg .tx_pic {
+	width:90px;
+	margin-top:14px;
+	height:66px;
+	background:url(images/invite_pic_bg.gif) no-repeat 11px 0px;
+	text-align:center;
+}
+#ec_cs_showdlg .tx_pic img {
+	display:inline;
+	width:50px;
+	height:50px;
+	margin-top:3px;
+}
+#ec_cs_showdlg .inconbox {
+	padding-top:13px;
+}
+#ec_cs_showdlg .intitle {
+	font-weight:bold;
+	margin-bottom:4px;
+	width:227px;
+	color:#333; 
+}
+#ec_cs_showdlg p.incontent {
+	width:210px;
+	line-height:130%;
+	word-wrap:break-word;
+	word-break:break-all;
+	text-align:left;
+	color:#333;
+	height:60px;
+	line-height:18px;
+	*line-height:17px;
+	white-space:normal;
+
+}
+#ec_cs_showdlg .toolbtn{
+	text-align:left
+}
+
+#ec_cs_showdlg .toolbtn a {
+	display:inline-block;
+	width:68px;
+	text-align:center;
+	height:25px;
+	*height:32px;
+	line-height:25px;
+	/*margin-right:20px;
+	margin-top:8px*/
+}
+#ec_cs_showdlg .toolbtn .acceptBtn {
+	background:url(images/invite_btn_1.png) no-repeat 0 0; float:right; 
+	height:24px;
+}
+#ec_cs_showdlg .toolbtn .cancelBtn {
+	/*background:url(images/invite_btn.png) no-repeat 0 0;*/
+	float:right; margin-right:80px;
+	height:24px;
+}
+#ec_cs_showdlg .toolbtn a:link, #ec_cs_showdlg .toolbtn a:visited, #ec_cs_showdlg .toolbtn a:hover {
+	color:#333;
+	text-decoration:none;
+}
+.toolbtn a{margin-left:10px !important;}
+
+#ec_cs_showdlg .ec_cs_seesion{height:56px;padding:0;}
+#ec_cs_showdlg .ec_cs_seesion .tx_pic{height:56px;*margin-top:0px;}
+#ec_cs_showdlg .incontent{*padding-top:0px;_height:56px !important;}
+#ec_cs_showdlg p.incontent{height:auto !important;*padding-top:0px;}
+
+#showdlg_table{padding:0 0 10px 0;height:145px !important;}

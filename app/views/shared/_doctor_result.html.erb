@@ -1,0 +1,45 @@
+<div class="area mb30 layout">
+      <div class="comm_left_main w650 fl">
+              <div class="comm_con w650 layout" id="thks_bind_id">
+          <div class="search_list layout">
+  <% if !doctor_groups.empty? %>
+    <% doctor_groups.each do |doctor| %>
+            <%= render "shared/doctor", :doctor=>doctor, :process=>process %>
+    <% end %>
+  <% else %>
+    <p>
+    No Doctors found
+    </p>
+  <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="side w280 fr">
+          
+                    
+          
+          
+              <!-- 推荐医生 start -->
+<!--      <div class="layout rec_doc ">
+        <div class="lord_hd layout pt0">
+            <h1 class="lord_title">推荐医生
+            </h1>
+            <a href="http://www.91160.com/search/doctor.html" class="more fr">更多&gt;</a>
+        </div>
+        <div class="">
+         <ul>
+                             
+             </ul>
+        </div>
+      </div>-->
+        <!-- 推荐医生 end -->
+      <div class="lord_hd layout pt0 mb25">
+      </div>
+        <div class="hot-doctor mb30 ie6pb30 layout mb25">
+      </div>
+       <div class="fr w280">
+      	        <div class="layout pt0 mb20">
+        </div>
+      </div>
+          </div>
+    </div>

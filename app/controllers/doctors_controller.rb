@@ -7,11 +7,12 @@ skip_before_action :verify_authenticity_token
      @process = ""
   end
   def doctor_index
-     @doctor_groups = []
-     @doctors = Doctor.all
-     @doctors.in_groups_of(3, false) { |group| @doctor_groups << group }
+     @doctor_groups = Doctor.all
+     #@doctor_groups = []
+     #@doctors = Doctor.all
+     #@doctors.in_groups_of(3, false) { |group| @doctor_groups << group }
      @process = "commit"
-     render 'index'
+     render 'search'
   end
 
   def doctor_commit
@@ -105,6 +106,11 @@ skip_before_action :verify_authenticity_token
      else
  	render :text => '{"result":400}'
      end
+   end
+
+   def search 
+     @doctor_groups = Doctor.all
+     @process = ""
    end
 
 end

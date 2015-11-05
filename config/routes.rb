@@ -175,5 +175,5 @@ Onestep::Application.routes.draw do
   post "/:basic_case_id/commit" => "basic_infos#case_commit", :as=>"basic_case_commit"
   post "/:basic_case_id/free_commit" => "basic_infos#free_commit", :as=>"basic_case_free"
   post "/:basic_case_id/:doctor_name/:commit_status/new_doctor" => "basic_infos#new_doctor", :as=>"basic_case_new"
-
+  get "/search/doctor" => "doctors#search"
 end

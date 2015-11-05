@@ -1,0 +1,273 @@
+@charset "utf-8";
+/*
+ * @Author By:LYD
+ * @Create Date:2012-6-29
+ * @Last Modify:
+*/
+#ec_cs_pannel * {
+	line-height:normal;
+	font-family:Arial;
+}
+.txtCut {
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+/*=======客户列表=======*/
+#ec_cs_pannel {
+	margin:0;
+	padding:0;
+	clear:both; /* 防止与主站样式冲突 */
+}
+#ec_cs_pannel table {
+	border-collapse:collapse;
+	border-spacing:0;
+	border:none;
+	text-align:inherit;
+} /*防止与主站样式冲突*/
+#ec_cs_pannel td {
+	padding:0;
+	border:none;
+}  /* 防止与主站样式冲突 */
+#ec_cs_pannel span, #ec_cs_pannel th {
+	margin:0;
+	padding:0;
+	border:0;
+}/*防止与主站样式冲突*/
+#ec_cs_pannel img {
+	border:none
+}
+#ec_cs_pannel, #ec_cs_pannel table {
+	width:138px;
+	margin:0;
+}
+#ec_cs_pannel_mid th, #ec_cs_pannel_mid td {
+	/*background:url(images/cslist_mid_bg.png) repeat-y 0 0;*/
+}
+#ec_cs_pannel .ec_Title {
+	height:69px;
+	/*background:url(images/cslist_top_bg.png) no-repeat 0 top;*/
+	cursor:default;
+}
+#ec_cs_pannel .ec_Title h2.txtCut {
+    background: none repeat scroll 0 0 transparent;
+    border: none; /*防止主站样式冲突 */
+    clear: none;
+    color: #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 18px;
+    margin: 9px 0 0 10px;
+    padding: 0 !important;
+    text-align: left;
+    text-indent: 0;
+    width: 80px;
+}
+/*繁体*/
+#ec_cs_pannel .ec_Title_ft {
+	height:69px;
+	background:url(images/cslist_top_bg_ft.png) no-repeat 0 top;
+	cursor:default;
+}
+#ec_cs_pannel .ec_Title_ft h2.txtCut {
+    background: none repeat scroll 0 0 transparent;
+    border: none; /*防止主站样式冲突 */
+    clear: none;
+    color: #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 18px;
+    margin: 8px 0 0 10px;
+    padding: 0 !important;
+    text-align: left;
+    text-indent: 0;
+    width: 80px;
+}
+/*繁体end*/
+/*英文*/
+#ec_cs_pannel .ec_Title_en {
+	height:69px;
+	background:url(images/cslist_top_bg_en.png) no-repeat 0 top;
+	cursor:default;
+}
+#ec_cs_pannel .ec_Title_en h2.txtCut {
+    background: none repeat scroll 0 0 transparent;
+    border: none; /*防止主站样式冲突 */
+    clear: none;
+    color: #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 18px;
+    margin: 8px 0 0 10px;
+    padding: 0 !important;
+    text-align: left;
+    text-indent: 0;
+    width: 80px;
+}
+/*英文end*/
+#ec_cs_pannel .ec_shut {
+	background:url(images/cslist_top_shut.gif) no-repeat 0 0;
+	float:right;
+	display:inline-block;
+	width:8px;
+	height:8px;
+	font-size:0;
+	margin:9px 7px 0 0;
+	cursor:pointer;
+}
+#ec_cs_pannel .ec_listTitle {
+	text-align:center;
+}/*防止与主站样式冲突*/
+#ec_cs_pannel .ec_listTitle h3 {
+	display:block; /*防止与主站样式冲突*/
+	text-align:center;
+	/*background:transparent url(images/cslist_mid_Tbg.gif) no-repeat 0 0;*/
+	height:22px;
+	padding:2px 0 0;
+	margin-left:7px;
+	_margin-left:0px;
+	*margin-left:0px;
+	font:normal 12px/normal "simsun";
+	color:#1E3E93;
+	cursor:pointer;
+	width:126px;
+	border:none; /* 防止与主站样式冲突 */
+	position:static; /* 防止与主站样式冲突 */
+	line-height:22px !important;
+}
+#ec_cs_pannel .ec_listTitle h3 img {
+	vertical-align:top;
+	margin-left:3px;
+	display:inline;
+	float:right;
+	position:static; /* 防止与主站样式冲突 */
+}
+#ec_cs_pannel .ec_ecbox, #ec_cs_pannel .ec_ecboxOver {
+	width:133px;
+	padding:4px 0 2px;
+	margin:0 3px;
+	height:17px;
+	cursor:pointer;
+	overflow:visible;/*防止与主站样式冲突*/
+}
+#ec_cs_pannel .ec_ecbox {
+	/*border-top:1px solid #9fcefa;
+	border-bottom:1px solid #9fcefa;
+	background:#9fcefa;*/
+	margin-top:1px;
+	margin-bottom:1px
+	
+}
+#ec_cs_pannel .ec_ecbox span {
+	/*display:block !important;  在线客服列表 显示名字 注释后显示为省略号 */
+}
+#ec_cs_pannel .ec_ecboxOver {
+	border-top:1px solid #8fbae2;
+	border-bottom:1px solid #8fbae2;
+	background:#d5e8fa;
+	width:133px
+	/*display:block; 防止与主站样式冲突*/
+}
+#ec_cs_pannel .ec_ecboxOver .ec_person span {
+	font-weight:bold;
+	color:#000;
+}
+#ec_cs_pannel .ec_ecboxOver span {
+	display:block;
+}
+#ec_cs_pannel .ec_stat, #ec_cs_pannel .ec_person {
+	margin-top:2px;
+	float:left;
+}
+#ec_cs_pannel .ec_stat img {
+	margin:0 3px
+}
+#ec_cs_pannel .ec_person {
+	width:63px;
+	margin-right:3px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	color:#000;
+	text-align:left;
+}
+#ec_cs_pannel .ec_person a:link, #ec_cs_pannel .ec_person a:visited, #ec_cs_pannel .ec_person a:hover {
+	color:#666;
+	text-decoration:none;
+	font-size:12px;
+}
+#ec_cs_pannel .ec_person b.talking {
+	width:12px;
+	height:14px;
+}
+#ec_cs_pannel .ec_person b.talking:hover {
+	background:url(images/talking.gif) no-repeat top left;
+}
+#ec_cs_pannel span {
+	color:#666;
+	font-size:12px;
+/*	height:12px; */
+/*	display:block; */
+	margin-top:-1px;
+	*margin-top:0;
+} /* 防止与主站样式冲突 */
+#ec_cs_pannel a.ec_msn, #ec_cs_pannel a.ec_qq, #ec_cs_pannel a.ec_skype, #ec_cs_pannel a.ec_yahoo, #ec_cs_pannel a.ec_ww {
+	float:right;
+	font-size:0;
+	width:18px;
+	margin:0;
+}/* 防止与主站样式冲突 */ 
+a.ec_msn img, a.ec_qq img, a.ec_skype img, a.ec_yahoo img, a.ec_ww img {
+	border:0;
+}
+a.ec_msn:hover img, a.ec_qq:hover img, a.ec_skype:hover img, a.ec_yahoo:hover img, a.ec_ww:hover img {
+	margin-top:1px;
+	border:0;
+}
+.ec_freecall_cn {
+	height:56px;
+	background:url(images/cslist_btm_400bg.png) no-repeat;
+	font-weight:bold
+}
+.ec_freecall_cn strong{font-size:14px; color:#FFFFFF; padding-left:18px}
+.ec_freecall_cn a{ font-size:14px; text-decoration:none; color:#FFFFFF; padding-left:18px}
+/**空背景 **/
+.ec_freenone {
+	height:56px;
+	/*background:url(images/cslist_btm_400bg.png) no-repeat;	*/
+}
+.ec_freenone strong{font-size:14px; color:#FF6600; padding-left:18px; }
+.ec_freenone a{ font-size:14px; text-decoration:none; color:#FF6600; padding-left:18px; }
+/**空背景end **/
+.ec_freecall_en {
+	height:42px;
+	background:url(images/cslist_btm_bg_en.gif) no-repeat 0 bottom;
+}
+.ec_freecall_tw {
+	height:42px;
+	background:url(images/cslist_btm_bg_tw.gif) no-repeat 0 bottom;
+}
+.ec_nofreecall {
+	height:17px;
+	/*background:url(images/cslist_btm_bg.png) no-repeat 0 bottom;*/
+}
+#ec_cs_pannel .ec_freecall_cn span, #ec_cs_pannel .ec_freecall_en span, #ec_cs_pannel .ec_freecall_tw span {
+	display:block;
+	width:101px;
+	height:26px;
+	margin-left:14px;
+	cursor:pointer;
+}
+
+
+/*在线客服*/
+.kf_title{margin:1px 0px 0px 0px;line-height:21px;color:#333;width:127px;height:21px;background:#f00;text-align:center;font-size:12px;cursor:pointer;font-weight:normal;}
+.kf_arrow_down,.kf_arrow_right{display:inline-block;height:22px;width:107px;padding:0px 10px 0px 0px;line-height:22px !important;}
+.kf_arrow_down{background:url(images/arrow_down.png) no-repeat  right center;}
+.kf_arrow_right{background:url(images/arrow_right.png) no-repeat  right center;}
+
+/*#ec_cs_pannel_btm .ec_nofreecall{height:100px;}
+#ec_cs_pannel{background:none !important;}*/

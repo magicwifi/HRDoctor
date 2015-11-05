@@ -41,6 +41,10 @@ zh-CN:
   public: "公开本咨询"
   publish_time: "发布时间"
   update_time: "最近更新:"
+  zhuren: "主任"
+  fuwai: "阜外医院"
+  xinxueguan: "心血管"
+  yishi: "医师"
 
   #order
   order:

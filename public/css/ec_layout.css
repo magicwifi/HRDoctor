@@ -1,0 +1,27 @@
+/**
+ * @Filename:
+ * @Author By:LYD
+ * 共有样式
+ */
+.ec_syn{ padding:10px 10px}
+.ec_syn img{ width:165px; height:70px}
+.ec_syn h2{ height:30px; line-height:30px; overflow:hidden; font-size:14px}
+.ec_syn p{ line-height:25px; height:220px; overflow:hidden; text-indent:2em}
+
+img.pic_thin{ /**简约 */
+    max-width:120px;
+    max-height:90px;
+    width: expression(this.width > 120 && this.width / 120 >= this.height / 120 ? 120 : true);
+    height: expression(this.height > 90 && this.width / 90 < this.height / 100 ? 100 : true);
+}
+
+img.pic_fad{ /**时尚 */
+	max-width:130px;
+    max-height:90px;
+    width: expression(this.width > 130 && this.width / 130 >= this.height / 130 ? 130 : true);
+    height: expression(this.height > 90 && this.width / 90 < this.height / 100 ? 100 : true);
+}
+
+/*2015-03-04 zhangjie 在线客服广告图片居中*/
+.ec_ad_td a{display:block;width:100%;text-align: center;}
+.ec_ad_td .pic_fad{display:inline-block;_display:inline;_zoom:1;}
