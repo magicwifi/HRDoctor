@@ -150,6 +150,7 @@ Onestep::Application.routes.draw do
   get "/:member_name/:basic_case_id/editcase" => "basic_infos#edit_case" , :as => "edit_basic_case"
   ##post "/:member_name/:basic_case_id/clonecase" => "basic_infos#clonecase" , :as => "clone_basic_case"
   get "/:member_name/:basic_case_id/showcase" => "basic_infos#show_case" , :as => "show_basic_case"
+  get "/:member_name/:basic_case_id/show_commit_case" => "basic_infos#show_commit_case" , :as => "show_commit_case"
   #get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   #get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:sick_case_name(/:position)/showcase" => "sick_cases#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom

@@ -114,6 +114,13 @@ class BasicInfosController < ApplicationController
     @status_names =body_sign.status_name.split  
   end
 
+  def show_commit_case
+    @user = current_user
+    @basic_case = BasicCase.find(params[:basic_case_id].to_i)
+    body_sign = @basic_case.body_sign
+    @status_names =body_sign.status_name.split  
+  end
+
   def edit_case
     @user = current_user
     @basic_case = BasicCase.find(params[:basic_case_id].to_i)

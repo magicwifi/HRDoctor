@@ -29,7 +29,20 @@ select.supershort {
 	width:150px;
 }
 
+.dl-horizontal dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 900;
+}
 
-
+.dl-horizontal dd {
+    margin-left: 180px;
+    font-weight: 10;
+}
 
 

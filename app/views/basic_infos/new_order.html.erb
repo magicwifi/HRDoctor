@@ -49,14 +49,8 @@ $('#commit_faq').change(function() {
         </div>
 
 	<p style="height: 10px;" ></p>
-提交其他咨询: 
-<select class="supershort" id="commit_faq">
-	 <% @basic_cases.all.each do |ss| %>
-
-  <option value ="<%= ss.id %>"><%= ss.main_desc %></option>
-<% end %>
-</select>
-	<p style="height: 40px;" ></p>
+  <%= link_to '浏览咨询详情', show_commit_case_path(@basic_case.user.name,@basic_case), class: "minibutton danger" %>
+	<p style="height: 10px;" ></p>
 
 
 

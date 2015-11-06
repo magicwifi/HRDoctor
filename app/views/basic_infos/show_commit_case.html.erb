@@ -1,19 +1,6 @@
 <div class="about-main">
-    <%= link_to '返回咨询列表', member_url(@user.name), :class => "button primary" %>
+   <button class="primary button" onclick="history.go(-1)" >返回付款页面</button>
     <p style="height: 30px;" ></p>
-   <% if !@basic_case.reply.nil? %>
-    <h1>医生回复</h1>
-    <hr>
-<dl class="dl-horizontal">
-      <dt>诊断结果 : </dt>
-      <dd><%= @basic_case.reply.sick_name %> <%= @basic_case.reply.sick_sub_name %></dd>
-      <dt>问题回复 : </dt>
-      <dd><%= @basic_case.reply.main_desc %></dd>
-      <dt>加号结果 : </dt>
-      <dd><%= @basic_case.reply.allow_plus ? "加号成功":"加号失败"  %></dd>
-    </dl>
-    <p style="height: 40px;" ></p>
-   <% end %>
     <h1>一般信息</h1>
     <hr>
 <dl class="dl-horizontal">

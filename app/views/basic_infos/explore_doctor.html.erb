@@ -1,36 +1,118 @@
 
-<div class="single-form-container" style="margin-left: 50px;">
-  <div class="boxed-group" id="login">
-    <h3>医生查找</h3>
-    <div class="boxed-group-inner">
-	<%= form_tag("/doctor_index", method: "get") do %>
-        <dl class="form flattened">
-          <dt>
-           <%= label_tag 'room','按科室查询:' %>
-          </dt>
-          <dd>
-          <%= select_tag(:room,'<option value="guanxin" >心血管</option><option value="gaoxueya" >高血压</option><option value="xinlve" >心律失常</option><option value="xinji" >心肌病</option><option value="xinzang" >先天性心脏病</option><option value="other" >其他疾病</option> '.html_safe,{:class=>"supershort"} ) %>  
-          </dd>
-        </dl>
-        <dl class="form flattened">
-          <dt>
-           <%= label_tag 'rank','按职称查询:' %>
-          </dt>
-          <dd>
-          <%= select_tag(:named,'<option value="zhuren" >主任医师</option><option value="fuzhuren" >副主任医师</option><option value="other" >其他</option> '.html_safe,{:class=>"supershort"} ) %>  
-          </dd>
-        </dl>
-        <dl class="form flattened">
-          <dt>
-           <%= label_tag 'keyword','按关键字查询:' %>
-          </dt>
-          <dd>
-          <%= text_field_tag  'before_high', nil,class: "supershort", placeholder: "请输入2-3位数字" %>
-           </dd>
-        </dl>
-	<p style="height: 10px;" ></p>
-        <p> <%=submit_tag '确认查找', :class => "button primary" %> </p>
-      <% end %>
+<div class="fl w1200 gdl_con">
+      <div class="layout">
+        <h2>找医生咨询</h2>
+        <div id="consult_dep" class="fl gdl_tab ">
+            <h1 style="color: #F30202;font-size: 18px;">300名心血管专家咨询，加号</h1>
+        </div>
+        <a href="" class="fr more "> <span></span> <i class="more_i g_icon"></i> </a> </div>
+      <div class="layout cons">
+        <div id="department" class="list_block layout">
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tbody><tr>
+               <td style=" width:100px;margin-right:20px;font-size:18px;" align="right">
+            心脏疾病: &nbsp;&nbsp;
+              </td>
+               <td style=" width:90px;"> <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;width:20px;height:30px;vertical-align:middle;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">心肌病</label></td>
+               <td style=" width:120px;"> <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;width:20px;height:30px;vertical-align:middle;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">冠心病</label></td>
+               <td style=" width:120px;"> <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;width:20px;height:30px;vertical-align:middle;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">心率失常</label></td>
+               <td style=" width:120px;"> <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;width:20px;height:30px;vertical-align:middle;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">先天心脏病</label></td>
+               <td style=" width:120px;"> <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;width:20px;height:30px;vertical-align:middle;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">心脏瓣膜病</label></td>
+               <td style=" width:120px;"> <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;width:20px;height:30px;vertical-align:middle;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">心包疾病</label></td>
+               <td style=" width:120px;"> <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;width:20px;height:30px;vertical-align:middle;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">其他疾病</label></td>
+              </tr>
+             </tbody></table>
+         </div>
+        <div id="department" class="list_block layout">
+          <table>
+          <tbody><tr>
+           <td style=" width:100px;margin-right:20px;font-size:18px;" align="right">
+          症状特征: &nbsp;&nbsp;
+           </td>
+           <td style=" width:90px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;width:20px;height:30px;vertical-align:middle;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">&nbsp;胸闷&nbsp;</label>
+          </td>
+           <td style=" width:120px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">呼吸困难</label>
+          </td>
+           <td style=" width:120px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">心悸</label>
+          </td>
+           <td style=" width:120px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">胸痛</label>
+          </td>
+           <td style=" width:120px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">发热</label>
+          </td>
+           <td style=" width:120px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">眼前发黑</label>
+          </td>
+           <td style=" width:140px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">一过性意识丧失</label>
+          </td>
+          </tr>
+          <tr>
+           <td style=" width:100px;">
+           </td>
+           <td style=" width:90px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">晕倒</label>
+          </td>
+           <td style=" width:120px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">双下肢肿胀</label>
+          </td>
+           <td style=" width:120px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">四肢紫绀</label>
+          </td>
+           <td style=" width:120px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">皮下淤血</label>
+          </td>
+           <td style=" width:120px;">
+               <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">头晕、头痛</label>
+          </td>
+           <td style=" width:120px;">
+               <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">头胀</label>
+          </td>
+           <td style=" width:120px;">
+               <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">视物模糊</label>
+          </td>
+           </tr>
+            </tbody></table>
+        </div>
+        <div id="department" class="list_block layout">
+          <table>
+           <tbody><tr>
+           <td style=" width:100px;margin-right:20px;font-size:18px;" align="right">
+          地域: &nbsp;&nbsp;
+           </td>
+           <td style=" width:90px;">
+           
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">北京</label>
+           </td>
+           <td style=" width:100px;">
+               <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">上海</label>
+           </td>
+           </tr>
+         </tbody></table>
+        </div>
+        <div id="department" class="list_block layout">
+          <table>
+          <tbody><tr>
+           <td style=" width:100px;margin-right:20px;font-size:18px;" align="right">
+          医院: &nbsp;&nbsp;
+           </td>
+           <td style=" width:100px;">
+              <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">阜外医院</label>
+           </td>
+           <td style=" width:100px;">
+               <input name="autoLogin" type="checkbox" value="1" class="check-box" id="lo_nexr" style="padding: 0 12px;vertical-align:middle;width:20px;height:30px;"><label for="lo_nexr" style="padding: 0 4px;vertical-align:middle;">协和医院</label>
+           </td>
+           </tr><tr>
+          </tr></tbody></table>
+        </div>
+        
+        <div id="department" class="list_block layout" style="margin:0 auto;text-align:center; ">
+			<p></p>
+                  <input class="" name="commit" onclick="window.location='/doctor_index';"  id="btn_search_1" type="submit" style="background-color:#02c8b1;color:#fff;font-size:24px;padding:5px 35px 8px" value="找医生咨询加号">
+        </div>
+      </div>
     </div>
-  </div>
-</div>
