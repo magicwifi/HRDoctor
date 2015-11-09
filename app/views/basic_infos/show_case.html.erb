@@ -48,13 +48,13 @@
 
     <% @basic_case.sick_assets.each do |sick_asset| %>
     <p style="height: 40px;" ></p>
-    <h3> 附件名称 : <%= sick_asset.title %> </h3>
+    <h3> 附件标题: <%= (sick_asset.title.nil? or sick_asset.title.blank?) ? "未填写":sick_asset.title  %> </h3>
     <hr>
 <dl class="dl-horizontal">
       <dt>附件描述 : </dt>
-      <dd><%= sick_asset.desc %></dd>
+      <dd><%= (sick_asset.desc.nil? or sick_asset.desc.blank? ) ? "未填写":sick_asset.desc %></dd>
       <dt>附件类型 : </dt>
-      <dd><%= t(sick_asset.asset_type) %></dd>
+      <dd><%= sick_asset.asset_type.nil? ? "未填写":t(sick_asset.asset_type) %></dd>
       <dt>查看附件 : </dt>
       <dd><a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_asset.asset %>"><%= sick_asset.filename %></a></dd>
     </dl>
