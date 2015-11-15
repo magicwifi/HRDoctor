@@ -7,6 +7,7 @@ skip_before_action :verify_authenticity_token
      @process = ""
   end
   def doctor_index
+     @user = current_user
      @doctor_groups = Doctor.all
      #@doctor_groups = []
      #@doctors = Doctor.all

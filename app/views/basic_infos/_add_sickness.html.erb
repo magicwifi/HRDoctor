@@ -55,6 +55,9 @@ $(document).ready(function() {
           <%= f.text_field  :sick_date, :class =>"supershort", :id=>"datepicker"   %>
           </dd>
         </dl>
+      <dl class="form">
+        <dt><%= f.label '上传病历扫描图像' %></dt>
+      </dl>
     <% end %>
 </div>
 	 <div class="secondary-info">
@@ -66,11 +69,7 @@ $(document).ready(function() {
       custom_fields: { user_id: user.id },
       progress_bar_id: 'progress-bar' do %>
 
-      <a class="fileupload-btn fileupload-video">
-        <i class="fileupload-icon fa fa-upload"></i>
         <input id="fileupload" name="file" type="file">
-        <span id="upload-button-text">上传附件</span>
-      </a>
       <div class="bar" id="progress-bar"></div>
     <% end %>
 
@@ -86,7 +85,7 @@ $(document).ready(function() {
 <div class="third-info">
 </div>
       <div class="video-button-group">
-	<input class="button primary" data-disable-with="保存中..." disabled="disabled" id="submit_sickness_info" name="commit" type="submit" value="保存信息">
+	<input class="button primary" data-disable-with="保存中..." disabled="disabled" id="submit_sickness_info" name="commit" type="submit" value="暂时保存">
       </div>
  </div>
 </div>

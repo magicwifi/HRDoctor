@@ -77,7 +77,8 @@ class Doctor < ActiveRecord::Base
 					end
 				end
 			end
-			if basic_case.public == true && basic_case.user.basic_info.edited == true
+			#if basic_case.public == true && basic_case.user.basic_info.edited == true
+			if basic_case.user.basic_info.edited == true
 				user_name = basic_case.user.basic_info.name 
 				user_age = basic_case.user.basic_info.age
 				user_gender = basic_case.user.basic_info.gender

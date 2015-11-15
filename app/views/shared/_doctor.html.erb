@@ -6,7 +6,16 @@
                   <%= image_tag doctor.final_avatar_url %>
                 </div>
                 <div class="right_mun"></div>
-                <div class="right_btn"> <%= link_to doctor_path(doctor), class: "button primary" do %> 医生空间 <% end %><em>|</em> 
+                <div class="right_btn">
+		<form action="http://123.56.109.236/hryisheng/doctor.action" method="post">
+			<input type="hidden" name="doctorId" value="<%=doctor.doctor_id%>">
+			<input type="hidden" name="neworsubmit" value="new">
+			<input type="hidden" name="userId" value="<%= user.nil? ? 0 : user.id %>" >
+			<input type="hidden" name="username" value="<%= user.nil? ? 'guest' : user.name %>">
+			<input type="hidden" name="message" value="0">
+			<input type="submit" class="button primary" name="upvote" value="医生空间" />
+		</form>
+		</div> 
                 <div class="doc_info fl">
                 <h2><%=  t(doctor.name) %></a><span><%=  t(doctor.rank) %></span> </h2>
                 <div class="h_info layout">
@@ -36,7 +45,16 @@
                   <%= image_tag doctor.final_avatar_url %>
                 </div>
                 <div class="right_mun"></div>
-                <div class="right_btn"> <%= link_to doctor_commit_path(doctor), class: "button primary" do %> 医生空间 <% end %><em>|</em> 
+                <div class="right_btn">
+		<form action="http://123.56.109.236/hryisheng/doctor.action" method="post">
+			<input type="hidden" name="doctorId" value="<%=doctor.doctor_id%>">
+			<input type="hidden" name="neworsubmit" value="commit">
+			<input type="hidden" name="userId" value="<%= user.nil? ? 0 : user.id %>" >
+			<input type="hidden" name="username" value="<%= user.nil? ? 'guest' : user.name %>">
+			<input type="hidden" name="message" value="0">
+			<input type="submit" class="button primary" name="upvote" value="医生空间" />
+		</form>
+		</div>
                 <div class="doc_info fl">
                 <h2><%=  t(doctor.name) %></a><span><%=  t(doctor.rank) %></span> </h2>
                 <div class="h_info layout">

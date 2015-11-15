@@ -86,6 +86,9 @@ $('input#submit_operation_info1').click(function(){
           <%= f.text_field  :sick_date, :class =>"supershort", :id=>"datepicker"  %>
           </dd>
         </dl>
+      <dl class="form">
+        <dt><label>更新手术/外伤图像</label></dt>
+       <dl>
     <% end %>
   </div>
   <div class="secondary-info">
@@ -96,11 +99,7 @@ $('input#submit_operation_info1').click(function(){
       id:            'update-video-uploader',
       progress_bar_id: 'progress-bar' do %>
 
-      <a class="fileupload-btn fileupload-video">
-        <i class="fileupload-icon fa fa-upload"></i>
         <input id="fileupload" name="file" type="file">
-        <span id="upload-button-text">更新附件</span>
-      </a>
       <div class="bar" id="progress-bar"></div>
     <% end %>
 
@@ -116,10 +115,10 @@ $('input#submit_operation_info1').click(function(){
   <div class="third-info"></div>
       <div class="video-button-group">
 <input class="button primary" data-disable-with="保存中..." id="submit_operation_info1" name="commit" type="submit" value="更新手术/外伤信息">
-      </div>
   <div class="video-delete-btn">
     <%= link_to "删除本附件", operation, :method => "delete", class: "danger minibutton",
       :confirm => t('confirm_delete') %>
   </div>
   </div>
 </div>
+      </div>

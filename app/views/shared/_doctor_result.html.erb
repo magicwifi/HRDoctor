@@ -4,7 +4,7 @@
           <div class="search_list layout">
   <% if !doctor_groups.empty? %>
     <% doctor_groups.each do |doctor| %>
-            <%= render "shared/doctor", :doctor=>doctor, :process=>process %>
+            <%= render "shared/doctor", :doctor=>doctor, :process=>process, :user=>user  %>
     <% end %>
   <% else %>
     <p>

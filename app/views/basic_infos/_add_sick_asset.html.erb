@@ -53,6 +53,9 @@ $(document).ready(function() {
           <%= f.select(:asset_type,'<option value="CT" >影相科(CT)相关检查</option><option value="exper" >实验室相关检查</option><option value="heart" >心电图相关检查</option>'.html_safe, {}, { :class => 'supershort' } ) %>  
         </dd>
       </dl>
+      <dl class="form">
+        <dt><%= f.label '上传检查资料' %></dt>
+      </dl>
     <% end %>
 </div>
 	 <div class="secondary-info">
@@ -63,12 +66,7 @@ $(document).ready(function() {
       callback_method: 'POST',
       custom_fields: { basic_case_id: basic_case.id },
       progress_bar_id: 'progress-bar' do %>
-
-      <a class="fileupload-btn fileupload-video">
-        <i class="fileupload-icon fa fa-upload"></i>
-        <input id="fileupload" name="file" type="file">
-        <span id="upload-button-text">上传检查资料</span>
-      </a>
+      <input id="fileupload" name="file" type="file" class="supershort"  > 
       <div class="bar" id="progress-bar"></div>
     <% end %>
 
