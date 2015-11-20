@@ -11,27 +11,27 @@
           types = /(\.|\/)(jpg|png|mov|mp4)$/i;
           if (types.test(file.type) || types.test(file.name)) {
             if (file.size > 100000000) {
-              alert("上传失败：" + file.name + " 附件太大，超过100M");
+              alert("上传失败：" + file.name + " 手术信息太大，超过100M");
               return false;
             } else {
               return true;
             }
           } else {
-            alert("上传失败：" + file.name + " 附件格式错误，请上传mov或mp4文件");
+            alert("上传失败：" + file.name + " 手术信息格式错误，请上传mov或mp4文件");
             return false;
           }
         }
       });
       updateVideoForm.bind("qiniu_upload_start", function(e) {
-        $('#submit_operation_info').attr('value', '附件正在上传');
+        $('#submit_operation_info').attr('value', '手术信息正在上传');
         $('#submit_operation_info').attr('disabled', 'true');
         $('a.fileupload-btn').bind('click', false);
       });
       updateVideoForm.bind("qiniu_upload_complete", function(e, data) {
-        $('#submit_operation_info').attr('value', '保存附件信息');
+        $('#submit_operation_info').attr('value', '保存手术信息信息');
         $('#submit_operation_info').removeAttr('disabled');
-        $('#progress-text').html("附件上传成功！");
-        $('#video-filename').html("附件文件名： " + "<strong>" + data.fname + "</strong>");
+        $('#progress-text').html("手术信息上传成功！");
+        $('#video-filename').html("手术信息文件名： " + "<strong>" + data.fname + "</strong>");
       });
     }
   });
@@ -107,7 +107,7 @@ $('input#submit_operation_info1').click(function(){
       <div class="upload">
         {%=o.name%}
         <div class="progress">
-          <span id="progress-text">附件正在上传...</span>
+          <span id="progress-text">手术信息正在上传...</span>
           <div class="bar" style="width: 0%"></div>
         </div>
       </div>
@@ -116,7 +116,7 @@ $('input#submit_operation_info1').click(function(){
       <div class="video-button-group">
 <input class="button primary" data-disable-with="保存中..." id="submit_operation_info1" name="commit" type="submit" value="更新手术/外伤信息">
   <div class="video-delete-btn">
-    <%= link_to "删除本附件", operation, :method => "delete", class: "danger minibutton",
+    <%= link_to "删除本手术信息", operation, :method => "delete", class: "danger minibutton",
       :confirm => t('confirm_delete') %>
   </div>
   </div>
