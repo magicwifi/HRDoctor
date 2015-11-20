@@ -64,7 +64,7 @@ $('input#submit_sickness_info1').click(function(){
 </script>
 <div class="add-video-box clearfix">
   <div class="primary-info">
-    <%= form_for sickness do |f| %>
+    <%= form_for(sickness,:remote=>true) do |f| %>
       <dl class="form">
         <dt>
           <%= f.hidden_field :id %>

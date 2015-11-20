@@ -31,8 +31,9 @@ class OperationsController < ApplicationController
         f.json { render :json => {} }
       else
         operation.update_attributes(params[:operation])
-        f.html do
-          redirect_to_target_or_default root_url
+        f.js do
+	   @operation =  operation
+	   @user = operation.user
         end
       end
     end

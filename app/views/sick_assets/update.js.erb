@@ -1,5 +1,9 @@
 $('.flash-message').get(0).innerHTML='Success  Update!';
 $('.playlist-container').replaceWith("<%= escape_javascript render 'basic_infos/all_added_sick_assets', :basic_case => @basic_case %>");
-$('.add-video-box').replaceWith("<%= escape_javascript render 'basic_infos/add_sick_asset', :basic_case => @basic_case %>");
+$('.playlist li a.video').removeClass('active');
+$('.playlist li').removeClass('selected');
+$('.playlist li a.video').eq(<%= @sick_asset.position - 1 %>).addClass('active');
+$('.playlist li').eq(<%= @sick_asset.position - 1 %>).addClass('selected');
+alert('更新成功');
 
 

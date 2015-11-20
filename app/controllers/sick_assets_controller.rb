@@ -34,6 +34,7 @@ class SickAssetsController < ApplicationController
         #f.json { render :json => {} }
         f.js do
 	   @basic_case = sick_asset.basic_case
+	   @sick_asset = sick_asset
         end
         #f.html do
           #redirect_to_target_or_default root_url

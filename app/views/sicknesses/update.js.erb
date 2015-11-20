@@ -1,0 +1,9 @@
+$('.flash-message').get(0).innerHTML='Success  Update!';
+$('.playlist-container').replaceWith("<%= escape_javascript render 'basic_infos/all_added_sicknesses', :user=>@user %>");
+$('.playlist li a.video').removeClass('active');
+$('.playlist li').removeClass('selected');
+$('.playlist li a.video').eq(<%= @sickness.position - 1 %>).addClass('active');
+$('.playlist li').eq(<%= @sickness.position - 1 %>).addClass('selected');
+alert('更新成功');
+
+

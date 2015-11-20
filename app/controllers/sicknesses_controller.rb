@@ -31,8 +31,9 @@ class SicknessesController < ApplicationController
         f.json { render :json => {} }
       else
         sickness.update_attributes(params[:sickness])
-        f.html do
-          redirect_to_target_or_default root_url
+        f.js do
+	   @sickness =  sickness
+	   @user = sickness.user
         end
       end
     end
