@@ -36,7 +36,7 @@ $(document).ready(function() {
 </script>
 <div class="add-video-box clearfix">
   <div class="primary-info">
-    <%= form_for(Operation.new) do |f| %>
+    <%= form_for(Operation.new,:remote => true) do |f| %>
       <dl class="form">
         <dt><%= f.label '手术/外伤名称' %></dt>
         <dd><%= f.text_field :title, id: "video-title",:placeholder => "如：一次XX手术" %></dd>
@@ -109,7 +109,7 @@ $(document).ready(function(){
 		i18n: 		i18n,
 		onSelect: 	function() {
 			var date = document.createTextNode(this.getMoment().format('YYYY-MM-DD') + ' '); //生成的时间格式化成 2013-09-25
-			$('#datepicker').appendChild(date);
+			$('#datepicker').append(date);
 		}
 	});
 
