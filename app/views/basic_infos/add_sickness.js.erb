@@ -20,7 +20,7 @@ $(document).ready(function(){
 		i18n: 		i18n,
 		onSelect: 	function() {
 			var date = document.createTextNode(this.getMoment().format('YYYY-MM-DD') + ' '); //生成的时间格式化成 2013-09-25
-			$('#datepicker').appendChild(date);
+			$('#datepicker').append(date);
 		}
 	});
 
