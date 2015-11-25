@@ -1,7 +1,7 @@
   
 <div class="container2" >
   <img src="chan.jpg" height="150" width="1200" />
-  <p class="center-username"><%= @user.name %>的个人空间</p>
+  <p class="center-username"><%= @user.name %>的个人健康中心</p>
 </div>
 <div class="container about">
   <div class="left-col" >
@@ -9,7 +9,7 @@
   <ul class="menu">
     <li><a class="button" href="#">我的咨询记录</a></li>
     <li><a class="active" href="<%= member_url(@user.name) %>">历史咨询记录</a></li>
-    <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">待提交的咨询</a></li>
+    <li><a class="<%= request.path == "/createmyfaq"? "active":"faq" %>" href="/createmyfaq">发起新的咨询</a></li>
     <li><a class="button" href="#">我的病历管理</a></li>
     <li><a class="<%= request.path == "/showmyinfo"? "active":"faq" %>" href="/showmyinfo">个人基本情况</a></li>
     <li><a class="<%= request.path == "/showmyhyper"? "active":"faq" %>" href="/showmyhyper">高血压史</a></li>

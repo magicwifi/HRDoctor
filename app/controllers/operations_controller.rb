@@ -3,11 +3,18 @@ class OperationsController < ApplicationController
     respond_to do |f|
       f.js do
         @operation = Operation.new
+        @user =  current_user
+        @operation.user_id = current_user.id
+      	if params[:etag].present?
         @operation.asset = params[:key]
         @operation.size = params[:fsize]
         @operation.filename = params[:fname]
         @operation.content_type = params[:mimeType]
-        @operation.user_id = params[:custom_fields][:user_id]
+	else
+        @operation.title = params[:operation][:title] 
+        @operation.desc = params[:operation][:desc] 
+        @operation.sick_date = params[:operation][:sick_date] 
+	end
         @operation.save
         #track_activity @operation, @operation.sick_case.id
       end
