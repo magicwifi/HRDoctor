@@ -42,7 +42,7 @@
           <%= f.label '双下肢是否肿胀' %>
           </dt>
           <dd>
-          <%= f.select(:swelling,'<option value="noswelling" >无肿胀</option><option value="littleswelling" >有轻微肿胀</option><option value="worseswelling" >肿胀较严重</option>'.html_safe ) %>  
+          <%= f.select(:swelling,options_for_select([['无肿胀', 'noswelling'],['有轻微肿胀', 'littleswe'],['肿胀较严重','worseswelling']], body_sign.swelling), {}, { :class => 'supershort'} ) %>  
 	</dd>
         </dl>
         <dl class="form">

@@ -58,7 +58,7 @@ $('input#submit_sick_asset_info1').click(function(){
       <dl class="form">
         <dt><%= f.label '选择附件类型' %></dt>
         <dd>
-          <%= f.select(:asset_type,'<option value="CT" >影相科(CT)相关检查</option><option value="exper" >实验室相关检查</option><option value="heart" >心电图相关检查</option>'.html_safe, {}, { :class => 'supershort' } ) %>  
+          <%= f.select(:asset_type, options_for_select([['影相科(CT)相关检查', 'CT'],['实验室相关检查', 'exper'],['心电图相关检查','heart']],sick_asset.asset_type), {}, { :class => 'supershort'} ) %>  
         </dd>
       </dl>
       <dl class="form">

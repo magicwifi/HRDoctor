@@ -15,6 +15,26 @@ $('#basic_info_drink').on('change', function() {
   document.getElementById("display_drink").style.display="inline";	
   }
 });
+
+$('#basic_info_have_allergy').on('change', function() {
+  if (this.value=="false"){
+  document.getElementById("display_allergy").style.display="none";	
+  }else{
+  document.getElementById("display_allergy").style.display="inline";	
+  }
+});
+$('#basic_info_height').on('change', function() {
+	var x = parseFloat($('#basic_info_weight').val())*10000;
+        var y = parseFloat($('#basic_info_height').val())*parseFloat($('#basic_info_height').val());
+	var bmi = (x/y).toFixed(2);
+	$('#bmi').html('BMI指数为'+bmi);
+});
+$('#basic_info_weight').on('change', function() {
+	var x = parseFloat($('#basic_info_weight').val())*10000;
+        var y = parseFloat($('#basic_info_height').val())*parseFloat($('#basic_info_height').val());
+	var bmi = (x/y).toFixed(2);
+	$('#bmi').html('BMI指数为'+bmi);
+});
 </script>
 <% end %>
 
@@ -71,10 +91,10 @@ $('#basic_info_drink').on('change', function() {
           <%= f.label '吸烟状态' %>
           </dt>
           <dd>
-          <%= f.select(:smokeinfo,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe, {}, { :class => 'supershort'} ) %>  
+          <%= f.select(:smokeinfo,options_for_select([['从不/极少', 'never'],['偶尔', 'sometimes'],['经常', 'offen']], @basic_info.smokeinfo), {}, { :class => 'supershort'} ) %>  
 	</dd>
         </dl>
-	<div id="display_smoke" style="display: none;">
+	<div id="display_smoke" style="<%= (@basic_info.smokeinfo.nil? or @basic_info.smokeinfo == 'never') ? 'display: none;' : 'display: inline;'  %>">
         <dl class="form">
           <dt>
           <%= f.label '根/每天' %>
@@ -89,16 +109,34 @@ $('#basic_info_drink').on('change', function() {
           <%= f.label '饮酒状态' %>
           </dt>
           <dd>
-          <%= f.select(:drink,'<option value="never" >从不/极少</option><option value="sometimes" >偶尔</option><option value="offen" >经常</option>'.html_safe, {}, { :class => 'supershort'} ) %>  
+          <%= f.select(:drink,options_for_select([['从不/极少', 'never'],['偶尔', 'sometimes'],['经常', 'offen']], @basic_info.drink), {}, { :class => 'supershort'} ) %>  
 	</dd>
         </dl>
-	<div id="display_drink" style="display: none;">
+	<div id="display_drink" style="<%= (@basic_info.drink.nil? or @basic_info.drink == 'never') ? 'display: none;' : 'display: inline;'  %>">
         <dl class="form">
           <dt>
           <%= f.label '两/每天' %>
           </dt>
           <dd>
           <%= f.text_field  :drink_account, :class => "short", :placeholder => "如:2"  %>
+	</dd>
+        </dl>
+	</div>
+        <dl class="form">
+          <dt>
+          <%= f.label '过敏史' %>
+          </dt>
+          <dd>
+          <%= f.select(:have_allergy, options_for_select([['无', false],['有', true]], @basic_info.have_allergy), {}, { :class => 'supershort'} ) %>  
+          </dd>
+        </dl>
+	<div id="display_allergy" style="<%= (@basic_info.have_allergy.nil? or @basic_info.have_allergy == false) ? 'display: none;' : 'display: inline;'  %>">
+        <dl class="form">
+          <dt>
+          <%= f.label '过敏源描述' %>&nbsp;&nbsp;&nbsp;&nbsp;填写过敏食物或药物
+          </dt>
+          <dd>
+          <%= f.text_field  :allergy, :class => "short"  %>
 	</dd>
         </dl>
 	</div>

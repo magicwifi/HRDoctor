@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125132352) do
+ActiveRecord::Schema.define(version: 20151126120327) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20151125132352) do
     t.string   "drink"
     t.integer  "smoke_account"
     t.integer  "drink_account"
+    t.boolean  "have_allergy"
+    t.string   "allergy"
   end
 
   create_table "blog_images", force: true do |t|

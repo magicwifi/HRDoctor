@@ -45,10 +45,10 @@ $('#diabetes_ishave').on('change', function() {
           <%= f.label '糖尿病史' %>
           </dt>
           <dd>
-          <%= f.select(:ishave,'<option value=true >有</option><option value=false >无</option>'.html_safe, {}, { :class => 'supershort'} ) %>  
+          <%= f.select(:ishave, options_for_select([['无', false],['有', true]], @diabetes.ishave), {}, { :class => 'supershort'} ) %>  
           </dd>
         </dl>
-	<div id="display_diabetes">
+	<div id="display_diabetes" style="<%= (@diabetes.ishave.nil? or @diabetes.ishave == false) ? 'display: none;' : 'display: inline;' %>" >
         <dl class="form">
           <dt>
           <%= f.label '餐前血糖' %>
