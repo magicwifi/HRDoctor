@@ -1,7 +1,7 @@
 $('form#new_sick_asset').get(0).setAttribute("action", "/sick_assets/<%= @sick_asset.id %>");
 $('form#new_sick_asset > div').append('<input name="_method" type="hidden" value="put">');
 $('input#submit_sick_asset_info').removeAttr('disabled');
-$('input#submit_sick_asset_info').get(0).setAttribute('value', '保存附件信息');
+$('input#submit_sick_asset_info').get(0).setAttribute('value', '保存上述信息');
 $('#submit_sick_asset_info').click(function(){
          $('#new_sick_asset').submit();
 });

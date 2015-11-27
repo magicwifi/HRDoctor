@@ -159,6 +159,13 @@ class BasicInfosController < ApplicationController
     end
   end
 
+  def add_sick_hist
+    @user = current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def hyper
     @user = current_user
     @hypertension = @user.hypertension
@@ -289,6 +296,11 @@ class BasicInfosController < ApplicationController
     session[:return_to] = request.url
   end
 
+  def edit_hist
+    @user = current_user
+    session[:return_to] = request.url
+  end
+
   def edit_sickness
     @sickness = Sickness.where(:user_id => current_user.id, :position => params[:position]).first
     respond_to do |format|
@@ -298,6 +310,52 @@ class BasicInfosController < ApplicationController
 
   def edit_operation
     @operation = Operation.where(:user_id => current_user.id, :position => params[:position]).first
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def edit_sick_hist
+    @sick_hist = SickHist.where(:user_id => current_user.id, :position => params[:position]).first
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def edit_sick_asset
+    @sick_asset = SickAsset.where(:basic_case_id => params[:basic_case_id] , :position => params[:position]).first
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def free_commit
+    @basic_case = BasicCase.find(params[:basic_case_id])
+    @basic_case.process = "free"
+    #@basic_case.edited = true
+    @basic_case.save    
+    @user = current_user
+    respond_to do |format|
+    	format.html { redirect_to member_path(@user.name), :success => 'faq was successfully updated.' }
+    end
+  end
+
+  def edit_sickness
+    @sickness = Sickness.where(:user_id => current_user.id, :position => params[:position]).first
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def edit_operation
+    @operation = Operation.where(:user_id => current_user.id, :position => params[:position]).first
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def edit_sick_hist
+    @sick_hist = SickHist.where(:user_id => current_user.id, :position => params[:position]).first
     respond_to do |format|
       format.js
     end

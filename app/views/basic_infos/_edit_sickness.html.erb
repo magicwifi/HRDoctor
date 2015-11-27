@@ -68,12 +68,12 @@ $('input#submit_sickness_info1').click(function(){
       <dl class="form">
         <dt>
           <%= f.hidden_field :id %>
-          <%= f.label '病历标题' %>
+          <%= f.label '病历标题' %>&nbsp;&nbsp;&nbsp;&nbsp;一次冠心病检查 
         </dt>
         <dd><%= f.text_field :title, id: "video-title" %></dd>
       </dl>
       <dl class="form">
-        <dt><%= f.label '症状简要描述' %></dt>
+        <dt><%= f.label '症状简要描述' %>&nbsp;&nbsp;&nbsp;&nbsp;快走时胸闷、胸痛10年,加重1周</dt>
         <dd>
           <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8' %>
         </dd>

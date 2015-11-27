@@ -3,12 +3,18 @@ class SickHistsController < ApplicationController
     respond_to do |f|
       f.js do
         @sick_hist = SickHist.new
+        @user =  current_user
+        @sick_hist.user_id = current_user.id
+      	if params[:etag].present?
         @sick_hist.asset = params[:key]
         @sick_hist.size = params[:fsize]
         @sick_hist.filename = params[:fname]
         @sick_hist.content_type = params[:mimeType]
-        @sick_hist.sick_case_id = params[:custom_fields][:sick_case_id]
-        @sick_hist.user_id = current_user.id
+	else
+        @sick_hist.title = params[:sick_hist][:title] 
+        @sick_hist.desc = params[:sick_hist][:desc] 
+        @sick_hist.sick_date = params[:sick_hist][:sick_date] 
+	end
         @sick_hist.save
         #track_activity @sick_hist, @sick_hist.sick_case.id
       end
@@ -32,8 +38,9 @@ class SickHistsController < ApplicationController
         f.json { render :json => {} }
       else
         sick_hist.update_attributes(params[:sick_hist])
-        f.html do
-          redirect_to_target_or_default root_url
+        f.js do
+	   @sick_hist =  sick_hist
+	   @user = sick_hist.user
         end
       end
     end
@@ -51,7 +58,7 @@ class SickHistsController < ApplicationController
     #track_activity sick_hist, sick_hist.sick_case.id
     destroy_notifications sick_hist
     sick_hist.destroy
-    redirect_to edit_sick_case_path(sick_hist.user.name,sick_hist.sick_case.name)
+    redirect_to "/editmyoper"
   end
 
   def download

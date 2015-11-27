@@ -1,4 +1,4 @@
 $('form#new_sickness').get(0).setAttribute("action", "/sicknesses/<%= @sickness.id %>");
 $('form#new_sickness > div').append('<input name="_method" type="hidden" value="put">');
 $('input#submit_sickness_info').removeAttr('disabled');
-$('input#submit_sickness_info').get(0).setAttribute('value', '保存附件信息');
+$('input#submit_sickness_info').get(0).setAttribute('value', '保存上述信息');

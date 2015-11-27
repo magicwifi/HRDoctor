@@ -13,6 +13,38 @@ img#poster {
    font-weight: bold;
    color: #ff0000;	
 }
+.sick_desc {
+   font-size: 10px;
+   font-weight: bold;
+   color: #666;
+   display: inline;
+}
+
+.boxed-group > .all_desc {
+    background-color: #ececec;
+    margin: 0;
+    padding: 10px 20px;
+}
+.boxed-group > .sick_desc {
+    margin: 0;
+    padding: 10px 20px;
+}
+.boxed-group > .h3_desc {
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.h3_desc {
+    display: inline;
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+
 
 a#main {
     border-left-width: 20px;

@@ -2,7 +2,7 @@
   <div id="user-course" >
     <ul class="main-nav">
       <li class="active" data-course-type="owned" id="owned-li" >
-        <a href="#owned-courses">1.一般信息</a>
+        <a href="#owned-courses">1.病情表述</a>
       </li>
       <li data-course-type="watched" id="watched-li" >
         <a href="#watched-courses">2.体征信息</a>
@@ -14,7 +14,11 @@
     <div class="content owned-courses-section active clearfix">
 <div class="single-form-container" style="margin-left: 50px;">
   <div class="boxed-group" id="login">
-    <h3>一般信息</h3>
+<div class="all_desc">
+    <div class="h3_desc">病情表述</div> 
+<div class="sick_desc">
+&nbsp;&nbsp;&nbsp;&nbsp;请详细填写本次看病的信息，以便医生诊断</div>
+</div>
     <div class="boxed-group-inner">
       <%= form_for @basic_case, :url =>"/update_myfaq", :remote=>true do |f| %>
         <%= f.hidden_field :id %>
@@ -23,12 +27,12 @@
           <%= f.label '主诉' %>&nbsp;&nbsp;&nbsp;&nbsp;包括主要症状、首次发作至今为止持续时间,限20-50字
           </dt>
           <dd>
-          <%= f.text_area  :main_desc, :class => "short", :placeholder => "如：快走时胸闷、胸痛10年，加重1周" %>
+          <%= f.text_area  :main_desc, :class => "short" %>
           </dd>
         </dl>
         <dl class="form">
           <dt>
-          <%= f.label '详细描述' %>&nbsp;&nbsp;&nbsp;&nbsp;详细表述,内容包括：主要症状，每次持续时间、多于什么情况下发作（活动）、怎么缓解（服药还是其他处理），其他伴随不适, 限500字
+          <%= f.label '详细表述' %>&nbsp;&nbsp;&nbsp;&nbsp;包括主要症状，每次持续时间、多于什么情况下发作（活动）、怎么缓解（服药还是其他处理），其他伴随不适, 限500字
           </dt>
           <dd>
           <%= f.text_area  :detail_desc, :class => "short", :placeholder => "" %>

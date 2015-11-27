@@ -1,9 +1,8 @@
-$('form#new_sick_hist').get(0).setAttribute("action", "/sick_hists/<%= @sick_hist.id %>");
-$('form#new_sick_hist > div').append('<input name="_method" type="hidden" value="put">');
+$('.flash-message').get(0).innerHTML='Success  Update!';
 $('.playlist-container').replaceWith("<%= escape_javascript render 'basic_infos/all_added_sick_hists', :user=>@user %>");
 $('.playlist li a.video').removeClass('active');
 $('.playlist li').removeClass('selected');
 $('.playlist li a.video').eq(<%= @sick_hist.position - 1 %>).addClass('active');
 $('.playlist li').eq(<%= @sick_hist.position - 1 %>).addClass('selected');
-$('input#submit_sick_hist_info').removeAttr('disabled');
-$('input#submit_sick_hist_info').get(0).setAttribute('value', '更新手术/外伤信息');
+
+

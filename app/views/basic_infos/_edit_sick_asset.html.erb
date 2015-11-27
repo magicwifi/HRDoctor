@@ -11,27 +11,27 @@
           types = /(\.|\/)(jpg|png|mov|mp4)$/i;
           if (types.test(file.type) || types.test(file.name)) {
             if (file.size > 100000000) {
-              alert("上传失败：" + file.name + " 附件太大，超过100M");
+              alert("上传失败：" + file.name + " 检查资料太大，超过100M");
               return false;
             } else {
               return true;
             }
           } else {
-            alert("上传失败：" + file.name + " 附件格式错误，请上传mov或mp4文件");
+            alert("上传失败：" + file.name + " 检查资料格式错误，请上传mov或mp4文件");
             return false;
           }
         }
       });
       updateVideoForm.bind("qiniu_upload_start", function(e) {
-        $('#submit_sick_asset_info').attr('value', '附件正在上传');
+        $('#submit_sick_asset_info').attr('value', '检查资料正在上传');
         $('#submit_sick_asset_info').attr('disabled', 'true');
         $('a.fileupload-btn').bind('click', false);
       });
       updateVideoForm.bind("qiniu_upload_complete", function(e, data) {
-        $('#submit_sick_asset_info').attr('value', '保存附件信息');
+        $('#submit_sick_asset_info').attr('value', '保存上述信息');
         $('#submit_sick_asset_info').removeAttr('disabled');
-        $('#progress-text').html("附件上传成功！");
-        $('#video-filename').html("附件文件名： " + "<strong>" + data.fname + "</strong>");
+        $('#progress-text').html("检查资料上传成功！");
+        $('#video-filename').html("检查资料文件名： " + "<strong>" + data.fname + "</strong>");
       });
     }
 $('input#submit_sick_asset_info1').click(function(){
@@ -45,24 +45,18 @@ $('input#submit_sick_asset_info1').click(function(){
       <dl class="form">
         <dt>
           <%= f.hidden_field :id %>
-          <%= f.label '病历标题' %>
+          <%= f.label '检查资料标题' %>&nbsp;&nbsp;&nbsp;&nbsp;如：一次冠心病检查
         </dt>
         <dd><%= f.text_field :title, id: "video-title" %></dd>
       </dl>
       <dl class="form">
-        <dt><%= f.label '症状简要描述' %></dt>
-        <dd>
-          <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8' %>
-        </dd>
-      </dl>
-      <dl class="form">
-        <dt><%= f.label '选择附件类型' %></dt>
+        <dt><%= f.label '选择检查资料类型' %></dt>
         <dd>
           <%= f.select(:asset_type, options_for_select([['影相科(CT)相关检查', 'CT'],['实验室相关检查', 'exper'],['心电图相关检查','heart']],sick_asset.asset_type), {}, { :class => 'supershort'} ) %>  
         </dd>
       </dl>
       <dl class="form">
-        <dt><label>更新本附件</label></dt>
+        <dt><label>更新本检查资料</label></dt>
        <dl>
     <% end %>
   </div>
@@ -82,7 +76,7 @@ $('input#submit_sick_asset_info1').click(function(){
       <div class="upload">
         {%=o.name%}
         <div class="progress">
-          <span id="progress-text">附件正在上传...</span>
+          <span id="progress-text">检查资料正在上传...</span>
           <div class="bar" style="width: 0%"></div>
         </div>
       </div>
@@ -92,7 +86,7 @@ $('input#submit_sick_asset_info1').click(function(){
       <div class="video-button-group">
 <input class="button primary" data-disable-with="检查资料保存中..." id="submit_sick_asset_info1" name="commit" type="submit" value="更新检查资料信息">
   <div class="video-delete-btn">
-    <%= link_to "删除本附件", sick_asset, :method => "delete", :remote=> true, class: "danger minibutton",
+    <%= link_to "删除本检查资料", sick_asset, :method => "delete", :remote=> true, class: "danger minibutton",
       :confirm => t('confirm_delete') %>
   </div>
       </div>

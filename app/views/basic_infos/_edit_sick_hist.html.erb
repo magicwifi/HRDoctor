@@ -23,13 +23,13 @@
         }
       });
       updateVideoForm.bind("qiniu_upload_start", function(e) {
-        $('#submit_operation_info').attr('value', '手术信息正在上传');
-        $('#submit_operation_info').attr('disabled', 'true');
+        $('#submit_sick_hist_info').attr('value', '手术信息正在上传');
+        $('#submit_sick_hist_info').attr('disabled', 'true');
         $('a.fileupload-btn').bind('click', false);
       });
       updateVideoForm.bind("qiniu_upload_complete", function(e, data) {
-        $('#submit_operation_info').attr('value', '保存手术信息信息');
-        $('#submit_operation_info').removeAttr('disabled');
+        $('#submit_sick_hist_info').attr('value', '保存手术信息信息');
+        $('#submit_sick_hist_info').removeAttr('disabled');
         $('#progress-text').html("手术信息上传成功！");
         $('#video-filename').html("手术信息文件名： " + "<strong>" + data.fname + "</strong>");
       });
@@ -56,19 +56,19 @@ $(document).ready(function(){
 			$('#datepicker').appendChild(date);
 		}
 	});
-$('input#submit_operation_info1').click(function(){
-	$('form.edit_operation').submit();
+$('input#submit_sick_hist_info1').click(function(){
+	$('form.edit_sick_hist').submit();
 });
 
 });
 </script>
 <div class="add-video-box clearfix">
   <div class="primary-info">
-    <%= form_for(operation,:remote=>true) do |f| %>
+    <%= form_for(sick_hist,:remote=>true) do |f| %>
       <dl class="form">
         <dt>
           <%= f.hidden_field :id %>
-          <%= f.label '手术/外伤名称' %>&nbsp;&nbsp;&nbsp;&nbsp;如:一次XX手术
+          <%= f.label '手术/外伤名称' %>
         </dt>
         <dd><%= f.text_field :title, id: "video-title" %></dd>
       </dl>
@@ -92,8 +92,8 @@ $('input#submit_operation_info1').click(function(){
     <% end %>
   </div>
   <div class="secondary-info">
-    <p id="video-filename">查看文件: <a href="http://<%= Settings.qiniu.bucket_domain %>/<%= operation.asset %>"><%= operation.filename %></a></p>
-    <%= qiniu_video_uploader_form callback_url: "/update_operation/#{operation.id}",
+    <p id="video-filename">查看文件: <a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_hist.asset %>"><%= sick_hist.filename %></a></p>
+    <%= qiniu_video_uploader_form callback_url: "/update_sick_hist/#{sick_hist.id}",
       callback_method: 'PATCH',
       bucket:        "#{Settings.qiniu.bucket}",
       id:            'update-video-uploader',
@@ -114,9 +114,9 @@ $('input#submit_operation_info1').click(function(){
     </script>
   <div class="third-info"></div>
       <div class="video-button-group">
-<input class="button primary" data-disable-with="保存中..." id="submit_operation_info1" name="commit" type="submit" value="更新手术/外伤信息">
+<input class="button primary" data-disable-with="保存中..." id="submit_sick_hist_info1" name="commit" type="submit" value="更新手术/外伤信息">
   <div class="video-delete-btn">
-    <%= link_to "删除本手术信息", operation, :method => "delete", class: "danger minibutton",
+    <%= link_to "删除本手术信息", sick_hist, :method => "delete", class: "danger minibutton",
       :confirm => t('confirm_delete') %>
   </div>
   </div>

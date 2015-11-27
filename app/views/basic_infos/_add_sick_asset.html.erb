@@ -38,14 +38,8 @@ $(document).ready(function() {
   <div class="primary-info">
     <%= form_for(SickAsset.new,:remote => true) do |f| %>
       <dl class="form">
-        <dt><%= f.label '检查标题' %></dt>
-        <dd><%= f.text_field :title, id: "video-title",:placeholder => "如：一次冠心病检查" %></dd>
-      </dl>
-      <dl class="form">
-        <dt><%= f.label '症状简要描述' %></dt>
-        <dd>
-          <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8',:placeholder => "如: 快走时胸闷、胸痛10年,加重1周" %>
-        </dd>
+        <dt><%= f.label '检查资料标题' %>&nbsp;&nbsp;&nbsp;&nbsp;如：一次冠心病检查</dt>
+        <dd><%= f.text_field :title, id: "video-title"  %></dd>
       </dl>
       <dl class="form">
         <dt><%= f.label '选择检查资料类型' %></dt>
