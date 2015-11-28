@@ -4,7 +4,7 @@
       <%= content_tag_for :li, sick_hist do %>
         <a class="video" href="<%= @user.name+ '/'+sick_hist.position.to_s + '/edithist.js' %>" data-remote='true'>
           <span class="video-info edit-video-info">
-            <%= sick_hist.title %> &nbsp;&nbsp;&nbsp;&nbsp; <%= sick_hist.updated_at.strftime '%Y-%m-%d %H:%M:%S' %>
+            <%= (sick_hist.title.nil? or sick_hist.title.blank?) ? '未录入':t(sick_hist.title)  %> &nbsp;&nbsp;&nbsp;&nbsp;  病史<%= sick_hist.sick_date.nil? ? '未录入日期':  ((Date.today.strftime("%Y").to_i  - sick_hist.sick_date.year) + 1).to_s+'年' %>
           </span>
         </a>
         <a href="<%= @user.name+ '/'+sick_hist.position.to_s + '/edithist.js' %>"
@@ -20,7 +20,7 @@
         <div class="video-icon">
           <i class="fa fa-plus fa-lg"></i>
         </div>
-        <span class="video-info"> 录入手术记录</span>
+        <span class="video-info"> 录入病史记录</span>
       <% end %>
     </li>
   </ul>

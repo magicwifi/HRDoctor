@@ -28,3 +28,90 @@ $(document).ready(function(){
 $('input#submit_sick_hist_info').click(function(){
          $('form#new_sick_hist').submit();
 });
+var sick_names =[
+["稳定性心绞痛", "不稳定性心绞痛", "心肌梗死", "冠状动脉硬化", "微循环心绞痛", "无症状性心肌缺血", "心肌桥"],
+["原发性高血压", "继发性高血压"],
+["预激综合征", "室性心动过速", "心房颤动", "非阵发性房室交界区性心动过", "房性早搏", "房性心动过速","房室交界区性逸搏","房室交界区性期前收缩","房室传导阻滞","窦性心动过速","窦性心动过缓","窦性停搏","窦房传导阻滞","病态窦房结综合征","窦性心律不齐","室性早搏","心房扑动"],
+["扩张型心肌病","肥厚型心肌病","致心律失常型右室心肌病","药物性心肌病","心肌致密化不全","肥厚型梗阻性心肌病","围生期心肌病"],
+["室间隔缺损","动脉导管未闭","房间隔缺损","肺动脉瓣狭窄","复杂先天性心脏病"],
+["主动脉瓣狭窄","主动脉瓣关闭不全","肺动脉瓣狭窄","肺动脉瓣关闭不全","二尖瓣狭窄","二尖瓣关闭不全","三尖瓣狭窄","三尖瓣关闭不全","联合瓣膜病"],
+["缩窄性心包炎","急性心包炎","心包积液","心包缺如"],
+["病毒性心肌炎","克山病","感染性心内膜炎","继发性肺动脉高压","特发性肺动脉高压"]
+];
+
+
+
+$('#sick_hist_title').on('change', function() {
+  var sub_title =  $('#sick_hist_sub_title');
+  if (this.value=="guanxinbing"){
+     var sick_cases =   sick_names[0];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+            sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="gaoxueya"){
+     var sick_cases =   sick_names[1];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+
+else if(this.value=="xinlvshichang"){
+     var sick_cases =   sick_names[2];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="xinjibing"){
+     var sick_cases =   sick_names[3];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="xinzangbing"){
+     var sick_cases =   sick_names[4];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="banmobing"){
+     var sick_cases =   sick_names[5];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="xinbaojibing"){
+     var sick_cases =   sick_names[6];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="othersick"){
+     var sick_cases =   sick_names[7];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+
+else{
+     sub_title.html("");
+       sub_title.append("<option value='nostatus'>未确诊</option>");
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+});

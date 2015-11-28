@@ -8,7 +8,7 @@
         singleFileUploads: true,
         removeProgressBarWhenCompleted: false,
         onFilesAdd: function(file) {
-          types = /(\.|\/)(jpg|png|mov|mp4)$/i;
+          types = /(\.|\/)(doc|docx|jpg|png|mov|mp4)$/i;
           if (types.test(file.type) || types.test(file.name)) {
             if (file.size > 100000000) {
               alert("上传失败：" + file.name + " 手术信息太大，超过100M");

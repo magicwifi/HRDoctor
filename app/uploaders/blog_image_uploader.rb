@@ -15,6 +15,6 @@ class BlogImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-     %w(jpg jpeg gif png)
+     %w(doc docx jpg jpeg gif png)
   end
 end

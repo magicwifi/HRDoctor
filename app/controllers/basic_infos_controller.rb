@@ -191,7 +191,7 @@ class BasicInfosController < ApplicationController
     @hyperlipidemia.update_attributes(params[:hyperlipidemia])
     respond_to do |format|
       if @hyperlipidemia.save
-        format.html { redirect_to member_path(@user.name), :success => 'hyperlipidemia was successfully updated.' }
+        format.html { redirect_to '/showmyhyperlipidemia', :success => '高脂血史更新成功' }
       else
       	flash[:notice] = @hyperlipidemia.errors.full_messages.first
         format.html { render :action => "hyperlipidemia" }
@@ -205,7 +205,7 @@ class BasicInfosController < ApplicationController
     @diabetes.update_attributes(params[:diabetes])
     respond_to do |format|
       if @diabetes.save
-        format.html { redirect_to member_path(@user.name), :success => 'diabetes was successfully updated.' }
+        format.html { redirect_to '/showmydiabetes', :success => '糖尿病史更新成功' }
       else
       	flash[:notice] = @diabetes.errors.full_messages.first
         format.html { render :action => "diabetes" }
@@ -219,7 +219,7 @@ class BasicInfosController < ApplicationController
     @hypertension.update_attributes(params[:hypertension])
     respond_to do |format|
       if @hypertension.save
-        format.html { redirect_to member_path(@user.name), :success => 'hypertension was successfully updated.' }
+        format.html { redirect_to '/showmyhyper', :success => '高血压史更新成功' }
       else
       	flash[:notice] = @hypertension.errors.full_messages.first
         format.html { render :action => "hyper" }
@@ -277,7 +277,7 @@ class BasicInfosController < ApplicationController
     @basic_info.edited = true;
     respond_to do |format|
       if @basic_info.save
-        format.html { redirect_to member_path(@user.name), :success => 'BasicInfo was successfully updated.' }
+        format.html { redirect_to '/showmyinfo', :success => '个人信息更新成功' }
       else
       	flash[:notice] = @basic_info.errors.full_messages.first
         format.html { render :action => "edit" }

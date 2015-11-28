@@ -8,30 +8,30 @@
         singleFileUploads: true,
         removeProgressBarWhenCompleted: false,
         onFilesAdd: function(file) {
-          types = /(\.|\/)(jpg|png|mov|mp4)$/i;
+          types = /(\.|\/)(docx|doc|jpg|png|mov|mp4)$/i;
           if (types.test(file.type) || types.test(file.name)) {
             if (file.size > 100000000) {
-              alert("上传失败：" + file.name + " 手术信息太大，超过100M");
+              alert("上传失败：" + file.name + " 病史信息太大，超过100M");
               return false;
             } else {
               return true;
             }
           } else {
-            alert("上传失败：" + file.name + " 手术信息格式错误，请上传mov或mp4文件");
+            alert("上传失败：" + file.name + " 病史信息格式错误，请上传mov或mp4文件");
             return false;
           }
         }
       });
       updateVideoForm.bind("qiniu_upload_start", function(e) {
-        $('#submit_sick_hist_info').attr('value', '手术信息正在上传');
+        $('#submit_sick_hist_info').attr('value', '病史信息正在上传');
         $('#submit_sick_hist_info').attr('disabled', 'true');
         $('a.fileupload-btn').bind('click', false);
       });
       updateVideoForm.bind("qiniu_upload_complete", function(e, data) {
-        $('#submit_sick_hist_info').attr('value', '保存手术信息信息');
+        $('#submit_sick_hist_info').attr('value', '保存病史信息信息');
         $('#submit_sick_hist_info').removeAttr('disabled');
-        $('#progress-text').html("手术信息上传成功！");
-        $('#video-filename').html("手术信息文件名： " + "<strong>" + data.fname + "</strong>");
+        $('#progress-text').html("病史信息上传成功！");
+        $('#video-filename').html("病史信息文件名： " + "<strong>" + data.fname + "</strong>");
       });
     }
   });
@@ -61,6 +61,95 @@ $('input#submit_sick_hist_info1').click(function(){
 });
 
 });
+
+
+var sick_names =[
+["稳定性心绞痛", "不稳定性心绞痛", "心肌梗死", "冠状动脉硬化", "微循环心绞痛", "无症状性心肌缺血", "心肌桥"],
+["原发性高血压", "继发性高血压"],
+["预激综合征", "室性心动过速", "心房颤动", "非阵发性房室交界区性心动过", "房性早搏", "房性心动过速","房室交界区性逸搏","房室交界区性期前收缩","房室传导阻滞","窦性心动过速","窦性心动过缓","窦性停搏","窦房传导阻滞","病态窦房结综合征","窦性心律不齐","室性早搏","心房扑动"],
+["扩张型心肌病","肥厚型心肌病","致心律失常型右室心肌病","药物性心肌病","心肌致密化不全","肥厚型梗阻性心肌病","围生期心肌病"],
+["室间隔缺损","动脉导管未闭","房间隔缺损","肺动脉瓣狭窄","复杂先天性心脏病"],
+["主动脉瓣狭窄","主动脉瓣关闭不全","肺动脉瓣狭窄","肺动脉瓣关闭不全","二尖瓣狭窄","二尖瓣关闭不全","三尖瓣狭窄","三尖瓣关闭不全","联合瓣膜病"],
+["缩窄性心包炎","急性心包炎","心包积液","心包缺如"],
+["病毒性心肌炎","克山病","感染性心内膜炎","继发性肺动脉高压","特发性肺动脉高压"]
+];
+
+
+
+$('#sick_hist_title').on('change', function() {
+  var sub_title =  $('#sick_hist_sub_title');
+  if (this.value=="guanxinbing"){
+     var sick_cases =   sick_names[0];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+            sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="gaoxueya"){
+     var sick_cases =   sick_names[1];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+
+else if(this.value=="xinlvshichang"){
+     var sick_cases =   sick_names[2];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="xinjibing"){
+     var sick_cases =   sick_names[3];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="xinzangbing"){
+     var sick_cases =   sick_names[4];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="banmobing"){
+     var sick_cases =   sick_names[5];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="xinbaojibing"){
+     var sick_cases =   sick_names[6];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+else if(this.value=="othersick"){
+     var sick_cases =   sick_names[7];
+     sub_title.html("");
+     for(var i=0;i<sick_cases.length;i++){
+            sub_title.append("<option value='"+this.value+i+"'>"+sick_cases[i]+"</option>");
+     }
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+
+else{
+     sub_title.html("");
+       sub_title.append("<option value='nostatus'>未确诊</option>");
+       sub_title.append("<option value='othersick'>其他疾病</option>");
+  }
+});
 </script>
 <div class="add-video-box clearfix">
   <div class="primary-info">
@@ -68,26 +157,39 @@ $('input#submit_sick_hist_info1').click(function(){
       <dl class="form">
         <dt>
           <%= f.hidden_field :id %>
-          <%= f.label '手术/外伤名称' %>
+          <%= f.label '疾病类型' %>
         </dt>
-        <dd><%= f.text_field :title, id: "video-title" %></dd>
+        <dd>
+          <%= f.select(:title, options_for_select([['冠心病', 'guanxinbing'],['高血压', 'gaoxueya'],['心律失常','xinlvshichang'],['心肌病','xinjibing'],['先天性心脏病','xinzangbing'],['心脏瓣膜病','banmobing'],['心包疾病','xinbaojibing'],['其他疾病','othersick']], sick_hist.title), {}, { :class => 'supershort'} ) %> </dd>  
       </dl>
       <dl class="form">
-        <dt><%= f.label '本次手术简要描述' %></dt>
+        <dt>
+          <%= f.label '疾病名称' %>
+        </dt>
+        <dd>
+        <% if sick_hist.sub_title.nil? or sick_hist.sub_title.blank? %>
+          <%= f.select(:sub_title,options_for_select([['未确诊', 'nostatus'],['其他疾病', 'othersick']], sick_hist.sub_title), {}, { :class => 'supershort'} ) %>  
+	<% else %>
+          <%= f.select(:sub_title,options_for_select([[t(sick_hist.sub_title), sick_hist.sub_title ], ['未确诊', 'nostatus'],['其他疾病', 'othersick']], sick_hist.sub_title), {}, { :class => 'supershort'} ) %>  
+        <% end %>
+        </dd>
+      </dl>
+      <dl class="form">
+        <dt><%= f.label '病史简要描述' %></dt>
         <dd>
           <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8' %>
         </dd>
       </dl>
         <dl class="form">
           <dt>
-          <%= f.label '手术/外伤日期' %>
+          <%= f.label '病史日期' %>
           </dt>
           <dd>
           <%= f.text_field  :sick_date, :class =>"supershort", :id=>"datepicker"  %>
           </dd>
         </dl>
       <dl class="form">
-        <dt><label>更新手术/外伤图像</label></dt>
+        <dt><label>更新病史附件</label></dt>
        <dl>
     <% end %>
   </div>
@@ -107,16 +209,16 @@ $('input#submit_sick_hist_info1').click(function(){
       <div class="upload">
         {%=o.name%}
         <div class="progress">
-          <span id="progress-text">手术信息正在上传...</span>
+          <span id="progress-text">病史信息正在上传...</span>
           <div class="bar" style="width: 0%"></div>
         </div>
       </div>
     </script>
   <div class="third-info"></div>
       <div class="video-button-group">
-<input class="button primary" data-disable-with="保存中..." id="submit_sick_hist_info1" name="commit" type="submit" value="更新手术/外伤信息">
+<input class="button primary" data-disable-with="保存中..." id="submit_sick_hist_info1" name="commit" type="submit" value="更新病史信息">
   <div class="video-delete-btn">
-    <%= link_to "删除本手术信息", sick_hist, :method => "delete", class: "danger minibutton",
+    <%= link_to "删除病史信息", sick_hist, :method => "delete", class: "danger minibutton",
       :confirm => t('confirm_delete') %>
   </div>
   </div>

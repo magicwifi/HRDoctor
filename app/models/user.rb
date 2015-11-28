@@ -151,7 +151,8 @@ class User < ActiveRecord::Base
 		hypertension = user.hypertension
 		operations = user.operations
 		sicknesses = user.sicknesses				
-		{:check=>true, :code=>200,:basic_info => basic_info,  :hyperlipidemia=>hyperlipidemia, :diabetes=>diabetes, :hypertension=>hypertension,  :operation=>operations, :sicknesses=>sicknesses }
+		sick_hists = user.sick_hists			
+		{:check=>true, :code=>200,:basic_info => basic_info,  :hyperlipidemia=>hyperlipidemia, :diabetes=>diabetes, :hypertension=>hypertension,  :operation=>operations, :sicknesses=>sicknesses,:sick_hists=> sick_hists}
 	end	
 
     end

@@ -12,6 +12,7 @@ class SickHistsController < ApplicationController
         @sick_hist.content_type = params[:mimeType]
 	else
         @sick_hist.title = params[:sick_hist][:title] 
+        @sick_hist.sub_title = params[:sick_hist][:sub_title] 
         @sick_hist.desc = params[:sick_hist][:desc] 
         @sick_hist.sick_date = params[:sick_hist][:sick_date] 
 	end
@@ -58,7 +59,7 @@ class SickHistsController < ApplicationController
     #track_activity sick_hist, sick_hist.sick_case.id
     destroy_notifications sick_hist
     sick_hist.destroy
-    redirect_to "/editmyoper"
+    redirect_to "/editmyhist"
   end
 
   def download

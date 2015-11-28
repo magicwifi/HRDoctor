@@ -45,7 +45,7 @@ skip_before_action :verify_authenticity_token
   	def show_basic_info
 		check = User.show_basic_info(params)
 		if check[:check]
-			render :json => {:code=>'200',:basic_info =>check[:basic_info], :hyperlipidemia=>check[:hyperlipidemia],:diabetes=>check[:diabetes],:hypertension=>check[:hypertension],:operation=>check[:operation],:sicknesses =>check[:sicknesses] }
+			render :json => {:code=>'200',:basic_info =>check[:basic_info], :hyperlipidemia=>check[:hyperlipidemia],:diabetes=>check[:diabetes],:hypertension=>check[:hypertension],:operation=>check[:operation],:sicknesses =>check[:sicknesses], :sick_hists => check[:sick_hists] }
 		else
 			back_code(check[:code],check[:msg])
 		end

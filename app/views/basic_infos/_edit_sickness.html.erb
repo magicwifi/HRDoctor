@@ -8,7 +8,7 @@
         singleFileUploads: true,
         removeProgressBarWhenCompleted: false,
         onFilesAdd: function(file) {
-          types = /(\.|\/)(jpg|png|mov|mp4)$/i;
+          types = /(\.|\/)(doc|docx|jpg|png|mov|mp4)$/i;
           if (types.test(file.type) || types.test(file.name)) {
             if (file.size > 100000000) {
               alert("上传失败：" + file.name + " 病历太大，超过100M");
@@ -87,7 +87,7 @@ $('input#submit_sickness_info1').click(function(){
           </dd>
         </dl>
       <dl class="form">
-        <dt><label>更新病历图像</label></dt>
+        <dt><label>更新病历图像(图片或word)</label></dt>
        <dl>
     <% end %>
   </div>

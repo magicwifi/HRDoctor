@@ -59,7 +59,7 @@
       <dd><a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_asset.asset %>"><%= sick_asset.filename %></a></dd>
     </dl>
 <div class="download-btn">
-  <%= link_to '下载咨询附件', download_sick_hist_path(:asset => sick_asset.asset), class: "minibutton primary" %>
+  <%= link_to '下载咨询附件', download_sick_asset_path(:asset => sick_asset.asset), class: "minibutton primary" %>
 </div>
      <% end %>
 
