@@ -64,7 +64,7 @@ $('#commit_faq').change(function() {
       <% end %>
     </div>
  	<% else %>
-    <div class="payment-form">
+   <div class="payment-form">
       <%= form_tag "/checkout" do %>
         <%= hidden_field_tag :basic_case_id, @basic_case.id %>
         <%= hidden_field_tag :doctor_id, @doctor.id %>
@@ -73,6 +73,8 @@ $('#commit_faq').change(function() {
         <%= submit_tag t('checkout'), :class => "button primary large right" %>
       <% end %>
     </div>
+   <p style="height: 40px;" ></p> 
+     <div id="msg-checkout">温馨提示：您是我们的友好用户，2016年1月前不收取咨询费用，您直接提交即可</div>
       <% end %>
     </div>
   </div>
