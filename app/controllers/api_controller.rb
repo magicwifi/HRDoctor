@@ -36,7 +36,7 @@ skip_before_action :verify_authenticity_token
   	def show_basic_cases
 		check = Doctor.show_basic_list(params)
 		if check[:check]
-			render :json => {:code=>'200',:result =>check[:result]}
+			render :json => {:code=>'200',:result =>check[:result],:free=>check[:free] }
 		else
 			back_code(check[:code],check[:msg])
 		end
