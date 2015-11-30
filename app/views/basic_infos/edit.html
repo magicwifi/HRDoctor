@@ -27,7 +27,7 @@ $('#basic_info_height').on('change', function() {
 	var x = parseFloat($('#basic_info_weight').val())*10000;
         var y = parseFloat($('#basic_info_height').val())*parseFloat($('#basic_info_height').val());
 	var bmi = (x/y).toFixed(2);
-	$('#bmi').html('BMI指数为'+bmi);
+	$('#bmi').html('体重指数(BMI)'+bmi);
 });
 $('#basic_info_weight').on('change', function() {
 	var x = parseFloat($('#basic_info_weight').val())*10000;

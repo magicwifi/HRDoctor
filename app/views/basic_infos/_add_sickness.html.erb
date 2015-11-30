@@ -38,7 +38,7 @@ $(document).ready(function() {
   <div class="primary-info">
     <%= form_for(Sickness.new,:remote => true) do |f| %>
       <dl class="form">
-        <dt><%= f.label '病历标题' %>&nbsp;&nbsp;&nbsp;&nbsp;一次冠心病检查</dt>
+        <dt><%= f.label '病历标题' %>&nbsp;&nbsp;&nbsp;&nbsp;如: 一次冠心病检查</dt>
         <dd><%= f.text_field :title, id: "video-title" %></dd>
       </dl>
       <dl class="form">

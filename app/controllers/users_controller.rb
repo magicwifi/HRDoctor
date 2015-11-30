@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save!
       UserMailer.welcome(@user).deliver
-      BasicInfo.create!(:name=>"李刚",:gender=>"male",:edited=>false,:user_id=>@user.id,:weight=>64,:height=>175,:age=>30)
+      BasicInfo.create!(:edited=>false,:user_id=>@user.id)
       Hypertension.create!(:user_id=>@user.id,:ishave=>false,:before_high=>120,:before_low=>60,:now_high=>120,:now_low=>60,:diagnosis_date=>DateTime.new(2001,2,3) )
       Diabetes.create!(:user_id=>@user.id,:ishave=>false,:after_meal=>120,:limosis=>60,:diagnosis_date=>DateTime.new(2001,2,3) )
       Hyperlipidemia.create!(:user_id=>@user.id,:ishave=>false,:diagnosis_date=>DateTime.new(2001,2,3) )
