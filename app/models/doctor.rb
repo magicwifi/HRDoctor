@@ -90,7 +90,7 @@ class Doctor < ActiveRecord::Base
 			basic_list << {:basic_case_id =>basic_case_id, :basic_case_title=>basic_case_title, :user_id=>user_id, :user_name=>user_name, :user_age=>user_age, :user_gender=>user_gender, :have_ct=>have_ct,:type=>process }
 		end
 		free_list = []
-		free_cases = BasicCase.where(:process=>'free').limit(10).order('updated_at DESC')
+		free_cases = BasicCase.where(:process=>'free',:has_reply=>false).limit(10).order('updated_at DESC')
 		free_cases.each do |basic_case|
 			basic_case_id =  basic_case.id
 			basic_case_title = basic_case.main_desc

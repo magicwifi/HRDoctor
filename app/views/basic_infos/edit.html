@@ -33,7 +33,7 @@ $('#basic_info_weight').on('change', function() {
 	var x = parseFloat($('#basic_info_weight').val())*10000;
         var y = parseFloat($('#basic_info_height').val())*parseFloat($('#basic_info_height').val());
 	var bmi = (x/y).toFixed(2);
-	$('#bmi').html('BMI指数为'+bmi);
+	$('#bmi').html('体重指数(BMI)'+bmi);
 });
 </script>
 <% end %>
@@ -46,18 +46,18 @@ $('#basic_info_weight').on('change', function() {
         <%= f.hidden_field :id %>
         <dl class="form">
           <dt>
-          <%= f.label '真实姓名' %>
+          <%= f.label '真实姓名' %>&nbsp;&nbsp;&nbsp;&nbsp;请输入真实姓名
           </dt>
           <dd>
-          <%= f.text_field  :name, :class => "short", :placeholder => "请输入真实姓名" %>
+          <%= f.text_field  :name, :class => "short"  %>
           </dd>
         </dl>
         <dl class="form">
           <dt>
-          <%= f.label '年龄' %>
+          <%= f.label '年龄' %>&nbsp;&nbsp;&nbsp;&nbsp;请输入真实年龄
           </dt>
           <dd>
-          <%= f.text_field  :age, :class => "short", :placeholder => "请输入两位数字的年龄" %>
+          <%= f.text_field  :age, :class => "short"  %>
           </dd>
         </dl>
         <dl class="form">
@@ -73,7 +73,7 @@ $('#basic_info_weight').on('change', function() {
           <%= f.label '身高(cm)' %>
           </dt>
           <dd>
-          <%= f.text_field  :height, :class => "short", :placeholder => "如175"  %>
+          <%= f.text_field  :height, :class => "short", :placeholder => ""  %>
           </dd>
         </dl>
         </dl>
@@ -82,8 +82,8 @@ $('#basic_info_weight').on('change', function() {
           <%= f.label '体重(kg)' %>
           </dt>
           <dd>
-          <%= f.text_field  :weight, :class => "short", :placeholder => "如85"  %>
-           <div id="bmi">BMI指数为<%= (@basic_info.weight*10000/(@basic_info.height*@basic_info.height)).round(2)  %></div>
+          <%= f.text_field  :weight, :class => "short", :placeholder => ""  %>
+           <div id="bmi">体重指数(BMI)为<%= (@basic_info.weight*10000/(@basic_info.height*@basic_info.height)).round(2)  %></div>
           </dd>
         </dl>
         <dl class="form">
