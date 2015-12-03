@@ -5,8 +5,7 @@ $(document).ready(function() {
   if (createVideoForm.length > 0) {
     createVideoForm.QiniuUploader({
       autoUpload: true,
-      singleFileUploads: true,
-      removeProgressBarWhenCompleted: false,
+      removeProgressBarWhenCompleted: true,
       onFilesAdd: function(file) {
         types = /(\.|\/)(docx|doc|mov|mp4|jpg|png)$/i;
         if (types.test(file.type) || types.test(file.name)) {
@@ -68,6 +67,8 @@ $(document).ready(function() {
       callback_method: 'POST',
       custom_fields: { user_id: user.id },
       progress_bar_id: 'progress-bar' do %>
+        <input id="fileupload-title" name="title"  type="hidden" value=""  />
+        <input id="fileupload-desc"  name="desc" type="hidden" value=""  />
 
         <input id="fileupload" name="file" type="file">
       <div class="bar" id="progress-bar"></div>
@@ -117,6 +118,15 @@ $(document).ready(function(){
 
 $('input#submit_operation_info').click(function(){
          $('form#new_operation').submit();
+});
+$('#video-title').on('change', function() {
+	var value = $('#video-title').val();
+	//alert(value);
+});
+$('#video-desc').on('change', function() {
+	var value = $('#video-desc').val();
+	//alert(value);
+	 //$('#fileupload-desc').attr('value', value);
 });
 
 </script>

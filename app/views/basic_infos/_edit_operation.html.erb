@@ -5,8 +5,7 @@
     if (updateVideoForm.length > 0) {
       updateVideoForm.QiniuUploader({
         autoUpload: true,
-        singleFileUploads: true,
-        removeProgressBarWhenCompleted: false,
+        removeProgressBarWhenCompleted: true,
         onFilesAdd: function(file) {
           types = /(\.|\/)(doc|docx|jpg|png|mov|mp4)$/i;
           if (types.test(file.type) || types.test(file.name)) {
