@@ -2,3 +2,11 @@ $('.add-video-box').replaceWith("<%= escape_javascript render 'add_sick_asset', 
 $('.playlist li').removeClass('selected');
 $('.playlist li a.video').removeClass('active');
 $('.add-video-btn a.video').addClass('active');
+$('#video-title').on('change', function() {
+	var value = $('#video-title').val();
+	 $('#x\\:title').attr('value', value);
+});
+$('#sick_asset_asset_type').on('change', function() {
+	var value = $('#sick_asset_asset_type').val();
+	 $('#x\\:asset_type').attr('value', value);
+});

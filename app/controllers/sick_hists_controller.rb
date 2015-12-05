@@ -10,6 +10,10 @@ class SickHistsController < ApplicationController
         @sick_hist.size = params[:fsize]
         @sick_hist.filename = params[:fname]
         @sick_hist.content_type = params[:mimeType]
+        @sick_hist.title = params[:custom_fields][:title] 
+        @sick_hist.sub_title = params[:custom_fields][:sub_title] 
+        @sick_hist.desc = params[:custom_fields][:desc] 
+        @sick_hist.sick_date = params[:custom_fields][:sick_date] 
 	else
         @sick_hist.title = params[:sick_hist][:title] 
         @sick_hist.sub_title = params[:sick_hist][:sub_title] 

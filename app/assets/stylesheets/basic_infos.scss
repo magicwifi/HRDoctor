@@ -16,6 +16,13 @@ img#poster {
 #msg-checkout {
   float:right;
 }
+#msg-show {
+  float: right;
+  font-weight: bold;
+  color: #ff0000;	
+  width: 400px;
+  padding-right:150px
+}
 
 
 .sick_desc {
@@ -60,7 +67,14 @@ select.supershort {
 }
 
 .ready-basic-case {
+   width: 900px;
+   margin:0 auto;
+}
+
+.ready-basic-case {
    padding-left: 40px;
+   float: left;
+   width: 200px;
 }
 .commit-basic-case {
    text-align: center;

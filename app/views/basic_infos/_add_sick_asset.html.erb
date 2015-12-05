@@ -5,8 +5,7 @@ $(document).ready(function() {
   if (createVideoForm.length > 0) {
     createVideoForm.QiniuUploader({
       autoUpload: true,
-      singleFileUploads: true,
-      removeProgressBarWhenCompleted: false,
+      removeProgressBarWhenCompleted: true,
       onFilesAdd: function(file) {
         types = /(\.|\/)(mov|mp4|jpg|png)$/i;
         if (types.test(file.type) || types.test(file.name)) {
@@ -58,7 +57,7 @@ $(document).ready(function() {
       bucket:        "#{Settings.qiniu.bucket}",
       id:            'create-video-uploader',
       callback_method: 'POST',
-      custom_fields: { basic_case_id: basic_case.id },
+      custom_fields: { basic_case_id: basic_case.id, title:"", asset_type:"" },
       progress_bar_id: 'progress-bar' do %>
       <input id="fileupload" name="file" type="file" class="supershort"  > 
       <div class="bar" id="progress-bar"></div>
@@ -87,6 +86,14 @@ $(document).ready(function() {
 <script>
 $('#submit_sick_asset_info').click(function(){
          $('#new_sick_asset').submit();
+});
+$('#video-title').on('change', function() {
+	var value = $('#video-title').val();
+	 $('#x\\:title').attr('value', value);
+});
+$('#sick_asset_asset_type').on('change', function() {
+	var value = $('#sick_asset_asset_type').val();
+	 $('#x\\:asset_type').attr('value', value);
 });
 </script>
 <% end %>

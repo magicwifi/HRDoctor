@@ -77,13 +77,15 @@
     </div> <!-- boxed-group -->
   </div><!-- end tutorial-page -->
 </div>
-<p>
+	<p style="height: 5px;" ></p>
+<div class="ready-basic">
     <div class="ready-basic-case">
-    <%= link_to '找医生咨询加号', basic_case_commit_path(@basic_case), :method => :post, :class => "button primary large" %>
+    <%= link_to '找医生咨询', basic_case_commit_path(@basic_case), :method => :post, :class => "button primary large" %>
 	<p style="height: 10px;" ></p>
     <%= link_to '快速在线咨询', basic_case_free_path(@basic_case), :method => :post, :class => "button danger large" %>
 </div>
-</p>
+     <div id="msg-show">温馨提示：您可以点击“找医生咨询”按钮，进入选择医生界面，选择您中意的医生进行定向咨询；您也可以点击“快速在线咨询”按钮，您的咨询将发给所有相关医生</div>
+</div>
 
     </div>
     <div class="content watched-courses-section clearfix">

@@ -5,8 +5,7 @@ $(document).ready(function() {
   if (createVideoForm.length > 0) {
     createVideoForm.QiniuUploader({
       autoUpload: true,
-      singleFileUploads: true,
-      removeProgressBarWhenCompleted: false,
+      removeProgressBarWhenCompleted: true,
       onFilesAdd: function(file) {
         types = /(\.|\/)(docx|doc|mov|mp4|jpg|png)$/i;
         if (types.test(file.type) || types.test(file.name)) {
@@ -75,7 +74,7 @@ $(document).ready(function() {
       bucket:        "#{Settings.qiniu.bucket}",
       id:            'create-video-uploader',
       callback_method: 'POST',
-      custom_fields: { user_id: user.id },
+      custom_fields: { user_id: user.id,  title:"",  sub_title:"", desc:"",sick_date:"" },
       progress_bar_id: 'progress-bar' do %>
 
         <input id="fileupload" name="file" type="file">
@@ -214,6 +213,26 @@ else{
        sub_title.append("<option value='nostatus'>未确诊</option>");
        sub_title.append("<option value='othersick'>其他疾病</option>");
   }
+});
+
+$('input#submit_operation_info').click(function(){
+         $('form#new_operation').submit();
+});
+$('#sick_hist_title').on('change', function() {
+	var value = $('#sick_hist_title').val();
+	 $('#x\\:title').attr('value', value);
+});
+$('#sick_hist_sub_title').on('change', function() {
+	var value = $('#sick_hist_sub_title').val();
+	 $('#x\\:sub_title').attr('value', value);
+});
+$('#video-desc').on('change', function() {
+	var value = $('#video-desc').val();
+	 $('#x\\:desc').attr('value', value);
+});
+$('#datepicker').on('change', function() {
+	var value = $('#datepicker').val();
+	 $('#x\\:sick_date').attr('value', value);
 });
 </script>
 <% end %>

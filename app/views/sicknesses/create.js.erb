@@ -1,4 +1,10 @@
 $('form#new_sickness').get(0).setAttribute("action", "/sicknesses/<%= @sickness.id %>");
 $('form#new_sickness > div').append('<input name="_method" type="hidden" value="put">');
+$('.playlist-container').replaceWith("<%= escape_javascript render 'basic_infos/all_added_sicknesses', :user=>@user %>");
+$('.add-video-box').replaceWith("<%= escape_javascript render 'basic_infos/edit_sickness', :sickness => @sickness %>");
+$('.playlist li a.video').removeClass('active');
+$('.playlist li').removeClass('selected');
+$('.playlist li a.video').eq(<%= @sickness.position - 1 %>).addClass('active');
+$('.playlist li').eq(<%= @sickness.position - 1 %>).addClass('selected');
 $('input#submit_sickness_info').removeAttr('disabled');
 $('input#submit_sickness_info').get(0).setAttribute('value', '保存上述信息');

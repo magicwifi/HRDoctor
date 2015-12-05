@@ -5,8 +5,7 @@
     if (updateVideoForm.length > 0) {
       updateVideoForm.QiniuUploader({
         autoUpload: true,
-        singleFileUploads: true,
-        removeProgressBarWhenCompleted: false,
+        removeProgressBarWhenCompleted: true,
         onFilesAdd: function(file) {
           types = /(\.|\/)(doc|docx|jpg|png|mov|mp4)$/i;
           if (types.test(file.type) || types.test(file.name)) {
@@ -73,7 +72,7 @@ $('input#submit_sickness_info1').click(function(){
         <dd><%= f.text_field :title, id: "video-title" %></dd>
       </dl>
       <dl class="form">
-        <dt><%= f.label '症状简要描述' %>&nbsp;&nbsp;&nbsp;&nbsp;快走时胸闷、胸痛10年,加重1周</dt>
+        <dt><%= f.label '症状简要描述' %>&nbsp;&nbsp;&nbsp;&nbsp;如: 快走时胸闷、胸痛10年,加重1周</dt>
         <dd>
           <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8' %>
         </dd>

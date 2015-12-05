@@ -3,12 +3,15 @@ class SickAssetsController < ApplicationController
     respond_to do |f|
       f.js do
         @sick_asset = SickAsset.new
+        @sick_asset.title = params[:custom_fields][:title] 
+        @sick_asset.asset_type = params[:custom_fields][:asset_type] 
         @sick_asset.asset = params[:key]
         @sick_asset.size = params[:fsize]
         @sick_asset.filename = params[:fname]
         @sick_asset.content_type = params[:mimeType]
         @sick_asset.basic_case_id = params[:custom_fields][:basic_case_id]
         @sick_asset.save
+	@basic_case = @sick_asset.basic_case
         #track_activity @sick_asset, @sick_asset.sick_case.id
       end
     end

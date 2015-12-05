@@ -115,3 +115,19 @@ else{
        sub_title.append("<option value='othersick'>其他疾病</option>");
   }
 });
+$('#sick_hist_title').on('change', function() {
+	var value = $('#sick_hist_title').val();
+	 $('#x\\:title').attr('value', value);
+});
+$('#sick_hist_sub_title').on('change', function() {
+	var value = $('#sick_hist_sub_title').val();
+	 $('#x\\:sub_title').attr('value', value);
+});
+$('#video-desc').on('change', function() {
+	var value = $('#video-desc').val();
+	 $('#x\\:desc').attr('value', value);
+});
+$('#datepicker').on('change', function() {
+	var value = $('#datepicker').val();
+	 $('#x\\:sick_date').attr('value', value);
+});

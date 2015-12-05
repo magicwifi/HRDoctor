@@ -28,3 +28,15 @@ $(document).ready(function(){
 $('input#submit_operation_info').click(function(){
          $('form#new_operation').submit();
 });
+$('#video-title').on('change', function() {
+	var value = $('#video-title').val();
+	 $('#x\\:title').attr('value', value);
+});
+$('#video-desc').on('change', function() {
+	var value = $('#video-desc').val();
+	 $('#x\\:desc').attr('value', value);
+});
+$('#datepicker').on('change', function() {
+	var value = $('#datepicker').val();
+	 $('#x\\:sick_date').attr('value', value);
+});

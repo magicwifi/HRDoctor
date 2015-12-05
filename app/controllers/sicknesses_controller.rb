@@ -3,6 +3,10 @@ class SicknessesController < ApplicationController
     respond_to do |f|
       f.js do
         @sickness = Sickness.new
+        @user =  current_user
+        @sickness.title = params[:custom_fields][:title] 
+        @sickness.desc = params[:custom_fields][:desc] 
+        @sickness.sick_date = params[:custom_fields][:sick_date] 
         @sickness.asset = params[:key]
         @sickness.size = params[:fsize]
         @sickness.filename = params[:fname]

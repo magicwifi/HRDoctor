@@ -10,6 +10,9 @@ class OperationsController < ApplicationController
         @operation.size = params[:fsize]
         @operation.filename = params[:fname]
         @operation.content_type = params[:mimeType]
+        @operation.title = params[:custom_fields][:title] 
+        @operation.desc = params[:custom_fields][:desc] 
+        @operation.sick_date = params[:custom_fields][:sick_date] 
 	else
         @operation.title = params[:operation][:title] 
         @operation.desc = params[:operation][:desc] 

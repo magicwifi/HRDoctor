@@ -65,10 +65,8 @@ $(document).ready(function() {
       bucket:        "#{Settings.qiniu.bucket}",
       id:            'create-video-uploader',
       callback_method: 'POST',
-      custom_fields: { user_id: user.id },
+      custom_fields: { user_id: user.id, title:"", desc:"",sick_date:"" },
       progress_bar_id: 'progress-bar' do %>
-        <input id="fileupload-title" name="title"  type="hidden" value=""  />
-        <input id="fileupload-desc"  name="desc" type="hidden" value=""  />
 
         <input id="fileupload" name="file" type="file">
       <div class="bar" id="progress-bar"></div>
@@ -121,13 +119,15 @@ $('input#submit_operation_info').click(function(){
 });
 $('#video-title').on('change', function() {
 	var value = $('#video-title').val();
-	//alert(value);
+	 $('#x\\:title').attr('value', value);
 });
 $('#video-desc').on('change', function() {
 	var value = $('#video-desc').val();
-	//alert(value);
-	 //$('#fileupload-desc').attr('value', value);
+	 $('#x\\:desc').attr('value', value);
 });
-
+$('#datepicker').on('change', function() {
+	var value = $('#datepicker').val();
+	 $('#x\\:sick_date').attr('value', value);
+});
 </script>
 <% end %>

@@ -5,8 +5,7 @@ $(document).ready(function() {
   if (createVideoForm.length > 0) {
     createVideoForm.QiniuUploader({
       autoUpload: true,
-      singleFileUploads: true,
-      removeProgressBarWhenCompleted: false,
+      removeProgressBarWhenCompleted: true,
       onFilesAdd: function(file) {
         types = /(\.|\/)(docx|doc|mov|mp4|jpg|png)$/i;
         if (types.test(file.type) || types.test(file.name)) {
@@ -42,7 +41,7 @@ $(document).ready(function() {
         <dd><%= f.text_field :title, id: "video-title" %></dd>
       </dl>
       <dl class="form">
-        <dt><%= f.label '症状简要描述' %>&nbsp;&nbsp;&nbsp;&nbsp;快走时胸闷、胸痛10年,加重1周</dt>
+        <dt><%= f.label '症状简要描述' %>&nbsp;&nbsp;&nbsp;&nbsp;如: 快走时胸闷、胸痛10年,加重1周</dt>
         <dd>
           <%= f.text_area :desc, id: "video-desc", class: "long short", rows: '8' %>
         </dd>
@@ -66,7 +65,7 @@ $(document).ready(function() {
       bucket:        "#{Settings.qiniu.bucket}",
       id:            'create-video-uploader',
       callback_method: 'POST',
-      custom_fields: { user_id: user.id },
+      custom_fields: { user_id: user.id, title:"", desc:"", sick_date:"" },
       progress_bar_id: 'progress-bar' do %>
 
         <input id="fileupload" name="file" type="file">
@@ -116,6 +115,19 @@ $(document).ready(function(){
 });
 $('input#submit_sickness_info').click(function(){
          $('form#new_sickness').submit();
+});
+
+$('#video-title').on('change', function() {
+	var value = $('#video-title').val();
+	 $('#x\\:title').attr('value', value);
+});
+$('#video-desc').on('change', function() {
+	var value = $('#video-desc').val();
+	 $('#x\\:desc').attr('value', value);
+});
+$('#datepicker').on('change', function() {
+	var value = $('#datepicker').val();
+	 $('#x\\:sick_date').attr('value', value);
 });
 
 

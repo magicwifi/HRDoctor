@@ -1,5 +1,11 @@
 $('form#new_sick_asset').get(0).setAttribute("action", "/sick_assets/<%= @sick_asset.id %>");
 $('form#new_sick_asset > div').append('<input name="_method" type="hidden" value="put">');
+$('.playlist-container').replaceWith("<%= escape_javascript render 'basic_infos/all_added_sick_assets', :basic_case=>@basic_case %>");
+$('.add-video-box').replaceWith("<%= escape_javascript render 'basic_infos/edit_sick_asset', :sick_asset => @sick_asset %>");
+$('.playlist li a.video').removeClass('active');
+$('.playlist li').removeClass('selected');
+$('.playlist li a.video').eq(<%= @sick_asset.position - 1 %>).addClass('active');
+$('.playlist li').eq(<%= @sick_asset.position - 1 %>).addClass('selected');
 $('input#submit_sick_asset_info').removeAttr('disabled');
 $('input#submit_sick_asset_info').get(0).setAttribute('value', '保存上述信息');
 $('#submit_sick_asset_info').click(function(){
