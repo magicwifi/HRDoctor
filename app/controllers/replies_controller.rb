@@ -26,7 +26,7 @@ skip_before_action :verify_authenticity_token
  	render :text => '{"result":400}'
      else
 	reply = basic_case.reply
-	reply.update(:allow_plus=>params[:allow_plus])
+	reply.update(:allow_plus=>params[:allow_plus],:plus_date=>params[:plus_date],:plus_department=>params[:plus_department])
 	reply.save
  	render :text => '{"result":200}'
      end

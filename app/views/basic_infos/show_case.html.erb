@@ -11,6 +11,12 @@
       <dd><%= @basic_case.reply.main_desc %></dd>
       <dt>加号结果 : </dt>
       <dd><%= @basic_case.reply.allow_plus ? "加号成功":"加号失败"  %></dd>
+      <% if  @basic_case.reply.allow_plus %>
+      <dt>加号日期 : </dt>
+      <dd><%= ( @basic_case.reply.plus_date.nil? or @basic_case.reply.plus_date.blank? ) ? "日期未指定": @basic_case.reply.plus_date.strftime('%Y-%m-%d %H:%M:%S') %></dd>
+      <dt>加号科室 : </dt>
+      <dd><%= ( @basic_case.reply.plus_department.nil? or @basic_case.reply.plus_department.blank? ) ? "科室未指定": @basic_case.reply.plus_department %></dd>
+      <% end %>
     </dl>
     <p style="height: 40px;" ></p>
    <% end %>
@@ -54,7 +60,7 @@
       <dt>附件描述 : </dt>
       <dd><%= (sick_asset.desc.nil? or sick_asset.desc.blank? ) ? "未填写":sick_asset.desc %></dd>
       <dt>附件类型 : </dt>
-      <dd><%= sick_asset.asset_type.nil? ? "未填写":t(sick_asset.asset_type) %></dd>
+      <dd><%= (sick_asset.asset_type.nil? or sick_asset.asset_type.blank? )  ? "未填写": t(sick_asset.asset_type) %></dd>
       <dt>查看附件 : </dt>
       <dd><a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_asset.asset %>"><%= sick_asset.filename %></a></dd>
     </dl>

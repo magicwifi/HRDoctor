@@ -1,5 +1,5 @@
 class Reply < ActiveRecord::Base
-  attr_accessible :id, :main_desc, :basic_case_id,:doctor_id,:sick_sub_name,:sick_name, :created_at,:allow_plus
+  attr_accessible :id, :main_desc, :basic_case_id,:doctor_id,:sick_sub_name,:sick_name, :created_at,:allow_plus, :plus_date, :plus_department
   belongs_to :basic_case
   belongs_to :doctor
   validates :sick_name,  presence: true 

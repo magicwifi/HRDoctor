@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127141328) do
+ActiveRecord::Schema.define(version: 20151205072259) do
 
   create_table "activities", force: true do |t|
     t.string   "action"
@@ -246,7 +246,9 @@ ActiveRecord::Schema.define(version: 20151127141328) do
     t.datetime "updated_at"
     t.integer  "doctor_id"
     t.string   "sick_sub_name"
-    t.boolean  "allow_plus",    default: false
+    t.boolean  "allow_plus",      default: false
+    t.datetime "plus_date"
+    t.string   "plus_department"
   end
 
   create_table "reservations", force: true do |t|
