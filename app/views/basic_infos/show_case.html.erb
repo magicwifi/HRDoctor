@@ -6,11 +6,13 @@
     <hr>
 <dl class="dl-horizontal">
       <dt>诊断结果 : </dt>
-      <dd><%= @basic_case.reply.sick_name %> <%= @basic_case.reply.sick_sub_name %></dd>
+      <dd><%= t(@basic_case.reply.sick_name) %> <%= t(@basic_case.reply.sick_sub_name) %></dd>
       <dt>问题回复 : </dt>
       <dd><%= @basic_case.reply.main_desc %></dd>
+      <% if  !(@basic_case.process.nil?) and @basic_case.process == 'plus'  %>
       <dt>加号结果 : </dt>
       <dd><%= @basic_case.reply.allow_plus ? "加号成功":"加号失败"  %></dd>
+      <% end %>
       <% if  @basic_case.reply.allow_plus %>
       <dt>加号日期 : </dt>
       <dd><%= ( @basic_case.reply.plus_date.nil? or @basic_case.reply.plus_date.blank? ) ? "日期未指定": @basic_case.reply.plus_date.strftime('%Y-%m-%d %H:%M:%S') %></dd>
