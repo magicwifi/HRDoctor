@@ -15,7 +15,7 @@
       <% end %>
       <% if  @basic_case.reply.allow_plus %>
       <dt>加号日期 : </dt>
-      <dd><%= ( @basic_case.reply.plus_date.nil? or @basic_case.reply.plus_date.blank? ) ? "日期未指定": @basic_case.reply.plus_date.strftime('%Y-%m-%d %H:%M:%S') %></dd>
+      <dd><%= ( @basic_case.reply.plus_date.nil? or @basic_case.reply.plus_date.blank? ) ? "日期未指定": @basic_case.reply.plus_date.strftime('%Y-%m-%d %H时%M分') %></dd>
       <% end %>
     </dl>
     <p style="height: 40px;" ></p>
