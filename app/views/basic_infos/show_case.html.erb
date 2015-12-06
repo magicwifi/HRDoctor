@@ -5,7 +5,7 @@
     <h1>医生回复</h1>
     <hr>
 <dl class="dl-horizontal">
-      <dt>诊断结果 : </dt>
+      <dt>咨询结果 : </dt>
       <dd><%= t(@basic_case.reply.sick_name) %> <%= t(@basic_case.reply.sick_sub_name) %></dd>
       <dt>问题回复 : </dt>
       <dd><%= @basic_case.reply.main_desc %></dd>
@@ -16,8 +16,6 @@
       <% if  @basic_case.reply.allow_plus %>
       <dt>加号日期 : </dt>
       <dd><%= ( @basic_case.reply.plus_date.nil? or @basic_case.reply.plus_date.blank? ) ? "日期未指定": @basic_case.reply.plus_date.strftime('%Y-%m-%d %H:%M:%S') %></dd>
-      <dt>加号科室 : </dt>
-      <dd><%= ( @basic_case.reply.plus_department.nil? or @basic_case.reply.plus_department.blank? ) ? "科室未指定": @basic_case.reply.plus_department %></dd>
       <% end %>
     </dl>
     <p style="height: 40px;" ></p>
