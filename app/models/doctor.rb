@@ -69,6 +69,7 @@ class Doctor < ActiveRecord::Base
 			basic_case_title = basic_case.main_desc
 			user_id = basic_case.user.id
 			process = basic_case.process
+			case_time = basic_case.updated_at
 			have_ct = false
 			if !basic_case.sick_assets.nil?
 				basic_case.sick_assets.each do |sick_asset|
@@ -87,7 +88,7 @@ class Doctor < ActiveRecord::Base
 				user_age = "not open"
 				user_gender = "not open"
 			end  
-			basic_list << {:basic_case_id =>basic_case_id, :basic_case_title=>basic_case_title, :user_id=>user_id, :user_name=>user_name, :user_age=>user_age, :user_gender=>user_gender, :have_ct=>have_ct,:type=>process }
+			basic_list << {:basic_case_id =>basic_case_id, :basic_case_title=>basic_case_title, :user_id=>user_id, :user_name=>user_name, :user_age=>user_age, :user_gender=>user_gender, :have_ct=>have_ct,:type=>process, :case_time => case_time  }
 		end
 		free_list = []
 		free_cases = BasicCase.where(:process=>'free',:has_reply=>false).limit(10).order('updated_at DESC')
@@ -96,6 +97,7 @@ class Doctor < ActiveRecord::Base
 			basic_case_title = basic_case.main_desc
 			user_id = basic_case.user.id
 			process = basic_case.process
+			case_time = basic_case.updated_at
 			have_ct = false
 			if !basic_case.sick_assets.nil?
 				basic_case.sick_assets.each do |sick_asset|
@@ -114,7 +116,7 @@ class Doctor < ActiveRecord::Base
 				user_age = "not open"
 				user_gender = "not open"
 			end  
-			free_list << {:basic_case_id =>basic_case_id, :basic_case_title=>basic_case_title, :user_id=>user_id, :user_name=>user_name, :user_age=>user_age, :user_gender=>user_gender, :have_ct=>have_ct,:type=>process }
+			free_list << {:basic_case_id =>basic_case_id, :basic_case_title=>basic_case_title, :user_id=>user_id, :user_name=>user_name, :user_age=>user_age, :user_gender=>user_gender, :have_ct=>have_ct,:type=>process, :case_time => case_time }
 		end
 		{:check=>true, :result=>basic_list,:free=>free_list}
 	end
