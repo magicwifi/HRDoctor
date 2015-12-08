@@ -23,19 +23,29 @@ img#poster {
   width: 400px;
   padding-right:150px
 }
+.msg-input {
+   font-size: 16px;
+   font-weight: bold;
+   color: #ff0000;	
+   display: inline;
+}
 
+.msg-text {
+   display: inline;
+}
 
 .sick_desc {
    font-size: 10px;
    font-weight: bold;
-   color: #666;
    display: inline;
+   color: #666;
 }
 
 .boxed-group > .all_desc {
     background-color: #ececec;
     margin: 0;
     padding: 10px 20px;
+   display: inline;
 }
 .boxed-group > .sick_desc {
     margin: 0;

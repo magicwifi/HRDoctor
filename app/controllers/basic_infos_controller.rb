@@ -229,7 +229,8 @@ class BasicInfosController < ApplicationController
 
   def update_faq
     main_desc = params[:basic_case][:main_desc]
-    if main_desc.nil? or main_desc.blank?
+    detail_desc = params[:basic_case][:detail_desc]
+    if main_desc.nil? or main_desc.blank? or detail_desc.nil? or detail_desc.blank?
     	redirect_to "/createmyfaq",:flash => { :success => 'main_desc not null .'}
  	return
     end

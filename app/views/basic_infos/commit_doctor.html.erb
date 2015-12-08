@@ -24,7 +24,7 @@
         <%= f.hidden_field :id %>
         <dl class="form">
           <dt>
-          <%= f.label '主诉' %>&nbsp;&nbsp;&nbsp;&nbsp;包括主要症状、首次发作至今为止持续时间,限20-50字
+          <%= f.label '主诉' %>&nbsp;&nbsp;&nbsp;&nbsp;<div class="msg-input">必填</div><div class="msg-text">&nbsp;&nbsp;包括主要症状、首次发作至今为止持续时间,限20-50字</div>
           </dt>
           <dd>
           <%= f.text_area  :main_desc, :class => "short" %>
@@ -32,7 +32,7 @@
         </dl>
         <dl class="form">
           <dt>
-          <%= f.label '详细表述' %>&nbsp;&nbsp;&nbsp;&nbsp;包括主要症状，每次持续时间、多于什么情况下发作（活动）、怎么缓解（服药还是其他处理），其他伴随不适, 限500字
+          <%= f.label '详细表述' %>&nbsp;&nbsp;&nbsp;&nbsp;<div class="msg-input">必填</div><div class="msg-text">&nbsp;&nbsp;包括主要症状，每次持续时间、多于什么情况下发作（活动）、怎么缓解（服药还是其他处理），其他伴随不适, 限500字</div>
           </dt>
           <dd>
           <%= f.text_area  :detail_desc, :class => "short", :placeholder => "" %>
@@ -114,9 +114,10 @@
     });
 
     $(".edit_basic_case").submit(function( event ) {
-	  if($.trim($('#basic_case_main_desc').val()) == ''){
-      		alert('Input can not be left blank');
+	  if($.trim($('#basic_case_main_desc').val()) == ''||$.trim($('#basic_case_detail_desc').val()) == '' ){
    	}	
+      		alert('温馨提示：为了让医生更好解答您的咨询，请按提示输入主诉、详细描述等信息');
+		event.preventDefault();
      });
   </script>
 <% end %>
