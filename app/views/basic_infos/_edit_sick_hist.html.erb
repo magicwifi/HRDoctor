@@ -193,7 +193,8 @@ else{
     <% end %>
   </div>
   <div class="secondary-info">
-    <p id="video-filename">查看文件: <a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_hist.asset %>"><%= sick_hist.filename %></a></p>
+   
+    <p id="video-filename">查看文件: <a href="#" onClick="window.open('<%= sick_hist.asset.nil? ? "#" :"http://"+Settings.qiniu.bucket_domain+"/"+sick_hist.asset %>','newwindow','height=500,width=611,scrollbars=yes,status=yes,screenX=400,screenY=400')" ><%= sick_hist.filename %></a></p>
     <%= qiniu_video_uploader_form callback_url: "/update_sick_hist/#{sick_hist.id}",
       callback_method: 'PATCH',
       bucket:        "#{Settings.qiniu.bucket}",
@@ -220,6 +221,7 @@ else{
     <%= link_to "删除病史信息", sick_hist, :method => "delete", class: "danger minibutton",
       :confirm => t('confirm_delete') %>
   </div>
+  <div class="info-message"></div>
   </div>
 </div>
       </div>

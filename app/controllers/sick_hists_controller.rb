@@ -41,6 +41,7 @@ class SickHistsController < ApplicationController
           #track_activity sick_hist, sick_hist.sick_case.id
         end
         f.json { render :json => {} }
+        #f.json { render :json => {} }
       else
         sick_hist.update_attributes(params[:sick_hist])
         f.js do

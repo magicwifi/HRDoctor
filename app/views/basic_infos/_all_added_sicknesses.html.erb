@@ -1,10 +1,10 @@
 <div class="playlist-container">
   <ul id="play-list" class="playlist" data-update-url="/sort_sicknesses">
-    <% user.sicknesses.each do |sickness| %>
+    <% user.sicknesses.each_with_index do |sickness,index| %>
       <%= content_tag_for :li, sickness do %>
         <a class="video" href="<%= @user.name+ '/'+sickness.position.to_s + '/editsick.js' %>" data-remote='true'>
           <span class="video-info edit-video-info">
-            <%= sickness.title %> &nbsp;&nbsp;&nbsp;&nbsp; <%= sickness.updated_at.strftime '%Y-%m-%d %H:%M:%S' %>
+            <%= "记录"+(index+1).to_s+":" %>&nbsp;<%= (sickness.title.nil? or sickness.title.blank?) ? '未录入': sickness.title  %> &nbsp;&nbsp;&nbsp;&nbsp;  患病于: <%= sickness.sick_date.nil? ? '未录入日期':(sickness.sick_date.strftime '%Y-%m-%d') %>
           </span>
         </a>
         <a href="<%= @user.name+ '/'+sickness.position.to_s + '/editsick.js' %>"

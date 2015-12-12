@@ -1,4 +1,5 @@
 $('.flash-message').get(0).innerHTML='手术更新成功!';
+$('.info-message').get(0).innerHTML='保存成功!';
 $('.playlist-container').replaceWith("<%= escape_javascript render 'basic_infos/all_added_operations', :user=>@user %>");
 $('.playlist li a.video').removeClass('active');
 $('.playlist li').removeClass('selected');

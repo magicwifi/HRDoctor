@@ -16,6 +16,28 @@ img#poster {
 #msg-checkout {
   float:right;
 }
+
+.msg-order {
+  float:left;
+  width:600px;
+}
+
+.left-order {
+  float:left;
+  width:200px;
+}
+
+.right-order {
+  float: right;
+  width:300px;
+}
+
+.info-message {
+   font-size: 16px;
+   font-weight: bold;
+   color: #ff0000;	
+}
+
 #msg-show {
   float: right;
   font-weight: bold;
@@ -34,6 +56,15 @@ img#poster {
    display: inline;
 }
 
+.doctor-msg {
+   font-size: 16px;
+   font-weight: bold;
+   color: #ff0000;	
+   float: left;
+   padding-left: 50px;
+}
+
+
 .sick_desc {
    font-size: 10px;
    font-weight: bold;
@@ -45,7 +76,6 @@ img#poster {
     background-color: #ececec;
     margin: 0;
     padding: 10px 20px;
-   display: inline;
 }
 .boxed-group > .sick_desc {
     margin: 0;

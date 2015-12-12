@@ -1,10 +1,10 @@
 <div class="playlist-container">
   <ul id="play-list" class="playlist" data-update-url="/sort_operations">
-    <% user.operations.each do |operation| %>
+    <% user.operations.each_with_index do |operation,index| %>
       <%= content_tag_for :li, operation do %>
         <a class="video" href="<%= @user.name+ '/'+operation.position.to_s + '/editoper.js' %>" data-remote='true'>
           <span class="video-info edit-video-info">
-            <%= operation.title %> &nbsp;&nbsp;&nbsp;&nbsp; <%= operation.updated_at.strftime '%Y-%m-%d %H:%M:%S' %>
+           <%= "记录"+(index+1).to_s+":" %>&nbsp; <%= (operation.title.nil? or operation.title.blank?) ? '未录入': operation.title  %> &nbsp;&nbsp;&nbsp;&nbsp;  手术日期: <%= operation.sick_date.nil? ? '未录入日期':(operation.sick_date.strftime '%Y-%m-%d') %>
           </span>
         </a>
         <a href="<%= @user.name+ '/'+operation.position.to_s + '/editoper.js' %>"

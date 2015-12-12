@@ -60,7 +60,7 @@ $('input#submit_sick_asset_info1').click(function(){
     <% end %>
   </div>
   <div class="secondary-info">
-    <p id="video-filename">查看文件: <a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_asset.asset %>"><%= sick_asset.filename %></a></p>
+    <p id="video-filename">查看文件: <a href="#" onClick="window.open('<%= sick_asset.asset.nil? ? "#":"http://"+Settings.qiniu.bucket_domain+"/"+sick_asset.asset %>','newwindow','height=500,width=611,scrollbars=yes,status=yes,screenX=400,screenY=400')" ><%= sick_asset.filename %></a></p>
     <%= qiniu_video_uploader_form callback_url: "/update_sick_asset/#{sick_asset.id}",
       callback_method: 'PATCH',
       bucket:        "#{Settings.qiniu.bucket}",
@@ -89,6 +89,7 @@ $('input#submit_sick_asset_info1').click(function(){
       :confirm => t('confirm_delete') %>
   </div>
       </div>
+  <div class="info-message"></div>
 </div>
   </div>
 <script>

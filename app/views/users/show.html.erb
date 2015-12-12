@@ -18,6 +18,7 @@
     <li><a class="<%= request.path == "/editmyhist"? "active":"faq" %>" href="/editmyhist">其他病史</a></li>
     <li><a class="<%= request.path == "/editmyoper"? "active":"faq" %>" href="/editmyoper">重大手术及外伤史</a></li>
     <li><a class="<%= request.path == "/editmysick"? "active":"faq" %>" href="/editmysick">病历上传/病历查看</a></li>
+    <li><a class="<%= request.path == "/myaskeddoctors"? "active":"faq" %>" href="/myaskeddoctors">我的经治医生</a></li>
   </ul>
 </div>
   </div><!--end user-info -->
@@ -47,7 +48,7 @@
         <tr>
           <td><%= basic_case.updated_at.strftime '%Y-%m-%d %H:%M:%S' %></td>
           <td><%= link_to basic_case.main_desc.nil? ? "未填写":basic_case.main_desc, show_basic_case_path(basic_case.user.name,basic_case) %></td>
-          <td> <%= link_to (basic_case.doctor.nil? ? "无" : basic_case.doctor.name), '#' %> </td>
+          <td> <%= link_to (basic_case.doctor.nil? ? "多医生" : basic_case.doctor.name), (basic_case.doctor.nil? ? "#" : basic_case.doctor.url) %> </td>
           <td><%= basic_case.process.nil? ? "未提交": (basic_case.reply.nil? ? "待回复": "已回复")  %> </td>
           <td><%= basic_case.process.nil? ? "未提交": t(basic_case.process)  %> </td>
           <td><%= link_to "查看", show_basic_case_path(basic_case.user.name,basic_case), :class => "course-button" %></td>

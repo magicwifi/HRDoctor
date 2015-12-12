@@ -119,6 +119,7 @@ Onestep::Application.routes.draw do
   end
 
   get "/createmyfaq" => "basic_infos#show"
+  get "/myaskeddoctors" => "basic_infos#asked"
   get "/showmyinfo" => "basic_infos#edit"
   get "/editmysick" => "basic_infos#edit_sick"
   get "/editmyoper" => "basic_infos#edit_oper"
@@ -152,6 +153,7 @@ Onestep::Application.routes.draw do
   ##post "/:member_name/:basic_case_id/clonecase" => "basic_infos#clonecase" , :as => "clone_basic_case"
   get "/:member_name/:basic_case_id/showcase" => "basic_infos#show_case" , :as => "show_basic_case"
   get "/:member_name/:basic_case_id/show_commit_case" => "basic_infos#show_commit_case" , :as => "show_commit_case"
+  get "/:member_name/:basic_case_id/show_doctor_case" => "basic_infos#show_doctor_case" , :as => "show_doctor_case"
   #get "/:member_name/:course_name/edit" => "courses#edit" , :as => "edit_course"
   #get "/:member_name/:course_name(/:position)" => "courses#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom
   get "/:member_name/:sick_case_name(/:position)/showcase" => "sick_cases#show", :constraints => {:position => /\d+/} # "/:xxx/:xxx" will conflict with many things, so have to put bottom

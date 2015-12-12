@@ -62,11 +62,8 @@
       <dt>附件类型 : </dt>
       <dd><%= (sick_asset.asset_type.nil? or sick_asset.asset_type.blank? )  ? "未填写": t(sick_asset.asset_type) %></dd>
       <dt>查看附件 : </dt>
-      <dd><a href="http://<%= Settings.qiniu.bucket_domain %>/<%= sick_asset.asset %>"><%= sick_asset.filename %></a></dd>
+    <dd><a href="#" onClick="window.open('<%= sick_asset.asset.nil? ? "#":"http://"+Settings.qiniu.bucket_domain+"/"+sick_asset.asset %>','newwindow','height=500,width=611,scrollbars=yes,status=yes,screenX=400,screenY=400')" ><%= sick_asset.filename %></a></dd>
     </dl>
-<div class="download-btn">
-  <%= link_to '下载咨询附件', download_sick_asset_path(:asset => sick_asset.asset), class: "minibutton primary" %>
-</div>
      <% end %>
 
 </div>

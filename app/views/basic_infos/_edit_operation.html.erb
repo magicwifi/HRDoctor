@@ -91,7 +91,7 @@ $('input#submit_operation_info1').click(function(){
     <% end %>
   </div>
   <div class="secondary-info">
-    <p id="video-filename">查看文件: <a href="http://<%= Settings.qiniu.bucket_domain %>/<%= operation.asset %>"><%= operation.filename %></a></p>
+    <p id="video-filename">查看文件: <a href="#" onClick="window.open('<%= operation.asset.nil? ? "#":"http://"+Settings.qiniu.bucket_domain+"/"+operation.asset %>','newwindow','height=500,width=611,scrollbars=yes,status=yes,screenX=400,screenY=400')" ><%= operation.filename %></a></p>
     <%= qiniu_video_uploader_form callback_url: "/update_operation/#{operation.id}",
       callback_method: 'PATCH',
       bucket:        "#{Settings.qiniu.bucket}",
@@ -118,6 +118,7 @@ $('input#submit_operation_info1').click(function(){
     <%= link_to "删除本手术信息", operation, :method => "delete", class: "danger minibutton",
       :confirm => t('confirm_delete') %>
   </div>
+  <div class="info-message"></div>
   </div>
 </div>
       </div>

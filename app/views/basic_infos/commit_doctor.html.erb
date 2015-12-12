@@ -60,6 +60,7 @@
     </div>
   </div>
 </div>
+    <div class="doctor-msg">温馨提示,您已经选中<%= @doctor.hospital %>医院的<%= @doctor.name %>医生</div>
 
     </div>
     <div class="content paid-courses-section clearfix">
@@ -78,15 +79,18 @@
     </div> <!-- boxed-group -->
   </div><!-- end tutorial-page -->
 </div>
+    <div class="doctor-msg">温馨提示,您已经选中<%= @doctor.hospital %>医院的<%= @doctor.name %>医生</div>
 <p>
+<p style="height:20px;"></p>
     <div class="ready-basic-case">
-    <%= link_to '提交本次咨询', basic_case_new_path(@basic_case,@doctor.name,@commit_status), :method => :post, :class => "button danger" %>
+    <%= link_to '提交本次咨询', basic_case_new_path(@basic_case,@doctor.name,@commit_status), :method => :post, :class => "large button danger" %>
 </div>
 </p>
 
     </div>
     <div class="content watched-courses-section clearfix">
           <%= render "show_bodysign", :body_sign=>@basic_case.body_sign,:status_names=>@status_names %>
+    <div class="doctor-msg">温馨提示,您已经选中<%= @doctor.hospital %>医院的<%= @doctor.name %>医生</div>
     </div>
   </div><!--end user-course -->
 </div><!-- user-show -->
@@ -115,9 +119,9 @@
 
     $(".edit_basic_case").submit(function( event ) {
 	  if($.trim($('#basic_case_main_desc').val()) == ''||$.trim($('#basic_case_detail_desc').val()) == '' ){
-   	}	
       		alert('温馨提示：为了让医生更好解答您的咨询，请按提示输入主诉、详细描述等信息');
 		event.preventDefault();
+   	}	
      });
   </script>
 <% end %>

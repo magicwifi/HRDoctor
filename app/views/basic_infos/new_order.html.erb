@@ -19,6 +19,9 @@ $('#commit_faq').change(function() {
       }
     });
 
+$("form").submit(function(e){
+  alert("温馨提示：您的咨询已发给相应医生，请您耐心等待医生的回复，华人医生祝您早日康复!");
+});
 </script>
 <% end %>
 <div class="container">
@@ -41,7 +44,11 @@ $('#commit_faq').change(function() {
         </tr>
       </tbody>
     </table>
-	<p style="height: 30px;" ></p>
+	<p style="height: 10px;" ></p>
+     <div class="msg-order">温馨提示：为了让医生更详细了解您的病情，建议您选择“公开病历”，只有您指定的医生才能看到您的病历信息。否则您可以点击该按钮选定“不公开病历”</div>
+   <p style="height: 60px;" ></p> 
+<div class="new-order">
+<div class="left-order">
         <div class="item ui toggle checkbox">
           <label for="course_public">
               <i class="fa fa-unlock-alt"> 公开病历</i>
@@ -50,17 +57,16 @@ $('#commit_faq').change(function() {
 
 	<p style="height: 10px;" ></p>
   <%= link_to '浏览咨询详情', show_commit_case_path(@basic_case.user.name,@basic_case), class: "minibutton danger" %>
-	<p style="height: 10px;" ></p>
 
-
-
+</div>
+<div class="right-order">
  	<% if @commit_status == 'love' %>
-    <div class="payment-form" style="margin-top: 70px;">
+    <div class="payment-form" >
       <%= form_tag "/checkfree" do %>
         <%= hidden_field_tag :basic_case_process, @basic_case.id %>
         <%= hidden_field_tag :doctor_id, @doctor.id %>
         <%= hidden_field_tag :basic_case_public, @basic_case.public %>
-        <%= submit_tag '免费咨询(公开咨询)', :class => "button danger large right" %>
+        <%= submit_tag '提交本次爱心咨询', :class => "button danger large right" %>
       <% end %>
     </div>
  	<% else %>
@@ -76,7 +82,9 @@ $('#commit_faq').change(function() {
    <p style="height: 40px;" ></p> 
      <div id="msg-checkout">温馨提示：您是我们的友好用户，2016年1月前不收取咨询费用，您直接提交即可</div>
       <% end %>
-    </div>
+   </div>
+  </div>
+  </div>
   </div>
 </div>
 

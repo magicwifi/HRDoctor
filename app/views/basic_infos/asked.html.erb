@@ -1,0 +1,36 @@
+<div id="user-show" class="container clearfix">
+  <div id="user-course" >
+    <ul class="main-nav">
+      <li class="active" data-course-type="owned">
+        <a href="#owned-courses">我的经治医生</a>
+      </li>
+    </ul>
+
+    <div class="content owned-courses-section active clearfix">
+    <table class="table table-bordered" style="width: 900px;">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>医院</th>
+          <th>科室</th>
+          <th>职称</th>
+          <th style="width: 270px;">擅长疾病</th>
+          <th>最近咨询</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @doctor_groups.each_with_index do |doctor,index| %>
+        <tr>
+          <td><%= link_to doctor.name, doctor.url %></td>
+          <td><%= doctor.hospital %></td>
+          <td><%= doctor.room %></td>
+          <td><%= doctor.rank %></td>
+          <td><%= (doctor.speciality.nil? or doctor.speciality.blank?) ?  "空缺": doctor.speciality %></td>
+          <td><%= link_to  (@basic_groups[index].updated_at.strftime '%Y/%m/%d'),  show_doctor_case_path(@user.name, @basic_groups[index]) %></td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+    </div>
+</div><!-- user-show -->
+</div><!-- user-show -->

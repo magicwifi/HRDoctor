@@ -16,6 +16,7 @@ skip_before_action :verify_authenticity_token
      render 'search'
   end
 
+
   def doctor_commit
      @doctor = Doctor.find(params[:id]);
   end

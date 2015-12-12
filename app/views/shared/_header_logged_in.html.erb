@@ -3,8 +3,8 @@
 	<img src="/logo.png" style="width: 260px;height: 60px;" class="tstart-toolbar-top" />
     <ul class="top-nav" style="padding-left: 260px;" >
       <li> <%= link_to "首页",  "/" %></li>
-      <li><a href="<%= member_path(current_user.name) %>">个人健康中心</a></li>
-      <li><a href="<%= member_path(current_user.name) %>">病历管理</a></li>
+      <li><a href="/showmyinfo">个人健康中心</a></li>
+      <li><a href="/editmysick">病历管理</a></li>
       <li><a href="<%= member_path(current_user.name) %>">咨询记录</a></li>
       <li ><a href="<%= member_path(current_user.name) %>" id="doctor_enter" >医生入口</a></li>
     </ul>

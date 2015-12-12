@@ -1,10 +1,10 @@
 <div class="playlist-container">
   <ul id="play-list" class="playlist" data-update-url="/sort_sick_assets">
-    <% basic_case.sick_assets.each do |sick_asset| %>
+    <% basic_case.sick_assets.each_with_index do |sick_asset,index| %>
       <%= content_tag_for :li, sick_asset do %>
         <a class="video" href="<%= "/" +@basic_case.id.to_s+ '/'+sick_asset.position.to_s + '/edit_sick_asset.js' %>" data-remote='true'>
           <span class="video-info edit-video-info">
-            <%= sick_asset.title %> &nbsp;&nbsp;&nbsp;&nbsp; <%= sick_asset.updated_at.strftime '%Y-%m-%d %H:%M:%S' %>
+            <%= "记录"+(index+1).to_s+":" %>&nbsp; <%= sick_asset.title %> 
           </span>
         </a>
         <a href="<%= "/"+@basic_case.id.to_s+ '/'+sick_asset.position.to_s + '/edit_sick_asset.js' %>"
