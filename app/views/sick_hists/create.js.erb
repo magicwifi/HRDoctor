@@ -7,4 +7,4 @@ $('.playlist li').removeClass('selected');
 $('.playlist li a.video').eq(<%= @sick_hist.position - 1 %>).addClass('active');
 $('.playlist li').eq(<%= @sick_hist.position - 1 %>).addClass('selected');
 $('input#submit_sick_hist_info').removeAttr('disabled');
-$('input#submit_sick_hist_info').get(0).setAttribute('value', '更新病史信息');
+$('input#submit_sick_hist_info').get(0).setAttribute('value', '保存病史信息');
