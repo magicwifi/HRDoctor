@@ -118,13 +118,18 @@
 
     $(".edit_basic_case").submit(function( event ) {
 	  if($.trim($('#basic_case_main_desc').val()) == ''||$.trim($('#basic_case_detail_desc').val()) == '' ){
-      		alert('温馨提示：为了让医生更好解答您的咨询，请按提示输入主诉、详细描述等信息');
+      		alert('hi','温馨提示：为了让医生更好解答您的咨询，请按提示输入主诉、详细描述等信息');
 		event.preventDefault();
    	}	
      });
+    window.alert = function(title, message){
+    	var myElementToShow = document.getElementById("someElementId");
+    	myElementToShow.innerHTML = title + "</br>" + message; 
+    }    
+
     $('#quick-ask').click(function(event){
 
-	alert('温馨提示：您的咨询已发送，请您耐心等待医生的回复，华人医生祝您早日康复！')
+	alert('test','温馨提示：您的咨询已发送，请您耐心等待医生的回复，华人医生祝您早日康复！')
 
     })
 </script>
